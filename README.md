@@ -2,6 +2,12 @@
 
 DevFest 2024 Website created with [Next.js](https://nextjs.org/), utilizing React.
 
+## Useful Tutorials
+
+1. [How to Make a React Next JS Website - Beginner Tutorial Using Styled Components](https://www.youtube.com/watch?v=LyEc2fGCR90) (22 mins) - Good overview of the stack we'll be using (NextJS and Styled Components). The only difference is that when he imports from `styled-components`, we'll import from `@emotion/styled`.
+2. [useEffect and useState in NextJS - React Hooks](https://www.youtube.com/watch?v=pg-4eHwaoJM) (5 mins) - Goes over basic React hooks that are probably going to be needed for the project.
+3. [React Tutorial for Beginners](https://www.youtube.com/watch?v=SqcY0GlETPk) (1hr 20mins) - More comprehensive React tutorial that goes over how React works, custom components, rendering lists, etc.
+
 ## Getting Started
 
 Clone the Github repo:
