@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   // Month is 0 indexed, everything else isn't (year, monthIndex, day, hour)
-  const DEVFEST_DATE = new Date(2024, 1, 28, 19);
+  const DEVFEST_DATE = new Date(2024, 0, 26, 19);
 
   // Mobile Check
   const maxWidth = "650px";
@@ -126,8 +126,14 @@ export default function Home() {
     text-decoration: none;
   `;
 
-  const ContactText = styled.h2`
+  const ContactTextTop = styled.h2`
     font-size: ${mobile ? "1.2rem" : "1.7rem"};
+    margin-top: 1.5em;
+  `;
+
+  const ContactTextBottom = styled.h2`
+    font-size: ${mobile ? "1.2rem" : "1.7rem"};
+    margin-bottom: 1.5em;
   `;
 
   // Body
@@ -153,12 +159,8 @@ export default function Home() {
               <Countdown date={DEVFEST_DATE} />
             </DivCountdown>
 
-            <br />
-            <br />
-            <ContactText>Questions? Contact</ContactText>
-            <ContactText>ekg2134@columbia.edu</ContactText>
-            <br />
-            <br />
+            <ContactTextTop>Questions? Contact</ContactTextTop>
+            <ContactTextBottom>devfestcu@gmail.com</ContactTextBottom>
 
             <h3>Past DevFest Sites:</h3>
             <Link href="https://2023.devfestcu.com/">
