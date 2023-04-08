@@ -3,7 +3,12 @@
 
 @font-face {
   font-family: "Digital";
-  src: url("/fonts/digital-7.ttf") format("truetype");
+  src: url("/fonts/digital-7-mono.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DotGothic16";
+  src: url("/fonts/dotgothic16.ttf") format("truetype");
 }
 
 * {

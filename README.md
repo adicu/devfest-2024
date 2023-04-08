@@ -83,6 +83,11 @@ Run `git commit -m "commit_message_here"` to commit your changes.
 
 Finally, run `git push` to push your changes to the remote repo.
 
+## Recommended VSCode Extensions
+
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for Code formatting, highlighting
+- [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components) for `@emotion/styled` component syntax highlighting.
+
 ## More Information
 
 ### API Routes
