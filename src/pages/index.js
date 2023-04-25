@@ -122,6 +122,26 @@ export default function Home() {
     }
   `;
 
+  const DivLinkTwo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #60b4fc;
+  color: white;
+
+  border-radius: 15px;
+
+  margin-bottom: 1em;
+
+  & p {
+    font-family: "Optima";
+    font-size: ${mobile ? "1.3rem" : "1.8rem"};
+    font-weight: 700;
+    padding: 0.3em;
+  }
+`;
+
   const Link = styled.a`
     text-decoration: none;
   `;
@@ -168,6 +188,11 @@ export default function Home() {
                 <img src="/images/icons/devfest-23.png" alt="DevFest 23 Icon" />
                 <p>DevFest 2023</p>
               </DivLink>
+            </Link>
+            <Link href="https://www.adicu.com/devfest-22">
+              <DivLinkTwo>
+                <p>DevFest 2022</p>
+              </DivLinkTwo>
             </Link>
           </DivCenter>
         </DivHero>
