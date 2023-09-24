@@ -14,10 +14,19 @@ files = {
     "Speakers.csv": ("Speakers", "Speaker_Id", True, "Speaker Email", ["Speaker name", "Bio", "Headshot (public URL preferred)", "LinkedIn", "Website"])
 }
 
+renames = {
+    "Start Time": "Start_Time",
+    "End Time": "End_Time",
+    "Event description": "Description",
+    "Room (capacity)": "Room",
+    "Speaker name": "Name",
+    "Headshot (public URL preferred)": "Headshot"
+}
+
 ofile = "data.json"
 
 def process_data(file_name, df_fields, key_field, one_id = False, id_field_name = "ids"):
-    df = pd.read_csv(file_name, keep_default_na=False)
+    df = pd.read_csv(file_name, keep_default_na=False, skip_blank_lines=True)
     fields = df_fields.copy()
     fields.append(key_field)
     df = df[fields]
@@ -37,7 +46,10 @@ def process_data(file_name, df_fields, key_field, one_id = False, id_field_name 
     new_fields.append(id_field_name)
 
     df = df[new_fields]
+    df.rename(columns=renames, inplace=True)
 
+    new_order = [id_field_name] + [col for col in df.columns if col != id_field_name]
+    df = df[new_order]
 
     data = df.to_dict(orient="records")
 
