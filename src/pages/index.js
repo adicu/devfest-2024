@@ -3,7 +3,13 @@ import styled from "@emotion/styled";
 import Countdown from "react-countdown";
 import { useState, useEffect } from "react";
 
-export default function Home() {
+export async function getServerSideProps() {
+  const res = await fetch(process.env.DATA_URL)
+  const data = await res.json()
+  return { props: { data } }
+}
+
+export default function Home({data}) {
   // Month is 0 indexed, everything else isn't (year, monthIndex, day, hour)
   const DEVFEST_DATE = new Date(2024, 0, 26, 19);
 
@@ -19,6 +25,8 @@ export default function Home() {
   const [mobile, setMobile] = useState(isClientMobile());
 
   useEffect(() => {
+    console.log(data)
+
     function handleResize() {
       setMobile(isClientMobile());
     }
