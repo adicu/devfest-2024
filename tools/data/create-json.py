@@ -4,23 +4,24 @@ import pandas as pd
 import json
 import hashlib
 import sys
+import datetime
 
 MOD = 643847
 
 files = {
-    "Workshops.csv": ("Workshops", "Speaker_Ids", False, "Speaker email(s)", ["Date", "Start Time", "End Time", "Title", "Topic", "Event description", "Room (capacity)"]),
+    "Workshops.csv": ("Workshops", "Speaker_Ids", True, "Speaker email(s)", ["Date", "Start Time", "End Time", "Title", "Topic", "Event description", "Room (capacity)"]),
     "Instructors.csv": ("Instructors", "Speaker_Id", True, "Speaker Email", ["Speaker name", "Bio", "Headshot (public URL preferred)", "LinkedIn", "Website"]),
-    "Events.csv": ("Events", "Speaker_Ids", False, "Speaker email(s)", ["Date", "Start Time", "End Time", "Title", "Topic", "Event description", "Room (capacity)"]),
+    "Events.csv": ("Events", "Speaker_Ids", True, "Speaker email(s)", ["Date", "Start Time", "End Time", "Title", "Topic", "Event description", "Room (capacity)"]),
     "Speakers.csv": ("Speakers", "Speaker_Id", True, "Speaker Email", ["Speaker name", "Bio", "Headshot (public URL preferred)", "LinkedIn", "Website"])
 }
 
 renames = {
-    "Start Time": "Start_Time",
-    "End Time": "End_Time",
+    "Start Time": "Time_Start",
+    "End Time": "Time_End",
     "Event description": "Description",
     "Room (capacity)": "Room",
     "Speaker name": "Name",
-    "Headshot (public URL preferred)": "Headshot"
+    "Headshot (public URL preferred)": "Headshot",
 }
 
 ofile = "data.json"
@@ -45,14 +46,32 @@ def process_data(file_name, df_fields, key_field, one_id = False, id_field_name 
     new_fields = df_fields.copy()
     new_fields.append(id_field_name)
 
+    def process_dates(date_str, time_str):
+        date_obj = datetime.datetime.strptime(date_str, "%m/%d/%Y")
+        time_obj = datetime.datetime.strptime(time_str, "%I:%M %p")
+
+        combined_datetime = date_obj.replace(
+            hour=time_obj.hour,
+            minute=time_obj.minute,
+            second=time_obj.second,
+        )
+
+        iso_format = combined_datetime.isoformat()
+        return iso_format
+
     df = df[new_fields]
     df.rename(columns=renames, inplace=True)
 
     new_order = [id_field_name] + [col for col in df.columns if col != id_field_name]
     df = df[new_order]
 
-    data = df.to_dict(orient="records")
+    if "Date" in df.columns:
+        df['Time_Start'] = df.apply(lambda row: process_dates(row['Date'], row['Time_Start']), axis=1)
+        df['Time_End'] = df.apply(lambda row: process_dates(row['Date'], row['Time_End']), axis=1)
 
+        df = df.drop(columns=['Date'])
+    
+    data = df.to_dict(orient="records")
     return data
 
 output_data = {}
