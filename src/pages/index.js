@@ -4,12 +4,21 @@ import Countdown from "react-countdown";
 import { useState, useEffect } from "react";
 
 export async function getServerSideProps() {
-  const res = await fetch(process.env.DATA_URL)
-  const data = await res.json()
-  return { props: { data } }
+  try {
+    const res = await fetch(process.env.DATA_URL);
+    const data = await res.json();
+    return { props: { data } };
+  } catch (err) {
+    const data = {
+      Workshops: [],
+      Instructors: [],
+      Events: [],
+      Speakers: [],
+    };
+    return { props: { data } };
+  }
 }
-
-export default function Home({data}) {
+export default function Home({ data }) {
   // Month is 0 indexed, everything else isn't (year, monthIndex, day, hour)
   const DEVFEST_DATE = new Date(2024, 0, 26, 19);
 
@@ -25,7 +34,7 @@ export default function Home({data}) {
   const [mobile, setMobile] = useState(isClientMobile());
 
   useEffect(() => {
-    console.log(data)
+    console.log(data);
 
     function handleResize() {
       setMobile(isClientMobile());
@@ -131,24 +140,24 @@ export default function Home({data}) {
   `;
 
   const DivLinkTwo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  background-color: #60b4fc;
-  color: white;
+    background-color: #60b4fc;
+    color: white;
 
-  border-radius: 15px;
+    border-radius: 15px;
 
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 
-  & p {
-    font-family: "Optima";
-    font-size: ${mobile ? "1.3rem" : "1.8rem"};
-    font-weight: 700;
-    padding: 0.3em;
-  }
-`;
+    & p {
+      font-family: "Optima";
+      font-size: ${mobile ? "1.3rem" : "1.8rem"};
+      font-weight: 700;
+      padding: 0.3em;
+    }
+  `;
 
   const Link = styled.a`
     text-decoration: none;
