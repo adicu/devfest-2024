@@ -4,13 +4,13 @@ import Page from "./book-components/Page";
 const Pages = (props) => {
   return (
     <>
-      <LeftPage visible={props.currentPage == 1}>
+      <LeftPage visible={props.currentPage == 1 || props.currentPage == 2}>
         <Page pageNumber="1">Component A</Page>
       </LeftPage>
-      <RightPage visible={props.currentPage == 2}>
+      <RightPage visible={props.currentPage == 1 || props.currentPage == 2}>
         <Page pageNumber="2">Component B</Page>
       </RightPage>
-      <LeftPage visible={props.currentPage == 3}>
+      <LeftPage visible={props.currentPage == 3 || props.currentPage == 4}>
         <Page pageNumber="3">Component C</Page>
       </LeftPage>
     </>

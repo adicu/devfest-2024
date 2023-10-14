@@ -7,17 +7,17 @@ const Book = (props) => {
     flex: 3;
   `;
 
-  const toggleComponent = () => {
-    if (props.currentPage < 3) {
-      props.updatePage(props.currentPage + 1);
-    } else {
-      props.updatePage(1);
-    }
-  };
+  // const toggleComponent = () => {
+  //   if (props.currentPage < 3) {
+  //     props.updatePage(props.currentPage + 1);
+  //   } else {
+  //     props.updatePage(1);
+  //   }
+  // };
 
   return (
     <Container>
-      <button onClick={toggleComponent}>Next Page</button>
+      {/* <button onClick={toggleComponent}>Next Page</button> */}
 
       <PageFlipApp
         parentPage={props.currentPage}
