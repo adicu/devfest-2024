@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import PageFlip from "./book-components/PageFlip";
 
 const Book = ({ data, mobile }) => {
   const Container = styled.div`
@@ -6,7 +7,11 @@ const Book = ({ data, mobile }) => {
     flex: 3;
   `;
 
-  return <Container>Book Here</Container>;
+  return (
+    <Container>
+      <PageFlip />
+    </Container>
+  );
 };
 
 export default Book;
