@@ -3,66 +3,63 @@ import styled from "@emotion/styled";
 
 import Page from "./Page";
 
-const PageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1200px;
+export const TransitionContainer = styled.div`
+  position: relative;
+  width: 300px; /* Adjust the width as needed */
+  height: 300px; /* Adjust the height as needed */
 `;
 
-// const Page = styled.div`
-//   transition: transform 0.5s ease;
-//   transform-style: preserve-3d;
-
-//   &.active {
-//     transform: rotateY(0deg);
-//   }
-
-//   &:nth-child(2) {
-//     transform: rotateY(180deg);
-//   }
+// export const ComponentAWrapper = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   opacity: ${({ visible }) => (visible ? 1 : 0)};
+//   transition: opacity 0.5s ease-in-out;
 // `;
 
-const Button = styled.button`
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
+// export const ComponentBWrapper = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   opacity: ${({ visible }) => (visible ? 1 : 0)};
+//   transition: opacity 0.5s ease-in-out;
+// `;
+
+export const PageWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
 `;
 
 const PageFlipApp = () => {
+  const MAX_PAGE = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const nextPage = () => {
-    if (currentPage < 3) {
+  const toggleComponent = () => {
+    if (currentPage < MAX_PAGE) {
       setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const previousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+    } else {
+      setCurrentPage(1);
     }
   };
 
   return (
-    <>
-      <PageContainer>
-        <Page pageNumber="1">Hello There</Page>
-
-        {/* <Page className={currentPage === 1 ? "active" : ""}>
-          <p>Page 1</p>
-        </Page>
-        <Page className={currentPage === 2 ? "active" : ""}>
-          <p>Page 2</p>
-        </Page>
-        <Page className={currentPage === 3 ? "active" : ""}>
-          <p>Page 3</p>
-        </Page> */}
-      </PageContainer>
-    </>
+    <div>
+      <button onClick={toggleComponent}>Next Page</button>
+      <TransitionContainer>
+        <PageWrapper visible={currentPage == 1}>
+          <Page pageNumber="1">Component A</Page>
+        </PageWrapper>
+        <PageWrapper visible={currentPage == 2}>
+          <Page pageNumber="2">Component B</Page>
+        </PageWrapper>
+        <PageWrapper visible={currentPage == 3}>
+          <Page pageNumber="3">Component C</Page>
+        </PageWrapper>
+      </TransitionContainer>
+    </div>
   );
 };
 
