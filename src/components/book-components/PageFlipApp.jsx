@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
+import Page from "./Page";
+
 const PageContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -8,33 +10,18 @@ const PageContainer = styled.div`
   perspective: 1200px;
 `;
 
-const Page = styled.div`
-  width: 300px;
-  height: 400px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  transition: transform 0.5s ease;
-  transform-style: preserve-3d;
+// const Page = styled.div`
+//   transition: transform 0.5s ease;
+//   transform-style: preserve-3d;
 
-  &.active {
-    transform: rotateY(0deg);
-  }
+//   &.active {
+//     transform: rotateY(0deg);
+//   }
 
-  &:nth-child(2) {
-    transform: rotateY(180deg);
-  }
-`;
-
-const ButtonContainer = styled.div`
-  background-color: red;
-  /* display: flex;
-  justify-content: center; */
-  margin-top: 20px;
-`;
+//   &:nth-child(2) {
+//     transform: rotateY(180deg);
+//   }
+// `;
 
 const Button = styled.button`
   background-color: #007bff;
@@ -63,23 +50,18 @@ const PageFlipApp = () => {
   return (
     <>
       <PageContainer>
-        <Page className={currentPage === 1 ? "active" : ""}>
-          {/* Content for Page 1 */}
+        <Page pageNumber="1">Hello There</Page>
+
+        {/* <Page className={currentPage === 1 ? "active" : ""}>
           <p>Page 1</p>
         </Page>
         <Page className={currentPage === 2 ? "active" : ""}>
-          {/* Content for Page 2 */}
           <p>Page 2</p>
         </Page>
         <Page className={currentPage === 3 ? "active" : ""}>
-          {/* Content for Page 3 */}
           <p>Page 3</p>
-        </Page>
+        </Page> */}
       </PageContainer>
-      <ButtonContainer>
-        <Button onClick={previousPage}>Previous Page</Button>
-        <Button onClick={nextPage}>Next Page</Button>
-      </ButtonContainer>
     </>
   );
 };
