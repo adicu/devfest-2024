@@ -25,7 +25,7 @@ const Book = styled.div`
   border-radius: 3px;
 `;
 
-export const LeftPage = styled.div`
+const LeftPage = styled.div`
   height: 100%;
   width: 50%;
   position: absolute;
@@ -33,6 +33,12 @@ export const LeftPage = styled.div`
   left: 0;
   opacity: ${({ visible }) => (visible ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
+
+  /* opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transform-origin: right center;
+  transform: perspective(1000px)
+    rotateY(${({ visible }) => (visible ? 0 : -90)}deg);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; */
 
   padding-top: 1em;
   padding-bottom: 1em;
@@ -43,14 +49,21 @@ export const LeftPage = styled.div`
   pointer-events: none;
 `;
 
-export const RightPage = styled.div`
+const RightPage = styled.div`
   height: 100%;
   width: 50%;
   position: absolute;
   top: 0;
   left: 50%;
+  /* opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out; */
+
   opacity: ${({ visible }) => (visible ? 1 : 0)};
-  transition: opacity 0.5s ease-in-out;
+  transform-origin: left center;
+  transform: perspective(1000px)
+    rotateY(${({ visible }) => (visible ? 0 : -90)}deg);
+  transition: transform ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out,
+    opacity ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out;
 
   padding-top: 1em;
   padding-bottom: 1em;
@@ -63,6 +76,13 @@ export const RightPage = styled.div`
 
 const PageFlipApp = (props) => {
   useEffect(() => {
+    console.log(
+      "Current Page: " +
+        props.parentPage +
+        ", Previous Page: " +
+        props.previousPage
+    );
+
     setCurrentPage(props.parentPage);
   }, [props.parentPage]);
 
