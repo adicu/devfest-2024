@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
 import Page from "./Page";
@@ -31,17 +31,32 @@ const PageWrapper = styled.div`
   padding: 1em;
 `;
 
-const PageFlipApp = () => {
+const PageFlipApp = (props) => {
   const MAX_PAGE = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
   const toggleComponent = () => {
     if (currentPage < MAX_PAGE) {
       setCurrentPage(currentPage + 1);
+
+      // console.log("Calling setParentPage " + props.parentPage + " + " + 1);
+      props.setParentPage(currentPage + 1);
+
+      // props.parentPage = props.parentPage + 1;
     } else {
       setCurrentPage(1);
+
+      props.setParentPage(1);
+      // props.parentPage = 1;
     }
   };
+
+  useEffect(() => {
+    // Update the child component's data when parentProp changes
+    // setChildData(`New data based on parentProp: ${pr}`);
+
+    setCurrentPage(props.parentPage);
+  }, [props.parentPage]);
 
   return (
     <>

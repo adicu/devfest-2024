@@ -12,9 +12,20 @@ const Book = ({ data, mobile }) => {
     background-color: red;
   `;
 
+  // const [parentPage, setParentPage] = useState(1);
+
+  var parentPage = 1;
+
+  function setParentPage(newVal) {
+    console.log("Old parent page " + parentPage);
+
+    parentPage = newVal;
+    console.log("New parent page " + parentPage);
+  }
+
   return (
     <Container>
-      <PageFlipApp />
+      <PageFlipApp parentPage={parentPage} setParentPage={setParentPage} />
     </Container>
   );
 };
