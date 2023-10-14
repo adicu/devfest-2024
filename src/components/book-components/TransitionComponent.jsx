@@ -24,21 +24,29 @@ export const ComponentBWrapper = styled.div`
 `;
 
 const TransitionComponent = () => {
-  const [showComponentA, setShowComponentA] = useState(true);
+  const MAX_PAGE = 3;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const toggleComponent = () => {
-    setShowComponentA((prev) => !prev);
+    if (currentPage < MAX_PAGE) {
+      setCurrentPage(currentPage + 1);
+    } else {
+      setCurrentPage(1);
+    }
   };
 
   return (
     <div>
-      <button onClick={toggleComponent}>Toggle Component</button>
+      <button onClick={toggleComponent}>Next Page</button>
       <TransitionContainer>
-        <ComponentAWrapper visible={showComponentA}>
+        <ComponentAWrapper visible={currentPage == 1}>
           Component A
         </ComponentAWrapper>
-        <ComponentBWrapper visible={!showComponentA}>
+        <ComponentBWrapper visible={currentPage == 2}>
           Component B
+        </ComponentBWrapper>
+        <ComponentBWrapper visible={currentPage == 3}>
+          Component C
         </ComponentBWrapper>
       </TransitionContainer>
     </div>
