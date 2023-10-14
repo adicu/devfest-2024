@@ -15,19 +15,18 @@ import styled from "@emotion/styled";
 //   }
 // `;
 
-const PageWrapper = styled.div`
-  /* margin: 1em; */
+const Container = styled.div`
   background-color: violet;
   height: 100%;
 `;
 
 const Page = (props) => {
   return (
-    <PageWrapper>
+    <Container>
       <p>{props.pageNumber}</p>
 
       <p>{props.children}</p>
-    </PageWrapper>
+    </Container>
   );
 };
 

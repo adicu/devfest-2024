@@ -32,30 +32,15 @@ const PageWrapper = styled.div`
 `;
 
 const PageFlipApp = (props) => {
-  // const MAX_PAGE = 3;
-
   useEffect(() => {
-    // console.log("useEffect: setting current page to " + props.parentPage);
     setCurrentPage(props.parentPage);
   }, [props.parentPage]);
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
-  // const toggleComponent = () => {
-  //   if (currentPage < MAX_PAGE) {
-  //     setCurrentPage(currentPage + 1);
-  //     props.setParentPage(currentPage + 1);
-  //   } else {
-  //     setCurrentPage(1);
-  //     props.setParentPage(1);
-  //   }
-  // };
-
   return (
     <>
       <Container>
-        {/* <button onClick={toggleComponent}>Next Page</button> */}
-
         <Book>
           <PageWrapper visible={currentPage == 1}>
             <Page pageNumber="1">Component A</Page>
