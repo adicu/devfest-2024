@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
-import Pages, { maxPage } from "../Pages";
+// import Pages, { maxPage } from "../Pages";
+
+import { pages, maxPage } from "../Pages";
+
+import Page from "./Page";
 
 const colorBook = "brown";
 const colorSpine = "black";
@@ -102,6 +106,14 @@ const PageFlipApp = (props) => {
   //   pointer-events: all;
   // `;
 
+  function getVisible(pageNum) {
+    if (pageNum % 2 == 0) {
+      return currentPage == pageNum - 1 || currentPage == pageNum;
+    } else {
+      return currentPage == pageNum || currentPage == pageNum + 1;
+    }
+  }
+
   return (
     <>
       <Container>
@@ -114,11 +126,67 @@ const PageFlipApp = (props) => {
             <Clicker onClick={rightPageClicked}>Right Clicker</Clicker>
           </RightPage> */}
 
-          <Pages
+          {/* <Pages
             currentPage={currentPage}
             updatePage={props.updatePage}
             // leftPageClicked={leftPageClicked}
-          />
+          /> */}
+
+          {/* <LeftPage visible={getVisible(1)}>
+            <Page
+              pageNumber={1}
+              visible={getVisible(1)}
+              updatePage={props.updatePage}
+              maxPage={maxPage}
+            >
+              Temp 1
+            </Page>
+          </LeftPage>
+          <RightPage visible={getVisible(2)}>
+            <Page
+              pageNumber={2}
+              visible={getVisible(2)}
+              updatePage={props.updatePage}
+              maxPage={maxPage}
+            >
+              Temp 2
+            </Page>
+          </RightPage> */}
+
+          {pages.map((page, index) => {
+            const pageNum = index + 1;
+            const pageLeft = pageNum % 2 == 1 ? true : false;
+            const visible = getVisible(pageNum);
+
+            return (
+              // <div key={pageNum}>
+              <>
+                {pageLeft ? (
+                  <LeftPage visible={visible}>
+                    <Page
+                      pageNumber={pageNum}
+                      visible={visible}
+                      updatePage={props.updatePage}
+                      maxPage={maxPage}
+                    >
+                      {page}
+                    </Page>
+                  </LeftPage>
+                ) : (
+                  <RightPage visible={visible}>
+                    <Page
+                      pageNumber={pageNum}
+                      visible={visible}
+                      updatePage={props.updatePage}
+                      maxPage={maxPage}
+                    >
+                      {page}
+                    </Page>
+                  </RightPage>
+                )}
+              </>
+            );
+          })}
         </Book>
       </Container>
     </>
