@@ -30,7 +30,7 @@ export const LeftPage = styled.div`
   top: 0;
   left: 0;
   opacity: ${({ visible }) => (visible ? 1 : 0)};
-  transition: opacity 2s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 
   padding-top: 1em;
   padding-bottom: 1em;
@@ -48,7 +48,7 @@ export const RightPage = styled.div`
   top: 0;
   left: 50%;
   opacity: ${({ visible }) => (visible ? 1 : 0)};
-  transition: opacity 2s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 
   padding-top: 1em;
   padding-bottom: 1em;
@@ -67,6 +67,8 @@ const PageFlipApp = (props) => {
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
   function leftPageClicked() {
+    console.log("Left page clicked");
+
     const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
 
     if (curPageDiv > 1) {
@@ -79,6 +81,8 @@ const PageFlipApp = (props) => {
   }
 
   function rightPageClicked() {
+    console.log("Right page clicked");
+
     const maxPageDiv = Math.floor((maxPage - 1) / 2) + 1;
 
     const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
@@ -110,7 +114,11 @@ const PageFlipApp = (props) => {
             <Clicker onClick={rightPageClicked}>Right Clicker</Clicker>
           </RightPage>
 
-          <Pages currentPage={currentPage} updatePage={props.updatePage} />
+          <Pages
+            currentPage={currentPage}
+            updatePage={props.updatePage}
+            leftPageClicked={leftPageClicked}
+          />
         </Book>
       </Container>
     </>
