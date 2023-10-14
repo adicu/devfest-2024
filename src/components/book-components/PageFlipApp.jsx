@@ -31,14 +31,14 @@ const LeftPage = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
-  transition: opacity 0.5s ease-in-out;
 
-  /* opacity: ${({ visible }) => (visible ? 1 : 0)};
+  z-index: ${({ zIndex }) => zIndex};
+
   transform-origin: right center;
   transform: perspective(1000px)
-    rotateY(${({ visible }) => (visible ? 0 : -90)}deg);
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; */
+    rotateY(${({ visible }) => (visible ? 0 : 90)}deg);
+  transition: transform ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out,
+    opacity ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out;
 
   padding-top: 1em;
   padding-bottom: 1em;
@@ -55,10 +55,9 @@ const RightPage = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
-  /* opacity: ${({ visible }) => (visible ? 1 : 0)};
-  transition: opacity 0.5s ease-in-out; */
 
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  z-index: ${({ zIndex }) => zIndex};
+
   transform-origin: left center;
   transform: perspective(1000px)
     rotateY(${({ visible }) => (visible ? 0 : -90)}deg);
@@ -75,6 +74,8 @@ const RightPage = styled.div`
 `;
 
 const PageFlipApp = (props) => {
+  // let forward = true;
+
   useEffect(() => {
     console.log(
       "Current Page: " +
@@ -82,6 +83,12 @@ const PageFlipApp = (props) => {
         ", Previous Page: " +
         props.previousPage
     );
+
+    // if (props.previousPage > props.currentPage) {
+    //   forward = false;
+    // } else {
+    //   forward = true;
+    // }
 
     setCurrentPage(props.parentPage);
   }, [props.parentPage]);
@@ -110,7 +117,7 @@ const PageFlipApp = (props) => {
             return (
               <React.Fragment key={pageNum}>
                 {pageLeft ? (
-                  <LeftPage visible={visible}>
+                  <LeftPage visible={visible} zIndex={200 + pageNum}>
                     <Page
                       pageNumber={pageNum}
                       visible={visible}
@@ -121,7 +128,7 @@ const PageFlipApp = (props) => {
                     </Page>
                   </LeftPage>
                 ) : (
-                  <RightPage visible={visible}>
+                  <RightPage visible={visible} zIndex={200 - pageNum}>
                     <Page
                       pageNumber={pageNum}
                       visible={visible}
