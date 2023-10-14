@@ -66,58 +66,58 @@ const PageFlipApp = (props) => {
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
-  function leftPageClicked() {
-    console.log("Left page clicked");
+  // function leftPageClicked() {
+  //   console.log("Left page clicked");
 
-    const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
+  //   const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
 
-    if (curPageDiv > 1) {
-      if (currentPage % 2 == 0) {
-        props.updatePage(currentPage - 2);
-      } else {
-        props.updatePage(currentPage - 1);
-      }
-    }
-  }
+  //   if (curPageDiv > 1) {
+  //     if (currentPage % 2 == 0) {
+  //       props.updatePage(currentPage - 2);
+  //     } else {
+  //       props.updatePage(currentPage - 1);
+  //     }
+  //   }
+  // }
 
-  function rightPageClicked() {
-    console.log("Right page clicked");
+  // function rightPageClicked() {
+  //   console.log("Right page clicked");
 
-    const maxPageDiv = Math.floor((maxPage - 1) / 2) + 1;
+  //   const maxPageDiv = Math.floor((maxPage - 1) / 2) + 1;
 
-    const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
+  //   const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
 
-    if (curPageDiv < maxPageDiv) {
-      if (currentPage % 2 == 0) {
-        props.updatePage(currentPage + 1);
-      } else {
-        props.updatePage(currentPage + 2);
-      }
-    }
-  }
+  //   if (curPageDiv < maxPageDiv) {
+  //     if (currentPage % 2 == 0) {
+  //       props.updatePage(currentPage + 1);
+  //     } else {
+  //       props.updatePage(currentPage + 2);
+  //     }
+  //   }
+  // }
 
-  const Clicker = styled.div`
-    width: 100%;
-    height: 100%;
-    pointer-events: all;
-  `;
+  // const Clicker = styled.div`
+  //   width: 100%;
+  //   height: 100%;
+  //   pointer-events: all;
+  // `;
 
   return (
     <>
       <Container>
         <Book>
-          <LeftPage visible={false}>
+          {/* <LeftPage visible={false}>
             <Clicker onClick={leftPageClicked}>Left Clicker</Clicker>
           </LeftPage>
 
           <RightPage visible={false}>
             <Clicker onClick={rightPageClicked}>Right Clicker</Clicker>
-          </RightPage>
+          </RightPage> */}
 
           <Pages
             currentPage={currentPage}
             updatePage={props.updatePage}
-            leftPageClicked={leftPageClicked}
+            // leftPageClicked={leftPageClicked}
           />
         </Book>
       </Container>

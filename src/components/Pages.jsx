@@ -1,7 +1,7 @@
 import { LeftPage, RightPage } from "./book-components/PageFlipApp";
 import Page from "./book-components/Page";
 
-import Page1 from "./pages/Page1";
+// import Page1 from "./book-components/Page1";
 
 export const maxPage = 5;
 
@@ -9,12 +9,13 @@ const Pages = (props) => {
   return (
     <>
       <LeftPage visible={props.currentPage == 1 || props.currentPage == 2}>
-        <Page>
-          <Page1
-            onClick={props.leftPageClicked}
-            visible={props.currentPage == 1 || props.currentPage == 2}
-            updatePage={props.updatePage}
-          />
+        <Page
+          pageNumber={1}
+          //   onClick={props.leftPageClicked}
+          visible={props.currentPage == 1 || props.currentPage == 2}
+          updatePage={props.updatePage}
+        >
+          This is page 1
         </Page>
       </LeftPage>
       <RightPage visible={props.currentPage == 1 || props.currentPage == 2}>
