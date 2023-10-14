@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
-import Pages from "../Pages";
+import Pages, { maxPage } from "../Pages";
 
 const colorBook = "brown";
 const colorSpine = "black";
@@ -59,12 +59,6 @@ export const RightPage = styled.div`
   pointer-events: none;
 `;
 
-// export const Page = styled.div`
-//   background-color: ${colorPage};
-//   height: 100%;
-//   width: 100%;
-// `;
-
 const PageFlipApp = (props) => {
   useEffect(() => {
     setCurrentPage(props.parentPage);
@@ -73,11 +67,29 @@ const PageFlipApp = (props) => {
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
   function leftPageClicked() {
-    console.log("Left page clicked");
+    const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
+
+    if (curPageDiv > 1) {
+      if (currentPage % 2 == 0) {
+        props.updatePage(currentPage - 2);
+      } else {
+        props.updatePage(currentPage - 1);
+      }
+    }
   }
 
   function rightPageClicked() {
-    console.log("Right page clicked");
+    const maxPageDiv = Math.floor((maxPage - 1) / 2) + 1;
+
+    const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
+
+    if (curPageDiv < maxPageDiv) {
+      if (currentPage % 2 == 0) {
+        props.updatePage(currentPage + 1);
+      } else {
+        props.updatePage(currentPage + 2);
+      }
+    }
   }
 
   const Clicker = styled.div`
