@@ -1,33 +1,38 @@
 import styled from "@emotion/styled";
 
-// const PageStyle = styled.div`
-//   background-color: red;
-
-//   transition: transform 0.5s ease;
-//   transform-style: preserve-3d;
-
-//   &.active {
-//     transform: rotateY(0deg);
-//   }
-
-//   &:nth-child(2) {
-//     transform: rotateY(180deg);
-//   }
-// `;
-
-const Container = styled.div`
-  background-color: violet;
-  height: 100%;
-`;
+const colorPage = "white";
 
 const Page = (props) => {
-  return (
-    <Container>
-      <p>{props.pageNumber}</p>
+  //   console.log(props.active);
+  //   console.log(props.active ? "auto" : "none");
 
-      <p>{props.children}</p>
-    </Container>
-  );
+  const Container = styled.div`
+    background-color: ${colorPage};
+    height: 100%;
+    width: 100%;
+
+    z-index: "11";
+    pointer-events: none;
+    /* pointer-events: ${props.active ? "all" : "none"}; */
+
+    /* background-color: ${props.active ? "yellow" : "white"}; */
+  `;
+
+  // function pageClicked() {
+  //   console.log("Page " + props.pageNumber + " clicked");
+
+  //   if (props.pageNumber % 2 == 1) {
+  //     console.log("Setting to " + (props.pageNumber - 1));
+  //     props.updatePage(props.pageNumber - 1);
+  //   } else {
+  //     console.log("Setting to " + (props.pageNumber + 1));
+  //     props.updatePage(props.pageNumber + 1);
+  //   }
+  // }
+
+  //   return <Container onClick={pageClicked}>{props.children}</Container>;
+
+  return <Container>{props.children}</Container>;
 };
 
 export default Page;

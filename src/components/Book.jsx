@@ -22,6 +22,7 @@ const Book = (props) => {
       <PageFlipApp
         parentPage={props.currentPage}
         previousPage={props.previousPage}
+        updatePage={props.updatePage}
       />
     </Container>
   );

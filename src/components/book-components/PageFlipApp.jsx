@@ -3,8 +3,10 @@ import styled from "@emotion/styled";
 
 import Pages from "../Pages";
 
+const colorBook = "brown";
+const colorSpine = "black";
+
 const Container = styled.div`
-  background-color: yellow;
   height: 100%;
   width: 100%;
 
@@ -13,10 +15,12 @@ const Container = styled.div`
 
 const Book = styled.div`
   position: relative;
-  background-color: brown;
+  background-color: ${colorBook};
 
   height: 100%;
   width: 100%;
+
+  border-radius: 3px;
 `;
 
 export const LeftPage = styled.div`
@@ -31,8 +35,10 @@ export const LeftPage = styled.div`
   padding-top: 1em;
   padding-bottom: 1em;
 
-  border-right: solid brown 1px;
+  border-right: solid ${colorSpine} 1px;
   padding-left: 1em;
+
+  pointer-events: none;
 `;
 
 export const RightPage = styled.div`
@@ -47,9 +53,17 @@ export const RightPage = styled.div`
   padding-top: 1em;
   padding-bottom: 1em;
 
-  border-left: solid brown 1px;
+  border-left: solid ${colorSpine} 1px;
   padding-right: 1em;
+
+  pointer-events: none;
 `;
+
+// export const Page = styled.div`
+//   background-color: ${colorPage};
+//   height: 100%;
+//   width: 100%;
+// `;
 
 const PageFlipApp = (props) => {
   useEffect(() => {
@@ -58,11 +72,33 @@ const PageFlipApp = (props) => {
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
+  function leftPageClicked() {
+    console.log("Left page clicked");
+  }
+
+  function rightPageClicked() {
+    console.log("Right page clicked");
+  }
+
+  const Clicker = styled.div`
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+  `;
+
   return (
     <>
       <Container>
         <Book>
-          <Pages currentPage={currentPage} />
+          <LeftPage visible={false}>
+            <Clicker onClick={leftPageClicked}>Left Clicker</Clicker>
+          </LeftPage>
+
+          <RightPage visible={false}>
+            <Clicker onClick={rightPageClicked}>Right Clicker</Clicker>
+          </RightPage>
+
+          <Pages currentPage={currentPage} updatePage={props.updatePage} />
         </Book>
       </Container>
     </>
