@@ -58,6 +58,14 @@ export default function Home({ data }) {
     window.addEventListener("resize", handleResize);
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [previousPage, setPreviousPage] = useState(1);
+
+  const updatePage = (newPage) => {
+    setPreviousPage(currentPage);
+    setCurrentPage(newPage);
+  };
+
   return (
     <>
       <Head>
@@ -68,11 +76,19 @@ export default function Home({ data }) {
       <main>
         <HomePageContainer>
           <HeaderWrapper>
-            <Header />
+            <Header
+              currentPage={currentPage}
+              previousPage={previousPage}
+              updatePage={updatePage}
+            />
           </HeaderWrapper>
           <MainContentWrapper>
             <Sidepane />
-            <Book />
+            <Book
+              currentPage={currentPage}
+              previousPage={previousPage}
+              updatePage={updatePage}
+            />
           </MainContentWrapper>
         </HomePageContainer>
       </main>

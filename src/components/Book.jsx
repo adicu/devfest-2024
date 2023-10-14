@@ -2,28 +2,40 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import PageFlipApp from "./book-components/PageFlipApp";
 
-const Book = ({ data, mobile }) => {
+const Book = (props) => {
   const Container = styled.div`
     background-color: lightblue;
     flex: 3;
   `;
 
-  const [parentPage, setParentPage] = useState(1);
+  // const [parentPage, setParentPage] = useState(1);
 
-  function updateParentPage(newVal) {
-    console.log("Old parent page " + parentPage);
+  // function updateParentPage(newVal) {
+  //   console.log("Old parent page " + parentPage);
 
-    setParentPage(newVal);
-    console.log("New parent page " + parentPage);
-  }
+  //   setParentPage(newVal);
+  //   console.log("New parent page " + parentPage);
+  // }
+
+  // const toggleComponent = () => {
+  //   console.log("Next Parent Page clicked with parentPage = " + parentPage);
+
+  //   if (parentPage < 3) {
+  //     setParentPage(parentPage + 1);
+  //   } else {
+  //     setParentPage(1);
+  //   }
+  // };
 
   const toggleComponent = () => {
-    console.log("Next Parent Page clicked with parentPage = " + parentPage);
+    // console.log("Next Parent Page clicked with parentPage = " + parentPage);
 
-    if (parentPage < 3) {
-      setParentPage(parentPage + 1);
+    if (props.currentPage < 3) {
+      // setParentPage(parentPage + 1);
+      props.updatePage(props.currentPage + 1);
     } else {
-      setParentPage(1);
+      // setParentPage(1);
+      props.updatePage(1);
     }
   };
 
@@ -32,9 +44,9 @@ const Book = ({ data, mobile }) => {
       <button onClick={toggleComponent}>Next Page Parent</button>
 
       <PageFlipApp
-        parentPage={parentPage}
-        previousPage={parentPage - 1}
-        setParentPage={updateParentPage}
+        parentPage={props.currentPage}
+        previousPage={props.previousPage}
+        // setParentPage={props.up}
       />
     </Container>
   );
