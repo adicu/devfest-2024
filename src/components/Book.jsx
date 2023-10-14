@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
-import PageFlip from "./book-components/PageFlip";
+import PageFlipApp from "./book-components/PageFlipApp";
+
+// import PageComponent from "./book-components/PageComponent";
 
 const Book = ({ data, mobile }) => {
   const Container = styled.div`
@@ -9,7 +11,7 @@ const Book = ({ data, mobile }) => {
 
   return (
     <Container>
-      <PageFlip />
+      <PageFlipApp />
     </Container>
   );
 };

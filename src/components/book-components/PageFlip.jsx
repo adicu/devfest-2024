@@ -27,14 +27,14 @@ const PageFlipContainer = styled.div`
   transform: ${({ isFlipped }) => (isFlipped ? "rotateY(180deg)" : "none")};
 `;
 
-const Page1 = styled.div`
-  background-color: red;
-`;
+// const Page1 = styled.div`
+//   background-color: red;
+// `;
 
-const Page2 = styled.div`
-  /* Styles for Page 2 */
-  background-color: yellow;
-`;
+// const Page2 = styled.div`
+//   /* Styles for Page 2 */
+//   background-color: yellow;
+// `;
 
 const PageFlip = () => {
   const [isFlipped, setIsFlipped] = useState(false);

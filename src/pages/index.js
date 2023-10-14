@@ -66,16 +66,15 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        
-      <HomePageContainer>
-      <HeaderWrapper>
-        <Header />
-      </HeaderWrapper>
-      <MainContentWrapper>
-         <Sidepane />
-          <Book />
-      </MainContentWrapper>
-    </HomePageContainer>
+        <HomePageContainer>
+          <HeaderWrapper>
+            <Header />
+          </HeaderWrapper>
+          <MainContentWrapper>
+            <Sidepane />
+            <Book />
+          </MainContentWrapper>
+        </HomePageContainer>
       </main>
     </>
   );
