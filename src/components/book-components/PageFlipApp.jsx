@@ -38,23 +38,15 @@ const PageFlipApp = (props) => {
   const toggleComponent = () => {
     if (currentPage < MAX_PAGE) {
       setCurrentPage(currentPage + 1);
-
-      // console.log("Calling setParentPage " + props.parentPage + " + " + 1);
       props.setParentPage(currentPage + 1);
-
-      // props.parentPage = props.parentPage + 1;
     } else {
       setCurrentPage(1);
-
       props.setParentPage(1);
-      // props.parentPage = 1;
     }
   };
 
   useEffect(() => {
-    // Update the child component's data when parentProp changes
-    // setChildData(`New data based on parentProp: ${pr}`);
-
+    console.log("useEffect: setting current page to " + props.parentPage);
     setCurrentPage(props.parentPage);
   }, [props.parentPage]);
 

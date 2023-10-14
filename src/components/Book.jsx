@@ -8,24 +8,45 @@ const Book = ({ data, mobile }) => {
     flex: 3;
   `;
 
-  const Temp = styled.div`
-    background-color: red;
-  `;
+  // const Temp = styled.div`
+  //   background-color: red;
+  // `;
 
-  // const [parentPage, setParentPage] = useState(1);
+  const [parentPage, setParentPage] = useState(1);
 
-  var parentPage = 1;
+  // let parentPage = 1;
 
-  function setParentPage(newVal) {
+  function setParentPageMine(newVal) {
     console.log("Old parent page " + parentPage);
 
-    parentPage = newVal;
+    // parentPage = newVal;
+    setParentPage(newVal);
     console.log("New parent page " + parentPage);
   }
 
+  const toggleComponent = () => {
+    console.log("Next Parent Page clicked with parentPage = " + parentPage);
+
+    if (parentPage < 3) {
+      // setCurrentPage(currentPage + 1);
+      // props.setParentPage(currentPage + 1);
+
+      // parentPage = parentPage + 1;
+      setParentPage(parentPage + 1);
+    } else {
+      // setCurrentPage(1);
+      // props.setParentPage(1);
+
+      // parentPage = 1;
+      setParentPage(1);
+    }
+  };
+
   return (
     <Container>
-      <PageFlipApp parentPage={parentPage} setParentPage={setParentPage} />
+      <button onClick={toggleComponent}>Next Page Parent</button>
+
+      <PageFlipApp parentPage={parentPage} setParentPage={setParentPageMine} />
     </Container>
   );
 };
