@@ -12,8 +12,6 @@ const Page = (props) => {
   `;
 
   function leftPageClicked() {
-    console.log("Left page " + props.pageNumber + " clicked");
-
     const currentPage = props.pageNumber;
 
     const curPageDiv = Math.floor((currentPage - 1) / 2) + 1;
@@ -28,8 +26,6 @@ const Page = (props) => {
   }
 
   function rightPageClicked() {
-    console.log("Right page " + props.pageNumber + " clicked");
-
     const currentPage = props.pageNumber;
 
     const maxPageDiv = Math.floor((props.maxPage - 1) / 2) + 1;
