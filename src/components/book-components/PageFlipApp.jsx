@@ -1,7 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
-import Page from "./Page";
+import Pages from "../Pages";
+
+export const LeftPage = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: opacity 2s ease-in-out;
+
+  padding: 1em;
+`;
+
+export const RightPage = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: opacity 2s ease-in-out;
+
+  padding: 1em;
+`;
 
 const Container = styled.div`
   background-color: yellow;
@@ -19,18 +43,6 @@ const Book = styled.div`
   width: 100%;
 `;
 
-const PageWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
-  transition: opacity 2s ease-in-out;
-
-  padding: 1em;
-`;
-
 const PageFlipApp = (props) => {
   useEffect(() => {
     setCurrentPage(props.parentPage);
@@ -42,15 +54,7 @@ const PageFlipApp = (props) => {
     <>
       <Container>
         <Book>
-          <PageWrapper visible={currentPage == 1}>
-            <Page pageNumber="1">Component A</Page>
-          </PageWrapper>
-          <PageWrapper visible={currentPage == 2}>
-            <Page pageNumber="2">Component B</Page>
-          </PageWrapper>
-          <PageWrapper visible={currentPage == 3}>
-            <Page pageNumber="3">Component C</Page>
-          </PageWrapper>
+          <Pages currentPage={currentPage} />
         </Book>
       </Container>
     </>
