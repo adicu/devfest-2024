@@ -14,9 +14,7 @@ const Book = ({ data, mobile }) => {
 
   return (
     <Container>
-      {/* <Temp> */}
       <PageFlipApp />
-      {/* </Temp> */}
     </Container>
   );
 };

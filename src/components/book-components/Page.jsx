@@ -16,19 +16,12 @@ import styled from "@emotion/styled";
 // `;
 
 const PageWrapper = styled.div`
+  /* margin: 1em; */
   background-color: violet;
   height: 100%;
 `;
 
 const Page = (props) => {
-  //   const PageWrapper = styled.div`
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     opacity: ${({ visible }) => (props.visible ? 1 : 0)};
-  //     transition: opacity 0.5s ease-in-out;
-  //   `;
-
   return (
     <PageWrapper>
       <p>{props.pageNumber}</p>
