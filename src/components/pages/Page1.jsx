@@ -8,13 +8,13 @@ const Page1 = (props) => {
     pointer-events: ${props.visible ? "all" : "none"};
   `;
 
-  function clicked() {
-    console.log("Go to page 3");
-  }
-
+  const handleButtonClick = (event) => {
+    console.log("Button clicked");
+    event.stopPropagation();
+  };
   return (
     <Container onClick={props.onClick}>
-      <button onClick={clicked}>Go to page 3</button>
+      <button onClick={handleButtonClick}>Go to page 3</button>
       Hello There
     </Container>
   );
