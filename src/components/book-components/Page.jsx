@@ -15,6 +15,11 @@ import styled from "@emotion/styled";
 //   }
 // `;
 
+const PageWrapper = styled.div`
+  background-color: violet;
+  height: 100%;
+`;
+
 const Page = (props) => {
   //   const PageWrapper = styled.div`
   //     position: absolute;
@@ -25,13 +30,11 @@ const Page = (props) => {
   //   `;
 
   return (
-    <>
-      {/* <PageWrapper> */}
+    <PageWrapper>
       <p>{props.pageNumber}</p>
 
       <p>{props.children}</p>
-      {/* </PageWrapper> */}
-    </>
+    </PageWrapper>
   );
 };
 

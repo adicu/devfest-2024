@@ -3,29 +3,21 @@ import styled from "@emotion/styled";
 
 import Page from "./Page";
 
-export const TransitionContainer = styled.div`
+// const Book = styled.div`
+//   background-color: green;
+//   height: 100%;
+// `;
+
+const PagesContainer = styled.div`
   position: relative;
-  width: 300px; /* Adjust the width as needed */
-  height: 300px; /* Adjust the height as needed */
+  background-color: yellow;
+
+  height: 100%;
 `;
 
-// export const ComponentAWrapper = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   opacity: ${({ visible }) => (visible ? 1 : 0)};
-//   transition: opacity 0.5s ease-in-out;
-// `;
-
-// export const ComponentBWrapper = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   opacity: ${({ visible }) => (visible ? 1 : 0)};
-//   transition: opacity 0.5s ease-in-out;
-// `;
-
-export const PageWrapper = styled.div`
+const PageWrapper = styled.div`
+  height: 100%;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -46,9 +38,10 @@ const PageFlipApp = () => {
   };
 
   return (
-    <div>
+    <>
       <button onClick={toggleComponent}>Next Page</button>
-      <TransitionContainer>
+      {/* <Book> */}
+      <PagesContainer>
         <PageWrapper visible={currentPage == 1}>
           <Page pageNumber="1">Component A</Page>
         </PageWrapper>
@@ -58,8 +51,9 @@ const PageFlipApp = () => {
         <PageWrapper visible={currentPage == 3}>
           <Page pageNumber="3">Component C</Page>
         </PageWrapper>
-      </TransitionContainer>
-    </div>
+      </PagesContainer>
+      {/* </Book> */}
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 import PageFlipApp from "./book-components/PageFlipApp";
 
 const Book = ({ data, mobile }) => {
@@ -7,9 +8,15 @@ const Book = ({ data, mobile }) => {
     flex: 3;
   `;
 
+  const Temp = styled.div`
+    background-color: red;
+  `;
+
   return (
     <Container>
+      {/* <Temp> */}
       <PageFlipApp />
+      {/* </Temp> */}
     </Container>
   );
 };
