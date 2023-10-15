@@ -5,76 +5,52 @@ import { pages } from "../Pages";
 
 import Page from "./Page";
 
-const PageDiv = styled.div`
-  z-index: ${({ zIndex }) => zIndex};
+const colorBook = "brown";
+const colorSpine = "black";
 
-  position: absolute;
-  background-color: white;
-  width: 330px;
-  height: 430px;
-  border-radius: 0 15px 15px 0;
-  margin-top: 10px;
-  transform-origin: left;
-  transform-style: preserve-3d;
-  transform: rotateY(0deg);
-  transition-duration: 1.5s;
-
-  ${({ checked }) => (!checked ? "1s" : "0s")} ease-in-out;
-`;
-
-const LeftPage = styled.div`
-  position: absolute;
-  width: 100%;
+const Container = styled.div`
   height: 100%;
-  backface-visibility: hidden;
-  box-sizing: border-box;
-  padding: 1rem;
-`;
-
-const RightPage = styled.div`
-  transform: rotateY(180deg);
-  position: absolute;
   width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  z-index: 99;
-`;
 
-const Cover = styled.div`
-  background-color: #4173a5;
-  width: 100%;
-  height: 100%;
-  border-radius: 0 15px 15px 0;
-  box-shadow: 0 0 5px rgb(41, 41, 41);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: center left;
-  position: absolute;
-  z-index: 4;
-  transition: transform 1s;
-`;
-
-const BackCover = styled.div`
-  background-color: #4173a5;
-  width: 100%;
-  height: 100%;
-  border-radius: 0 15px 15px 0;
-  box-shadow: 0 0 5px rgb(41, 41, 41);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: center left;
-  position: relative;
-  z-index: -1;
+  padding: 1em;
 `;
 
 const Book = styled.div`
-  width: 350px;
-  height: 450px;
   position: relative;
-  transition-duration: 1s;
-  perspective: 1500;
+  background-color: ${colorBook};
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 3px;
+`;
+
+const PageDiv = styled.div`
+  background-color: yellow;
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
+`;
+
+export const LeftPage = styled.div`
+  height: 100%;
+  background-color: violet;
+  width: 50%;
+  position: absolute;
+  left: 0;
+`;
+
+export const RightPage = styled.div`
+  height: 100%;
+  background-color: orange;
+  width: 50%;
+  position: absolute;
+  left: 50%;
 `;
 
 const PageFlipApp = (props) => {
@@ -84,28 +60,49 @@ const PageFlipApp = (props) => {
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
+  // function getVisible(pageNum) {
+  //   if (pageNum % 2 == 0) {
+  //     return currentPage == pageNum - 1 || currentPage == pageNum;
+  //   } else {
+  //     return currentPage == pageNum || currentPage == pageNum + 1;
+  //   }
+  // }
+
+  // const lengthOfPages = pages.length;
+
+  function nextPage() {
+    setCurrentPage(currentPage + 1);
+  }
+
+  function lastPage() {
+    setCurrentPage(currentPage - 1);
+  }
+
   return (
     <>
-      <button>Next Page</button>
-      <Book>
-        <Cover />
-        {pages.map((page, index) => {
-          const pageNum = index + 1;
+      <Container>
+        <button onClick={lastPage}>Previous</button>
+        <button onClick={nextPage}>Next</button>
 
-          return (
-            <PageDiv key={pageNum} zIndex={200 - pageNum}>
-              <LeftPage>
-                <Page>{page[0]}</Page>
-              </LeftPage>
+        <Book>
+          {pages.map((page, index) => {
+            const pageNum = index + 1;
+            // const pageLeft = pageNum % 2 == 1 ? true : false;
+            // const visible = getVisible(pageNum);
 
-              <RightPage>
-                <Page>{page[1]}</Page>
-              </RightPage>
-            </PageDiv>
-          );
-        })}
-        <BackCover />
-      </Book>
+            return (
+              <PageDiv key={pageNum} visible={currentPage == pageNum}>
+                <LeftPage>
+                  <Page>{page[0]}</Page>
+                </LeftPage>
+                <RightPage>
+                  <Page>{page[1]}</Page>
+                </RightPage>
+              </PageDiv>
+            );
+          })}
+        </Book>
+      </Container>
     </>
   );
 };
