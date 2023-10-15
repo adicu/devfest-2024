@@ -10,8 +10,6 @@ const Page = (props) => {
   `;
 
   function divClicked() {
-    console.log("Page " + props.pageNumber + " clicked");
-
     if (props.left == true) {
       if (props.pageNumber > 1) {
         props.updatePage(props.pageNumber - 1);

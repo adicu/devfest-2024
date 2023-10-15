@@ -29,10 +29,6 @@ const Book = styled.div`
   border-radius: 5px;
 `;
 
-// const PageDiv = styled.div`
-//   background-color: yellow;
-// `;
-
 export const LeftPage = styled.div`
   height: 100%;
   width: 50%;
@@ -43,6 +39,7 @@ export const LeftPage = styled.div`
   padding-bottom: 1em;
 
   padding-left: 1em;
+  border-right: ${colorSpine} solid 1px;
 `;
 
 export const RightPage = styled.div`
@@ -55,6 +52,7 @@ export const RightPage = styled.div`
   padding-bottom: 1em;
 
   padding-right: 1em;
+  border-left: ${colorSpine} solid 1px;
 `;
 
 const useStyles = createUseStyles({
@@ -128,10 +126,6 @@ const PageFlipApp = (props) => {
   useEffect(() => {
     setCurrentPage(props.parentPage);
 
-    console.log("Parent Page " + props.parentPage);
-
-    console.log("CURRENT Page " + currentPage);
-
     if (props.previousPage < props.parentPage) {
       setForward(true);
     } else {
@@ -145,22 +139,9 @@ const PageFlipApp = (props) => {
 
   const classes = useStyles({ forward });
 
-  // function nextPage() {
-  //   setForward(true);
-  //   setCurrentPage(currentPage + 1);
-  // }
-
-  // function lastPage() {
-  //   setForward(false);
-  //   setCurrentPage(currentPage - 1);
-  // }
-
   return (
     <>
       <Container>
-        {/* <button onClick={lastPage}>Previous</button>
-        <button onClick={nextPage}>Next</button> */}
-
         <Book>
           <TransitionGroup>
             <CSSTransition
