@@ -10,6 +10,7 @@ import Page from "./Page";
 
 const colorBook = "brown";
 const colorSpine = "black";
+const delay = 200;
 
 const Container = styled.div`
   height: 100%;
@@ -25,49 +26,57 @@ const Book = styled.div`
   height: 100%;
   width: 100%;
 
-  border-radius: 3px;
+  border-radius: 5px;
 `;
 
-const PageDiv = styled.div`
-  background-color: yellow;
-`;
+// const PageDiv = styled.div`
+//   background-color: yellow;
+// `;
 
 export const LeftPage = styled.div`
   height: 100%;
-  background-color: violet;
   width: 50%;
   position: absolute;
   left: 0;
+
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  padding-left: 1em;
 `;
 
 export const RightPage = styled.div`
   height: 100%;
-  background-color: orange;
   width: 50%;
   position: absolute;
   left: 50%;
+
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  padding-right: 1em;
 `;
 
 const useStyles = createUseStyles({
   pageleftEnter: {
-    zIndex: ({ forward }) => (forward ? 105 : 105),
+    zIndex: ({ forward }) => (forward ? 105 : 102),
     transformOrigin: ({ forward }) =>
-      forward ? "right center" : "left center",
+      forward ? "right center" : "right center",
     transform: ({ forward }) =>
       forward
         ? "perspective(1200px) rotateY(90deg)"
-        : "perspective(1200px) rotateY(90deg)",
+        : "perspective(1200px) rotateY(0deg)",
   },
   pageleftEnterActive: {
     transform: ({ forward }) =>
       forward
         ? "perspective(1200px) rotateY(0deg)"
         : "perspective(1200px) rotateY(0deg)",
-    transition: "all 1000ms ease-in-out",
-    transitionDelay: ({ forward }) => (forward ? "1000ms" : "0ms"),
+    transition: `all ${delay}ms ease-in-out`,
+    transitionDelay: ({ forward }) => (forward ? `${delay}ms` : "0ms"),
   },
   pageleftExit: {
-    zIndex: ({ forward }) => (forward ? 102 : 102),
+    zIndex: ({ forward }) => (forward ? 102 : 105),
     transformOrigin: ({ forward }) =>
       forward ? "left center" : "right center",
     transform: ({ forward }) =>
@@ -79,26 +88,27 @@ const useStyles = createUseStyles({
     transform: ({ forward }) =>
       forward
         ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
-    transition: "all 1000ms ease-in-out",
+        : "perspective(1200px) rotateY(90deg)",
+    transition: `all ${delay}ms ease-in-out`,
   },
   pagerightEnter: {
-    zIndex: ({ forward }) => (forward ? 103 : 103),
+    zIndex: ({ forward }) => (forward ? 103 : 104),
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
     transform: ({ forward }) =>
       forward
         ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        : "perspective(1200px) rotateY(-90deg)",
   },
   pagerightEnterActive: {
     transform: ({ forward }) =>
       forward
         ? "perspective(1200px) rotateY(0deg)"
         : "perspective(1200px) rotateY(0deg)",
-    transition: "all 1000ms ease-in-out",
+    transition: `all ${delay}ms ease-in-out`,
+    transitionDelay: ({ forward }) => (forward ? `0ms` : `${delay}ms`),
   },
   pagerightExit: {
-    zIndex: ({ forward }) => (forward ? 104 : 104),
+    zIndex: ({ forward }) => (forward ? 104 : 103),
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
     transform: ({ forward }) =>
       forward
@@ -109,15 +119,25 @@ const useStyles = createUseStyles({
     transform: ({ forward }) =>
       forward
         ? "perspective(1200px) rotateY(-90deg)"
-        : "perspective(1200px) rotateY(-90deg)",
-    transition: "all 1000ms ease-in-out",
+        : "perspective(1200px) rotateY(0deg)",
+    transition: `all ${delay}ms ease-in-out`,
   },
 });
 
 const PageFlipApp = (props) => {
-  // useEffect(() => {
-  //   setCurrentPage(props.parentPage);
-  // }, [props.parentPage]);
+  useEffect(() => {
+    setCurrentPage(props.parentPage);
+
+    console.log("Parent Page " + props.parentPage);
+
+    console.log("CURRENT Page " + currentPage);
+
+    if (props.previousPage < props.parentPage) {
+      setForward(true);
+    } else {
+      setForward(false);
+    }
+  }, [props.parentPage]);
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
@@ -125,27 +145,27 @@ const PageFlipApp = (props) => {
 
   const classes = useStyles({ forward });
 
-  function nextPage() {
-    setForward(true);
-    setCurrentPage(currentPage + 1);
-  }
+  // function nextPage() {
+  //   setForward(true);
+  //   setCurrentPage(currentPage + 1);
+  // }
 
-  function lastPage() {
-    setForward(false);
-    setCurrentPage(currentPage - 1);
-  }
+  // function lastPage() {
+  //   setForward(false);
+  //   setCurrentPage(currentPage - 1);
+  // }
 
   return (
     <>
       <Container>
-        <button onClick={lastPage}>Previous</button>
-        <button onClick={nextPage}>Next</button>
+        {/* <button onClick={lastPage}>Previous</button>
+        <button onClick={nextPage}>Next</button> */}
 
         <Book>
           <TransitionGroup>
             <CSSTransition
               key={currentPage + pages.length}
-              timeout={2000}
+              timeout={delay * 2}
               classNames={{
                 enter: classes.pageleftEnter,
                 enterActive: classes.pageleftEnterActive,
@@ -154,13 +174,20 @@ const PageFlipApp = (props) => {
               }}
             >
               <LeftPage>
-                <Page> {pages[currentPage - 1][0]}</Page>
+                <Page
+                  updatePage={props.updatePage}
+                  maxPage={pages.length}
+                  pageNumber={currentPage}
+                  left={true}
+                >
+                  {pages[currentPage - 1][0]}
+                </Page>
               </LeftPage>
             </CSSTransition>
 
             <CSSTransition
               key={currentPage}
-              timeout={2000}
+              timeout={delay * 2}
               classNames={{
                 enter: classes.pagerightEnter,
                 enterActive: classes.pagerightEnterActive,
@@ -169,7 +196,14 @@ const PageFlipApp = (props) => {
               }}
             >
               <RightPage>
-                <Page> {pages[currentPage - 1][1]}</Page>
+                <Page
+                  updatePage={props.updatePage}
+                  maxPage={pages.length}
+                  pageNumber={currentPage}
+                  left={false}
+                >
+                  {pages[currentPage - 1][1]}
+                </Page>
               </RightPage>
             </CSSTransition>
           </TransitionGroup>
