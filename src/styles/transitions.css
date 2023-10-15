@@ -1,0 +1,31 @@
+/* starting ENTER animation */
+.pageflip-enter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.01;
+    transform: perspective(1200px) rotateY(180deg) scale(0.01);
+    transform-origin: right center;
+  }
+  
+  /* ending ENTER animation */
+  .pageflip-enter-active {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    transition: all 1000ms ease-in-out;
+  }
+  
+  /* starting EXIT animation */
+  .pageflip-exit {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    transform-origin: left center;
+  }
+  
+  /* ending EXIT animation */
+  .pageflip-exit-active {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-180deg) scale(0.01);
+    transition: all 1000ms ease-in-out;
+  }
