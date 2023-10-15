@@ -5,145 +5,107 @@ import { pages } from "../Pages";
 
 import Page from "./Page";
 
-const colorBook = "brown";
-const colorSpine = "black";
+const PageDiv = styled.div`
+  z-index: ${({ zIndex }) => zIndex};
 
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  background-color: white;
+  width: 330px;
+  height: 430px;
+  border-radius: 0 15px 15px 0;
+  margin-top: 10px;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition-duration: 1.5s;
 
-  padding: 1em;
-`;
-
-const Book = styled.div`
-  position: relative;
-  background-color: ${colorBook};
-
-  height: 100%;
-  width: 100%;
-
-  border-radius: 3px;
+  ${({ checked }) => (!checked ? "1s" : "0s")} ease-in-out;
 `;
 
 const LeftPage = styled.div`
-  height: 100%;
-  width: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
-
-  z-index: ${({ zIndex }) => zIndex};
-
-  transform-origin: right center;
-  transform: perspective(1000px)
-    rotateY(${({ visible }) => (visible ? 0 : 90)}deg);
-  transition: transform ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out,
-    opacity ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out;
-
-  padding-top: 1em;
-  padding-bottom: 1em;
-
-  border-right: solid ${colorSpine} 1px;
-  padding-left: 1em;
-
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  padding: 1rem;
 `;
 
 const RightPage = styled.div`
-  height: 100%;
-  width: 50%;
+  transform: rotateY(180deg);
   position: absolute;
-  top: 0;
-  left: 50%;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  z-index: 99;
+`;
 
-  z-index: ${({ zIndex }) => zIndex};
+const Cover = styled.div`
+  background-color: #4173a5;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 0 5px rgb(41, 41, 41);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center left;
+  position: absolute;
+  z-index: 4;
+  transition: transform 1s;
+`;
 
-  transform-origin: left center;
-  transform: perspective(1000px)
-    rotateY(${({ visible }) => (visible ? 0 : -90)}deg);
-  transition: transform ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out,
-    opacity ${({ visible }) => (!visible ? "1s" : "0s")} ease-in-out;
+const BackCover = styled.div`
+  background-color: #4173a5;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 0 5px rgb(41, 41, 41);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center left;
+  position: relative;
+  z-index: -1;
+`;
 
-  padding-top: 1em;
-  padding-bottom: 1em;
-
-  border-left: solid ${colorSpine} 1px;
-  padding-right: 1em;
-
-  pointer-events: none;
+const Book = styled.div`
+  width: 350px;
+  height: 450px;
+  position: relative;
+  transition-duration: 1s;
+  perspective: 1500;
 `;
 
 const PageFlipApp = (props) => {
-  // let forward = true;
-
-  useEffect(() => {
-    console.log(
-      "Current Page: " +
-        props.parentPage +
-        ", Previous Page: " +
-        props.previousPage
-    );
-
-    // if (props.previousPage > props.currentPage) {
-    //   forward = false;
-    // } else {
-    //   forward = true;
-    // }
-
-    setCurrentPage(props.parentPage);
-  }, [props.parentPage]);
+  // useEffect(() => {
+  //   setCurrentPage(props.parentPage);
+  // }, [props.parentPage]);
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
-  function getVisible(pageNum) {
-    if (pageNum % 2 == 0) {
-      return currentPage == pageNum - 1 || currentPage == pageNum;
-    } else {
-      return currentPage == pageNum || currentPage == pageNum + 1;
-    }
-  }
-
-  const lengthOfPages = pages.length;
-
   return (
     <>
-      <Container>
-        <Book>
-          {pages.map((page, index) => {
-            const pageNum = index + 1;
-            const pageLeft = pageNum % 2 == 1 ? true : false;
-            const visible = getVisible(pageNum);
+      <button>Next Page</button>
+      <Book>
+        <Cover />
+        {pages.map((page, index) => {
+          const pageNum = index + 1;
 
-            return (
-              <React.Fragment key={pageNum}>
-                {pageLeft ? (
-                  <LeftPage visible={visible} zIndex={200 + pageNum}>
-                    <Page
-                      pageNumber={pageNum}
-                      visible={visible}
-                      updatePage={props.updatePage}
-                      maxPage={lengthOfPages}
-                    >
-                      {page}
-                    </Page>
-                  </LeftPage>
-                ) : (
-                  <RightPage visible={visible} zIndex={200 - pageNum}>
-                    <Page
-                      pageNumber={pageNum}
-                      visible={visible}
-                      updatePage={props.updatePage}
-                      maxPage={lengthOfPages}
-                    >
-                      {page}
-                    </Page>
-                  </RightPage>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </Book>
-      </Container>
+          return (
+            <PageDiv key={pageNum} zIndex={200 - pageNum}>
+              <LeftPage>
+                <Page>{page[0]}</Page>
+              </LeftPage>
+
+              <RightPage>
+                <Page>{page[1]}</Page>
+              </RightPage>
+            </PageDiv>
+          );
+        })}
+        <BackCover />
+      </Book>
     </>
   );
 };
