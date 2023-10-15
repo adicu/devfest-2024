@@ -6,8 +6,6 @@ import { pages } from "../Pages";
 
 import Page from "./Page";
 
-// import "../../styles/transitions.css";
-
 const colorBook = "brown";
 const colorSpine = "black";
 
@@ -27,21 +25,6 @@ const Book = styled.div`
 
   border-radius: 3px;
 `;
-
-// const PageDiv = styled.div`
-//   background-color: yellow;
-//   height: 100%;
-//   width: 100%;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   transform: perspective(1000px)
-//     rotateY(${({ visible }) => (visible ? 0 : -90)}deg);
-//   transition: transform 2s ease-in-out, z-index 0.5s 0.5s, opacity 0.5s 0.5s;
-//   opacity: ${({ visible }) => (visible ? 1 : 0)};
-//   z-index: ${({ visible }) => (visible ? 1000 : 999)};
-//   backface-visibility: hidden;
-// `;
 
 const PageDiv = styled.div`
   background-color: yellow;
@@ -70,16 +53,6 @@ const PageFlipApp = (props) => {
 
   const [currentPage, setCurrentPage] = useState(props.previousPage);
 
-  // function getVisible(pageNum) {
-  //   if (pageNum % 2 == 0) {
-  //     return currentPage == pageNum - 1 || currentPage == pageNum;
-  //   } else {
-  //     return currentPage == pageNum || currentPage == pageNum + 1;
-  //   }
-  // }
-
-  // const lengthOfPages = pages.length;
-
   function nextPage() {
     setCurrentPage(currentPage + 1);
   }
@@ -95,43 +68,27 @@ const PageFlipApp = (props) => {
         <button onClick={nextPage}>Next</button>
 
         <Book>
-          {/* {pages.map((page, index) => {
-            const pageNum = index + 1;
-            // const pageLeft = pageNum % 2 == 1 ? true : false;
-            // const visible = getVisible(pageNum);
-
-            return (
-              <PageDiv key={pageNum} visible={currentPage == pageNum}>
-                <LeftPage>
-                  <Page>{page[0]}</Page>
-                </LeftPage>
-                <RightPage>
-                  <Page>{page[1]}</Page>
-                </RightPage>
-              </PageDiv>
-            );
-          })} */}
-
-          {/* <PageDiv> */}
-
           <TransitionGroup>
             <CSSTransition
-              key={currentPage}
-              timeout={1000}
-              classNames="pageflip"
+              key={currentPage + pages.length}
+              timeout={2000}
+              classNames="pageleft"
             >
-              <PageDiv>
-                <LeftPage>
-                  <Page> {pages[currentPage - 1][0]}</Page>
-                </LeftPage>
-                <RightPage>
-                  <Page> {pages[currentPage - 1][1]}</Page>
-                </RightPage>
-              </PageDiv>
+              <LeftPage>
+                <Page> {pages[currentPage - 1][0]}</Page>
+              </LeftPage>
+            </CSSTransition>
+
+            <CSSTransition
+              key={currentPage}
+              timeout={2000}
+              classNames="pageright"
+            >
+              <RightPage>
+                <Page> {pages[currentPage - 1][1]}</Page>
+              </RightPage>
             </CSSTransition>
           </TransitionGroup>
-
-          {/* </PageDiv> */}
         </Book>
       </Container>
     </>
