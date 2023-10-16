@@ -6,6 +6,8 @@ import Book from "../components/Book";
 import Sidepane from "../components/Sidepane";
 import Header from "../components/Header";
 
+import { getPageDictionary } from "../components/Pages";
+
 export async function getServerSideProps() {
   try {
     const res = await fetch(process.env.DATA_URL);
@@ -38,6 +40,21 @@ const MainContentWrapper = styled.div`
 `;
 
 export default function Home({ data }) {
+  // Suppress JSS warnings
+  if (typeof window === "undefined") {
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+      if (
+        args[0] !==
+        'Warning: [JSS] Rule is not linked. Missing sheet option "link: true".'
+      ) {
+        originalWarn(...args);
+      }
+    };
+  }
+
+  const pageDictionary = getPageDictionary(data);
+
   const maxWidth = "650px";
 
   const isClientMobile = () => {
@@ -77,6 +94,7 @@ export default function Home({ data }) {
         <HomePageContainer>
           <HeaderWrapper>
             <Header
+              pageDictionary={pageDictionary}
               currentPage={currentPage}
               previousPage={previousPage}
               updatePage={updatePage}
@@ -85,6 +103,7 @@ export default function Home({ data }) {
           <MainContentWrapper>
             <Sidepane />
             <Book
+              data={data}
               currentPage={currentPage}
               previousPage={previousPage}
               updatePage={updatePage}

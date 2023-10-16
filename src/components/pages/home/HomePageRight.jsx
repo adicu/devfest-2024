@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 
-const Page1 = (props) => {
+const HomePageLeft = (props) => {
   const Container = styled.div`
-    background-color: green;
     height: 100%;
+    width: 100%;
   `;
 
   const handleButtonClick = (event) => {
@@ -14,10 +14,10 @@ const Page1 = (props) => {
 
   return (
     <Container>
-      Hello There, and welcome to the wonderful page
+      Hello There, and welcome to the wonderful home page (right)
       <button onClick={handleButtonClick}>Click Me</button>
     </Container>
   );
 };
 
-export default Page1;
+export default HomePageLeft;

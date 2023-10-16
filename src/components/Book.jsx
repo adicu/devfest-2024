@@ -10,6 +10,7 @@ const Book = (props) => {
   return (
     <Container>
       <PageFlipApp
+        data={props.data}
         parentPage={props.currentPage}
         previousPage={props.previousPage}
         updatePage={props.updatePage}
