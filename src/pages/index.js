@@ -6,6 +6,8 @@ import Book from "../components/Book";
 import Sidepane from "../components/Sidepane";
 import Header from "../components/Header";
 
+import { getPageDictionary } from "../components/Pages";
+
 export async function getServerSideProps() {
   try {
     const res = await fetch(process.env.DATA_URL);
@@ -38,6 +40,21 @@ const MainContentWrapper = styled.div`
 `;
 
 export default function Home({ data }) {
+  // Suppress JSS warnings
+  if (typeof window === "undefined") {
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+      if (
+        args[0] !==
+        'Warning: [JSS] Rule is not linked. Missing sheet option "link: true".'
+      ) {
+        originalWarn(...args);
+      }
+    };
+  }
+
+  const pageDictionary = getPageDictionary(data);
+
   const maxWidth = "650px";
 
   const isClientMobile = () => {
@@ -58,6 +75,14 @@ export default function Home({ data }) {
     window.addEventListener("resize", handleResize);
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [previousPage, setPreviousPage] = useState(1);
+
+  const updatePage = (newPage) => {
+    setPreviousPage(currentPage);
+    setCurrentPage(newPage);
+  };
+
   return (
     <>
       <Head>
@@ -66,16 +91,25 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        
-      <HomePageContainer>
-      <HeaderWrapper>
-        <Header />
-      </HeaderWrapper>
-      <MainContentWrapper>
-         <Sidepane />
-          <Book />
-      </MainContentWrapper>
-    </HomePageContainer>
+        <HomePageContainer>
+          <HeaderWrapper>
+            <Header
+              pageDictionary={pageDictionary}
+              currentPage={currentPage}
+              previousPage={previousPage}
+              updatePage={updatePage}
+            />
+          </HeaderWrapper>
+          <MainContentWrapper>
+            <Sidepane />
+            <Book
+              data={data}
+              currentPage={currentPage}
+              previousPage={previousPage}
+              updatePage={updatePage}
+            />
+          </MainContentWrapper>
+        </HomePageContainer>
       </main>
     </>
   );

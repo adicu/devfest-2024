@@ -1,12 +1,22 @@
 import styled from "@emotion/styled";
+import PageFlipApp from "./book-components/PageFlipApp";
 
-const Book = ({ data, mobile }) => {
+const Book = (props) => {
   const Container = styled.div`
     background-color: lightblue;
     flex: 3;
   `;
 
-  return <Container>Book Here</Container>;
+  return (
+    <Container>
+      <PageFlipApp
+        data={props.data}
+        parentPage={props.currentPage}
+        previousPage={props.previousPage}
+        updatePage={props.updatePage}
+      />
+    </Container>
+  );
 };
 
 export default Book;
