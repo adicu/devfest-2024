@@ -7,14 +7,28 @@ import getWorkshopPages from "./pages/workshops/getWorkshopPages";
 import getInstructorPages from "./pages/instructors/getInstructorPages";
 import getSponsorPages from "./pages/sponsors/getSponsorPages";
 
-export default function Pages(data) {
-  let pages = [[<HomePageLeft data={data} />, <HomePageRight data={data} />]];
+export default function Pages(data, updatePage = null, pageDictionary = null) {
+  let pages = [
+    [
+      <HomePageLeft
+        data={data}
+        updatePage={updatePage}
+        pageDictionary={pageDictionary}
+      />,
+      <HomePageRight
+        data={data}
+        updatePage={updatePage}
+        pageDictionary={pageDictionary}
+      />,
+    ],
+    [<div>This is page 3</div>, <div>This is page 4</div>],
+  ];
 
-  pages = pages.concat(getSpeakerPages(data));
-  pages = pages.concat(getEventsPages(data));
-  pages = pages.concat(getWorkshopPages(data));
-  pages = pages.concat(getInstructorPages(data));
-  pages = pages.concat(getSponsorPages(data));
+  pages = pages.concat(getSpeakerPages(data, updatePage, pageDictionary));
+  pages = pages.concat(getEventsPages(data, updatePage, pageDictionary));
+  pages = pages.concat(getWorkshopPages(data, updatePage, pageDictionary));
+  pages = pages.concat(getInstructorPages(data, updatePage, pageDictionary));
+  pages = pages.concat(getSponsorPages(data, updatePage, pageDictionary));
 
   return pages;
 }

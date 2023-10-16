@@ -104,6 +104,7 @@ export default function Home({ data }) {
             <Sidepane />
             <Book
               data={data}
+              pageDictionary={pageDictionary}
               currentPage={currentPage}
               previousPage={previousPage}
               updatePage={updatePage}

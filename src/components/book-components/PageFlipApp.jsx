@@ -123,7 +123,7 @@ const useStyles = createUseStyles({
 });
 
 const PageFlipApp = (props) => {
-  const pages = Pages(props.data);
+  const pages = Pages(props.data, props.updatePage, props.pageDictionary);
 
   useEffect(() => {
     setCurrentPage(props.parentPage);

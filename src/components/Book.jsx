@@ -11,6 +11,7 @@ const Book = (props) => {
     <Container>
       <PageFlipApp
         data={props.data}
+        pageDictionary={props.pageDictionary}
         parentPage={props.currentPage}
         previousPage={props.previousPage}
         updatePage={props.updatePage}
