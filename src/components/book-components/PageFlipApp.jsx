@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 
 import { createUseStyles } from "react-jss";
 
-import { pages } from "../Pages";
+import Pages from "../Pages";
 
 import Page from "./Page";
 
 const colorBook = "brown";
 const colorSpine = "black";
-const delay = 200;
+const delay = 75;
 
 const Container = styled.div`
   height: 100%;
@@ -123,6 +123,8 @@ const useStyles = createUseStyles({
 });
 
 const PageFlipApp = (props) => {
+  const pages = Pages();
+
   useEffect(() => {
     setCurrentPage(props.parentPage);
 
