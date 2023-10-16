@@ -141,9 +141,24 @@ const PageFlipApp = (props) => {
 
   const classes = useStyles({ forward });
 
+  function goLeft() {
+    if (currentPage > 1) {
+      props.updatePage(currentPage - 1);
+    }
+  }
+
+  function goRight() {
+    if (currentPage < pages.length) {
+      props.updatePage(currentPage + 1);
+    }
+  }
+
   return (
     <>
       <Container>
+        <button onClick={goLeft}>Previous</button>
+        <button onClick={goRight}>Next</button>
+
         <Book>
           <TransitionGroup>
             <CSSTransition
