@@ -102,7 +102,12 @@ export default function Home({ data }) {
             />
           </HeaderWrapper>
           <MainContentWrapper mobile={mobile}>
-            <Sidepane />
+            <Sidepane
+              pageDictionary={pageDictionary}
+              currentPage={currentPage}
+              previousPage={previousPage}
+              updatePage={updatePage}
+            />
             <Book
               data={data}
               mobile={mobile}
