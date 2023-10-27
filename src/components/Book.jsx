@@ -3,8 +3,7 @@ import PageFlipApp from "./book-components/PageFlipApp";
 
 const Book = (props) => {
   const Container = styled.div`
-    background-color: lightblue;
-    flex: 3;
+    flex: 5;
   `;
 
   return (

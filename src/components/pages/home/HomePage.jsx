@@ -2,20 +2,25 @@ import styled from "@emotion/styled";
 
 const HomePageLeft = (props) => {
   const Container = styled.div`
-    height: 100%;
     width: 100%;
+    height: 100%;
+    user-select: none;
   `;
 
   const handleButtonClick = (event) => {
     event.stopPropagation();
 
     console.log("Button clicked");
+    console.log(props.pageDictionary);
+
+    props.updatePage(props.pageDictionary["Speakers"]);
   };
 
   return (
     <Container>
-      Hello There, and welcome to the wonderful home page (right)
-      <button onClick={handleButtonClick}>Click Me</button>
+      Home Page
+      <br />
+      <button onClick={handleButtonClick}>Example Button</button>
     </Container>
   );
 };

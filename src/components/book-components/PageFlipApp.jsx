@@ -8,7 +8,7 @@ import Pages from "../Pages";
 
 import Page from "./Page";
 
-const colorBook = "brown";
+const colorBook = "#F5F5F5";
 const colorSpine = "black";
 const delay = 75;
 
@@ -23,10 +23,23 @@ const Book = styled.div`
   position: relative;
   background-color: ${colorBook};
 
+  top: 0%;
   height: 100%;
+
+  @media (min-height: 600px) {
+    top: 5%;
+    height: 90%;
+  }
+
+  @media (min-height: 800px) {
+    top: 7.5%;
+    height: 85%;
+  }
+
   width: 100%;
 
-  border-radius: 5px;
+  border: ${colorSpine} solid 2px;
+  box-shadow: 10px 10px black;
 `;
 
 export const LeftPage = styled.div`
@@ -35,10 +48,10 @@ export const LeftPage = styled.div`
   position: absolute;
   left: 0;
 
-  padding-top: 1em;
-  padding-bottom: 1em;
+  /* padding-top: 1em; */
+  /* padding-bottom: 1em; */
 
-  padding-left: 1em;
+  /* padding-left: 1em; */
   border-right: ${colorSpine} solid 1px;
 `;
 
@@ -48,10 +61,10 @@ export const RightPage = styled.div`
   position: absolute;
   left: 50%;
 
-  padding-top: 1em;
-  padding-bottom: 1em;
+  /* padding-top: 1em; */
+  /* padding-bottom: 1em; */
 
-  padding-right: 1em;
+  /* padding-right: 1em; */
   border-left: ${colorSpine} solid 1px;
 `;
 

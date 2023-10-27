@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const colorPage = "white";
+const colorPage = "#F5F5F5";
 
 const Page = (props) => {
   const Container = styled.div`

@@ -6,7 +6,7 @@ import Book from "../components/Book";
 import Sidepane from "../components/Sidepane";
 import Header from "../components/Header";
 
-import { getPageDictionary } from "../components/Pages";
+import { getPageDictionary } from "../components/book-components/getPageDictionary";
 
 export async function getServerSideProps() {
   try {
