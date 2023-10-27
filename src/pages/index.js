@@ -37,6 +37,7 @@ const HeaderWrapper = styled.div`
 const MainContentWrapper = styled.div`
   flex: 1;
   display: flex;
+  flex-direction: ${(props) => (props.mobile ? "column" : "row")};
 `;
 
 export default function Home({ data }) {
@@ -100,10 +101,11 @@ export default function Home({ data }) {
               updatePage={updatePage}
             />
           </HeaderWrapper>
-          <MainContentWrapper>
+          <MainContentWrapper mobile={mobile}>
             <Sidepane />
             <Book
               data={data}
+              mobile={mobile}
               pageDictionary={pageDictionary}
               currentPage={currentPage}
               previousPage={previousPage}
