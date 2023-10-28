@@ -30,13 +30,9 @@ const Sidepane = (props) => {
 
   console.log(props.pageDictionary);
 
-  const handleButtonClick = (event) => {
-    event.stopPropagation();
-
-    console.log("Sidepane Button clicked");
-    console.log(props.pageDictionary);
-
-    props.updatePage(props.pageDictionary["Speakers"]);
+  const handleButtonClick = (page) => {
+    console.log(`Go to ${page}`);
+    props.updatePage(props.pageDictionary[page]);
   };
 
   return (
@@ -44,7 +40,13 @@ const Sidepane = (props) => {
       <SubContainer>
         <Pane1>
           <p>Pane1 here</p>
-          <button onClick={handleButtonClick}>Go to Speakers</button>
+          <button onClick={() => handleButtonClick("Speakers")}>Go to Speakers</button>
+          <button onClick={() => handleButtonClick("Schedule")}>Go to Schedule</button>
+          <button onClick={() => handleButtonClick("Tracks")}>Go to Tracks</button>
+          <button onClick={() => handleButtonClick("Judges")}>Go to Judges</button>
+          
+          {/*<button onClick={() => handleButtonClick("FAQs")}>Go to FAQs</button>*/}
+          {/*<button onClick={() => handleButtonClick("About ADI")}>Go to About ADI</button>*/}
         </Pane1>
         <Pane2>
           <p>Pane2 here </p>
