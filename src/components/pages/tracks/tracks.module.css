@@ -1,0 +1,12 @@
+@import url("~@fontsource/open-sans");
+@import url("~@fontsource/roboto");
+
+@font-face {
+  font-family: "Badaboom";
+  src: url("/fonts/Badaboom.ttf") format("truetype");
+}
+
+.tracksText {
+  font-family: "Badaboom";
+  /* font-family: "Roboto"; */
+}
