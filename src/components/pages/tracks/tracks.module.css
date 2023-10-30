@@ -14,15 +14,11 @@
 @media (min-width: 1001px) and (max-width: 1024px) {
   .trackimage {
     margin: 5px 0;
-    width: 80%;
-    max-width: 440px;
   } 
 }
 
 @media (min-width: 649px) and (max-width: 1000px){
   .trackimage {
     margin: 20px 0;
-    width: 80%;
-    max-width: 440px;
   }
 }
