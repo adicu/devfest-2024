@@ -2,16 +2,16 @@ import styled from "@emotion/styled";
 
 const Sidepane = (props) => {
   const Container = styled.div`
-    background-color: yellow;
+    background-color: #FFE279;
     flex: 1;
-    background-image: radial-gradient(circle, orange 10%, transparent 10%),
-      radial-gradient(circle, orange 10%, transparent 10%);
+    background-image: radial-gradient(circle, #CDA81F 10%, transparent 10%),
+      radial-gradient(circle, #CDA81F 10%, transparent 10%);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
   `;
 
   const Ribbon = styled.div`
-    background-color: red;
+    background-color: #DF2626;
     padding: 10px;
     min-height: 200px;
     position: relative;
@@ -19,49 +19,41 @@ const Sidepane = (props) => {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    /*background-image: radial-gradient(circle, #fff 10%, transparent 10%),
-      radial-gradient(circle, #fff 10%, transparent 10%);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;*/
     margin:10px;
     border: 6px solid black;
 `;
 
-const Pane2 = styled.div`
-  background-color: red;
-  flex: 1;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  /*background-image: radial-gradient(circle, #fff 10%, transparent 10%);
-  background-size: 20px 20px;
-  background-position: 0 0, 20px 20px; /* Adjust the positions */
-  margin-top: 20px;
-`;
-
-
   const Pane1 = styled.div`
-    background-color: grey;
     height: 50%;
     transform: translateY(10%);
     display: flex;
     flex-direction: column;
   `;
 
-
+  const Pane2 = styled.div`
+    background-color: #DF2626;
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    background-size: 20px 20px;
+    background-position: 0 0, 20px 20px; 
+    margin-top: 20px;
+`;
 
   const Pane3 = styled.div`
-    background-color: lightblue;
     height: 20%;
   `;
 
   const Button = styled.button`
     margin: 10px;
     border: 3px solid black;
-    background: white; /* Set the background color to white */
-    color: black; /* Set the font color to black */
-    font-weight: bold; /* Make the font bold */
+    background: white; 
+    color: black; 
+    font-weight: bold; 
+    font-size: 12px;
+    padding: 6px 12px;
 `;
 
   const TextBox = styled.div`
@@ -69,6 +61,7 @@ const Pane2 = styled.div`
     padding: 10px;
     text-align: center;
     font-size: 12px;
+    border: 3px solid black;
   `;
 
   const handleButtonClick = (page) => {
