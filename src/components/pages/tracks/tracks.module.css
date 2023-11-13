@@ -1,0 +1,24 @@
+@import url("~@fontsource/open-sans");
+@import url("~@fontsource/roboto");
+
+@font-face {
+  font-family: "Badaboom";
+  src: url("/fonts/Badaboom.ttf") format("truetype");
+}
+
+.tracksText {
+  font-family: "Badaboom";
+  /* font-family: "Roboto"; */
+}
+
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .trackimage {
+    margin: 5px 0;
+  } 
+}
+
+@media (min-width: 649px) and (max-width: 1000px){
+  .trackimage {
+    margin: 20px 0;
+  }
+}
