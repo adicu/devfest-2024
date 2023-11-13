@@ -6,56 +6,104 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333; /* Header background color */
-  color: #fff; /* Text color */
-  padding: 10px 20px; /* Add padding as needed */
+  background-color: #fff; /* Header background color */
+  color: #000; /* Text color */
+  padding: 7px 20px; /* Add padding as needed */
 `;
 
 // Styled component for the title
 const Title = styled.div`
   flex: 1; /* Take up available space, pushing buttons to the right */
-  font-size: 24px; /* Adjust the font size as needed */
+  font-size: 40px; /* Adjust the font size as needed */
   font-weight: bold;
+  font-family: 'Lilita One', sans-serif;
 `;
 
 // Styled component for the buttons container
 const ButtonsContainer = styled.div`
   display: flex;
-  gap: 10px; /* Add spacing between buttons */
+  gap: 0px; 
+  align-items: center;
+  position: relative;
 `;
 
 // Styled component for the buttons
 const Button = styled.button`
-  background-color: #007bff; /* Button background color */
-  color: #fff; /* Button text color */
-  border: none;
+  background-color: #fff; /* Button background color */
+  color: #000; /* Button text color */
   padding: 5px 10px;
   cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Arrow = styled.span`
+  margin-left: 5px;
+  display: inline-block;
+`;
+
+const OptionsContainer = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: ${props => (props.isDropdownOpen ? "block" : "none")};
+  z-index: 1;
+`;
+
+const OptionButton = styled.button`
+  background-color: #fff;
+  color: #000;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #888;
+  width: 100%;
 `;
 
 const Header = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const trackOptions = ["Track 1", "Track 2", "Judges"];
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Index");
+  const trackOptions = ["Index", "Track 1", "Track 2", "Judges"];
 
-  const handleDropdownChange = (event) => {
-    setSelectedIndex(event.target.value);
-    console.log(event.target.value);
+  const changeDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
   };
 
+  const handleDropdownChange = (option) => {
+    setSelectedOption(option);
+    changeDropdown();
+  };
+
+  //Use this instead if you want dropdown options to take up as much space as index button
+  /*<ButtonsContainer>
+        <Button> Schedule </Button>
+      </ButtonsContainer>
+  */
   return (
     <HeaderContainer>
-      <Title>DevFest 2024</Title>
+      <Title>DEVFEST 24</Title>
       <ButtonsContainer>
         <Button> Schedule </Button>
         <div>
-          <Button>Index {selectedIndex}</Button>
-          <select value={selectedIndex} onChange={handleDropdownChange}>
+        <Button onClick={changeDropdown}>
+          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
+        </Button>
+        {isDropdownOpen && (
+          <OptionsContainer isDropdownOpen={isDropdownOpen}>
             {trackOptions.map((option, index) => (
-              <option key={index} value={index}>
+              <OptionButton key={index} onClick={() => handleDropdownChange(option)}>
                 {option}
-              </option>
+              </OptionButton>
             ))}
-          </select>
+          </OptionsContainer>
+        )}
         </div>
       </ButtonsContainer>
     </HeaderContainer>
