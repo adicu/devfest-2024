@@ -8,6 +8,9 @@ import Pages from "../Pages";
 
 import Page from "./Page";
 
+import leftArrow from "../../../public/images/icons/left-arrow.svg";
+import rightArrow from "../../../public/images/icons/right-arrow.svg";
+
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
 const delay = 150;
@@ -39,7 +42,6 @@ const Arrows = styled.div`
   flex: 1;
   height: 100%;
   margin-top: 1em;
-  margin-bottom: 1em;
 
   display: flex;
 
@@ -47,12 +49,28 @@ const Arrows = styled.div`
   width: 100%;
 `;
 
-const Arrow = styled.div`
+const LeftArrow = styled.div`
   flex: 1;
+
+  height: 100%;
+  align-items: center;
+  position: relative;
+  background-image: url(${leftArrow.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
-const Button = styled.button`
-  display: inline-block;
+const RightArrow = styled.div`
+  flex: 1;
+
+  height: 100%;
+  align-items: center;
+  position: relative;
+  background-image: url(${rightArrow.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const RightPage = styled.div`
@@ -152,12 +170,8 @@ const MobilePageFlipApp = (props) => {
           </TransitionGroup>
         </Book>
         <Arrows>
-          <Arrow>
-            <button onClick={goLeft}>{"<"}</button>
-          </Arrow>
-          <Arrow>
-            <button onClick={goRight}>{">"}</button>
-          </Arrow>
+          <LeftArrow onClick={goLeft} />
+          <RightArrow onClick={goRight} />
         </Arrows>
       </Container>
     </>
