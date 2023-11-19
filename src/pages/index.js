@@ -8,6 +8,8 @@ import Header from "../components/Header";
 
 import { getPageDictionary } from "../components/book-components/getPageDictionary";
 
+import NoSsr from "@/components/utilities/NoSsr";
+
 export async function getServerSideProps() {
   try {
     const res = await fetch(process.env.DATA_URL);
@@ -91,36 +93,45 @@ export default function Home({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <main>
-        <HomePageContainer>
-          <HeaderWrapper>
-            <Header
-              pageDictionary={pageDictionary}
-              currentPage={currentPage}
-              previousPage={previousPage}
-              updatePage={updatePage}
-            />
-          </HeaderWrapper>
-          <MainContentWrapper mobile={mobile}>
-            <Sidepane
-              pageDictionary={pageDictionary}
-              currentPage={currentPage}
-              previousPage={previousPage}
-              updatePage={updatePage}
-            />
-            <Book
-              data={data}
-              mobile={mobile}
-              pageDictionary={pageDictionary}
-              currentPage={currentPage}
-              previousPage={previousPage}
-              updatePage={updatePage}
-            />
-          </MainContentWrapper>
-        </HomePageContainer>
+        <NoSsr>
+          <HomePageContainer>
+            <HeaderWrapper>
+              <Header
+                pageDictionary={pageDictionary}
+                currentPage={currentPage}
+                previousPage={previousPage}
+                updatePage={updatePage}
+              />
+            </HeaderWrapper>
+            <MainContentWrapper mobile={mobile}>
+              <Sidepane
+                pageDictionary={pageDictionary}
+                currentPage={currentPage}
+                previousPage={previousPage}
+                updatePage={updatePage}
+              />
+              <Book
+                data={data}
+                mobile={mobile}
+                pageDictionary={pageDictionary}
+                currentPage={currentPage}
+                previousPage={previousPage}
+                updatePage={updatePage}
+              />
+            </MainContentWrapper>
+          </HomePageContainer>
+        </NoSsr>
       </main>
     </>
   );

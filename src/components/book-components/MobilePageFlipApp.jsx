@@ -10,13 +10,15 @@ import Page from "./Page";
 
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 75;
+const delay = 150;
 
 const Container = styled.div`
   height: 100%;
   width: 100%;
 
   padding: 1em;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Book = styled.div`
@@ -25,11 +27,32 @@ const Book = styled.div`
 
   top: 0%;
   height: 100%;
+  flex: 7;
 
   width: 100%;
 
   border: ${colorSpine} solid 2px;
   box-shadow: 10px 10px black;
+`;
+
+const Arrows = styled.div`
+  flex: 1;
+  height: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+`;
+
+const Arrow = styled.div`
+  flex: 1;
+`;
+
+const Button = styled.button`
+  display: inline-block;
 `;
 
 export const RightPage = styled.div`
@@ -45,30 +68,20 @@ const useStyles = createUseStyles({
     zIndex: ({ forward }) => (forward ? 103 : 104),
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
     transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(-90deg)",
+      forward ? "translateX(0)" : "translateX(-100%)",
   },
   pagerightEnterActive: {
-    transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+    transform: ({ forward }) => (forward ? "translateX(0)" : "translateX(0)"),
     transition: `all ${delay}ms ease-in-out`,
   },
   pagerightExit: {
     zIndex: ({ forward }) => (forward ? 104 : 103),
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
-    transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+    transform: ({ forward }) => (forward ? "translateX(0)" : "translateX(0)"),
   },
   pagerightExitActive: {
     transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(-90deg)"
-        : "perspective(1200px) rotateY(0deg)",
+      forward ? "translateX(-100%)" : "translateX(0)",
     transition: `all ${delay}ms ease-in-out`,
   },
 });
@@ -99,7 +112,7 @@ const MobilePageFlipApp = (props) => {
   }
 
   function goRight() {
-    if (currentPage < pages.length) {
+    if (currentPage < pages.length * 2) {
       props.updatePage(currentPage + 1);
     }
   }
@@ -107,9 +120,6 @@ const MobilePageFlipApp = (props) => {
   return (
     <>
       <Container>
-        <button onClick={goLeft}>Previous</button>
-        <button onClick={goRight}>Next</button>
-
         <Book>
           <TransitionGroup>
             <CSSTransition
@@ -125,16 +135,30 @@ const MobilePageFlipApp = (props) => {
               <RightPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length}
+                  maxPage={pages.length * 2}
                   pageNumber={currentPage}
                   left={false}
+                  goLeft={goLeft}
+                  goRight={goRight}
                 >
-                  {pages[currentPage - 1][1]}
+                  {
+                    pages[Math.floor((currentPage + 1) / 2) - 1][
+                      Math.abs((currentPage % 2) - 1)
+                    ]
+                  }
                 </Page>
               </RightPage>
             </CSSTransition>
           </TransitionGroup>
         </Book>
+        <Arrows>
+          <Arrow>
+            <button onClick={goLeft}>{"<"}</button>
+          </Arrow>
+          <Arrow>
+            <button onClick={goRight}>{">"}</button>
+          </Arrow>
+        </Arrows>
       </Container>
     </>
   );

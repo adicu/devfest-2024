@@ -10,7 +10,7 @@ import Page from "./Page";
 
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 75;
+const delay = 100;
 
 const Container = styled.div`
   height: 100%;
