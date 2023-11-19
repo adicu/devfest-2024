@@ -11,6 +11,11 @@
   src: url("/fonts/dotgothic16.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Lilita One";
+  src: url("/fonts/lilita-one.regular.ttf") format("truetype");
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
