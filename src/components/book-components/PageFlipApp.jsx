@@ -155,14 +155,22 @@ const PageFlipApp = (props) => {
   const classes = useStyles({ forward });
 
   function goLeft() {
-    if (currentPage > 1) {
-      props.updatePage(currentPage - 1);
+    let desktopPage = Math.floor((currentPage + 1) / 2);
+    desktopPage -= 1;
+    let mobilePage = 2 * desktopPage;
+
+    if (mobilePage > 1) {
+      props.updatePage(mobilePage);
     }
   }
 
   function goRight() {
-    if (currentPage < pages.length) {
-      props.updatePage(currentPage + 1);
+    let desktopPage = Math.floor((currentPage + 1) / 2);
+    desktopPage += 1;
+    let mobilePage = 2 * desktopPage - 1;
+
+    if (mobilePage < pages.length * 2) {
+      props.updatePage(mobilePage);
     }
   }
 
@@ -187,11 +195,13 @@ const PageFlipApp = (props) => {
               <LeftPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length}
-                  pageNumber={currentPage}
+                  maxPage={pages.length * 2}
+                  pageNumber={2 * Math.floor((currentPage + 1) / 2) - 1}
                   left={true}
+                  goLeft={goLeft}
+                  goRight={goRight}
                 >
-                  {pages[currentPage - 1][0]}
+                  {pages[Math.floor((currentPage + 1) / 2) - 1][0]}
                 </Page>
               </LeftPage>
             </CSSTransition>
@@ -209,11 +219,13 @@ const PageFlipApp = (props) => {
               <RightPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length}
-                  pageNumber={currentPage}
+                  maxPage={pages.length * 2}
+                  pageNumber={2 * Math.floor((currentPage + 1) / 2)}
                   left={false}
+                  goLeft={goLeft}
+                  goRight={goRight}
                 >
-                  {pages[currentPage - 1][1]}
+                  {pages[Math.floor((currentPage + 1) / 2) - 1][1]}
                 </Page>
               </RightPage>
             </CSSTransition>

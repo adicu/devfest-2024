@@ -7,17 +7,14 @@ const Page = (props) => {
     background-color: ${colorPage};
     height: 100%;
     width: 100%;
+    user-select: none;
   `;
 
   function divClicked() {
     if (props.left == true) {
-      if (props.pageNumber > 1) {
-        props.updatePage(props.pageNumber - 1);
-      }
+      props.goLeft();
     } else {
-      if (props.pageNumber < props.maxPage) {
-        props.updatePage(props.pageNumber + 1);
-      }
+      props.goRight();
     }
   }
 
