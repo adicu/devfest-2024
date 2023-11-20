@@ -10,7 +10,7 @@ import Page from "./Page";
 
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 75;
+const delay = 100;
 
 const Container = styled.div`
   height: 100%;
@@ -136,7 +136,12 @@ const useStyles = createUseStyles({
 });
 
 const PageFlipApp = (props) => {
-  const pages = Pages(props.data, props.updatePage, props.pageDictionary);
+  const pages = Pages(
+    props.data,
+    props.updatePage,
+    props.pageDictionary,
+    props.mobile
+  );
 
   useEffect(() => {
     setCurrentPage(props.parentPage);
@@ -155,14 +160,22 @@ const PageFlipApp = (props) => {
   const classes = useStyles({ forward });
 
   function goLeft() {
-    if (currentPage > 1) {
-      props.updatePage(currentPage - 1);
+    let desktopPage = Math.floor((currentPage + 1) / 2);
+    desktopPage -= 1;
+    let mobilePage = 2 * desktopPage;
+
+    if (mobilePage > 1) {
+      props.updatePage(mobilePage);
     }
   }
 
   function goRight() {
-    if (currentPage < pages.length) {
-      props.updatePage(currentPage + 1);
+    let desktopPage = Math.floor((currentPage + 1) / 2);
+    desktopPage += 1;
+    let mobilePage = 2 * desktopPage - 1;
+
+    if (mobilePage < pages.length * 2) {
+      props.updatePage(mobilePage);
     }
   }
 
@@ -187,11 +200,13 @@ const PageFlipApp = (props) => {
               <LeftPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length}
-                  pageNumber={currentPage}
+                  maxPage={pages.length * 2}
+                  pageNumber={2 * Math.floor((currentPage + 1) / 2) - 1}
                   left={true}
+                  goLeft={goLeft}
+                  goRight={goRight}
                 >
-                  {pages[currentPage - 1][0]}
+                  {pages[Math.floor((currentPage + 1) / 2) - 1][0]}
                 </Page>
               </LeftPage>
             </CSSTransition>
@@ -209,11 +224,13 @@ const PageFlipApp = (props) => {
               <RightPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length}
-                  pageNumber={currentPage}
+                  maxPage={pages.length * 2}
+                  pageNumber={2 * Math.floor((currentPage + 1) / 2)}
                   left={false}
+                  goLeft={goLeft}
+                  goRight={goRight}
                 >
-                  {pages[currentPage - 1][1]}
+                  {pages[Math.floor((currentPage + 1) / 2) - 1][1]}
                 </Page>
               </RightPage>
             </CSSTransition>

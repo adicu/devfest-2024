@@ -21,6 +21,7 @@ const Book = (props) => {
             parentPage={props.currentPage}
             previousPage={props.previousPage}
             updatePage={props.updatePage}
+            mobile={props.mobile}
           />
         </MobileContainer>
       ) : (
@@ -31,6 +32,7 @@ const Book = (props) => {
             parentPage={props.currentPage}
             previousPage={props.previousPage}
             updatePage={props.updatePage}
+            mobile={props.mobile}
           />
         </Container>
       )}

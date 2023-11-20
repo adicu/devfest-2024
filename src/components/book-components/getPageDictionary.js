@@ -5,10 +5,10 @@ import getSchedulePageDict from "../pages/schedule/getSchedulePageDict";
 
 export function getPageDictionary(data) {
   const homePage = 1;
-  const tracksPage = 1;
+  const tracksPage = 2;
   const schedulePage = tracksPage + 1;
-  const speakersPage = schedulePage + getSchedulePages(data).length;
-  const judgesPage = speakersPage + getSpeakerPages(data).length;
+  const speakersPage = schedulePage + getSchedulePages(data).length * 2;
+  const judgesPage = speakersPage + getSpeakerPages(data).length * 2;
 
   let dict = {
     Home: homePage,

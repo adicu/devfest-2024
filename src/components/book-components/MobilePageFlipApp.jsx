@@ -8,15 +8,20 @@ import Pages from "../Pages";
 
 import Page from "./Page";
 
+import leftArrow from "../../../public/images/icons/left-arrow.svg";
+import rightArrow from "../../../public/images/icons/right-arrow.svg";
+
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 75;
+const delay = 150;
 
 const Container = styled.div`
   height: 100%;
   width: 100%;
 
   padding: 1em;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Book = styled.div`
@@ -25,11 +30,47 @@ const Book = styled.div`
 
   top: 0%;
   height: 100%;
+  flex: 7;
 
   width: 100%;
 
   border: ${colorSpine} solid 2px;
   box-shadow: 10px 10px black;
+`;
+
+const Arrows = styled.div`
+  flex: 1;
+  height: 100%;
+  margin-top: 1em;
+
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+`;
+
+const LeftArrow = styled.div`
+  flex: 1;
+
+  height: 100%;
+  align-items: center;
+  position: relative;
+  background-image: url(${leftArrow.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const RightArrow = styled.div`
+  flex: 1;
+
+  height: 100%;
+  align-items: center;
+  position: relative;
+  background-image: url(${rightArrow.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const RightPage = styled.div`
@@ -45,36 +86,31 @@ const useStyles = createUseStyles({
     zIndex: ({ forward }) => (forward ? 103 : 104),
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
     transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(-90deg)",
+      forward ? "translateX(0)" : "translateX(-100%)",
   },
   pagerightEnterActive: {
-    transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+    transform: ({ forward }) => (forward ? "translateX(0)" : "translateX(0)"),
     transition: `all ${delay}ms ease-in-out`,
   },
   pagerightExit: {
     zIndex: ({ forward }) => (forward ? 104 : 103),
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
-    transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+    transform: ({ forward }) => (forward ? "translateX(0)" : "translateX(0)"),
   },
   pagerightExitActive: {
     transform: ({ forward }) =>
-      forward
-        ? "perspective(1200px) rotateY(-90deg)"
-        : "perspective(1200px) rotateY(0deg)",
+      forward ? "translateX(-100%)" : "translateX(0)",
     transition: `all ${delay}ms ease-in-out`,
   },
 });
 
 const MobilePageFlipApp = (props) => {
-  const pages = Pages(props.data, props.updatePage, props.pageDictionary);
+  const pages = Pages(
+    props.data,
+    props.updatePage,
+    props.pageDictionary,
+    props.mobile
+  );
 
   useEffect(() => {
     setCurrentPage(props.parentPage);
@@ -99,7 +135,7 @@ const MobilePageFlipApp = (props) => {
   }
 
   function goRight() {
-    if (currentPage < pages.length) {
+    if (currentPage < pages.length * 2) {
       props.updatePage(currentPage + 1);
     }
   }
@@ -107,9 +143,6 @@ const MobilePageFlipApp = (props) => {
   return (
     <>
       <Container>
-        <button onClick={goLeft}>Previous</button>
-        <button onClick={goRight}>Next</button>
-
         <Book>
           <TransitionGroup>
             <CSSTransition
@@ -125,16 +158,26 @@ const MobilePageFlipApp = (props) => {
               <RightPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length}
+                  maxPage={pages.length * 2}
                   pageNumber={currentPage}
                   left={false}
+                  goLeft={goLeft}
+                  goRight={goRight}
                 >
-                  {pages[currentPage - 1][1]}
+                  {
+                    pages[Math.floor((currentPage + 1) / 2) - 1][
+                      Math.abs((currentPage % 2) - 1)
+                    ]
+                  }
                 </Page>
               </RightPage>
             </CSSTransition>
           </TransitionGroup>
         </Book>
+        <Arrows>
+          <LeftArrow onClick={goLeft} />
+          <RightArrow onClick={goRight} />
+        </Arrows>
       </Container>
     </>
   );
