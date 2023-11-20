@@ -105,7 +105,12 @@ const useStyles = createUseStyles({
 });
 
 const MobilePageFlipApp = (props) => {
-  const pages = Pages(props.data, props.updatePage, props.pageDictionary);
+  const pages = Pages(
+    props.data,
+    props.updatePage,
+    props.pageDictionary,
+    props.mobile
+  );
 
   useEffect(() => {
     setCurrentPage(props.parentPage);
