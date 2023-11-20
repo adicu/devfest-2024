@@ -3,15 +3,11 @@ import styles from './tracks.module.css';
 
 
 
-const TracksPage = (props) => {
+const HomePageLeft = (props) => {
   const Container = styled.div`
-    width: 100%;
     height: 100%;
+    width: 100%;
     user-select: none;
-    background-color: #e9e1d9;
-    /* display: flex; */
-    /* flex-direction: column; */
-
   `;
 
   return (
@@ -39,19 +35,19 @@ const TracksPage = (props) => {
             display: 'flex',
             justifyContent: 'center',
           }}>
-            <img src="/images/tracks/politics.svg" className={styles.trackimage} alt="Politics Image" style={{ width: "80%", maxWidth: '440px' }} />
+            <img src="/images/tracks/prev_version/politics.svg" className={styles.trackimage} alt="Politics Image" style={{ width: "80%", maxWidth: '440px' }} />
           </div>
           <div style={{
             display: 'flex',
             justifyContent: 'center',
           }}>
-            <img src="/images/tracks/environment.svg" className={styles.trackimage} alt="Environment Image" style={{ width: "80%", maxWidth: '440px' }} />
+            <img src="/images/tracks/prev_version/environment.svg" className={styles.trackimage} alt="Environment Image" style={{ width: "80%", maxWidth: '440px' }} />
           </div>
           <div style={{
             display: 'flex',
             justifyContent: 'center',
           }}>
-            <img src="/images/tracks/mental_health.svg" className={styles.trackimage} alt="Mental Health Image" style={{ width: "80%", maxWidth: '440px' }} />
+            <img src="/images/tracks/prev_version/mental_health.svg" className={styles.trackimage} alt="Mental Health Image" style={{ width: "80%", maxWidth: '440px' }} />
           </div>
         </div>
       </div>
@@ -60,4 +56,4 @@ const TracksPage = (props) => {
   );
 };
 
-export default TracksPage;
+export default HomePageLeft;
