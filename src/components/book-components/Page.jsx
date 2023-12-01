@@ -8,7 +8,7 @@ const Page = (props) => {
     height: 100%;
     width: 100%;
     user-select: none;
-    overflow: scroll;
+    /* overflow: scroll; */
   `;
 
   function divClicked() {

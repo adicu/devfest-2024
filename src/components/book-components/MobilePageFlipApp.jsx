@@ -107,6 +107,8 @@ const useStyles = createUseStyles({
 const MobilePageFlipApp = (props) => {
   const pages = Pages(props.data, props.updatePage, props.pageDictionary);
 
+  // TODO Check for any empty <></> pages and remove them
+
   useEffect(() => {
     setCurrentPage(props.parentPage);
 
@@ -170,6 +172,7 @@ const MobilePageFlipApp = (props) => {
           </TransitionGroup>
         </Book>
         <Arrows>
+          {/* TODO: Fix arrow appearences */}
           <LeftArrow onClick={goLeft} />
           <RightArrow onClick={goRight} />
         </Arrows>

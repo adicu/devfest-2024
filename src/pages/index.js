@@ -8,8 +8,6 @@ import Header from "../components/Header";
 
 import { getPageDictionary } from "../components/book-components/getPageDictionary";
 
-// import NoSsr from "@/components/utilities/NoSsr";
-
 export async function getServerSideProps() {
   try {
     const res = await fetch(process.env.DATA_URL);
@@ -39,34 +37,29 @@ const HeaderWrapper = styled.div`
 const MainContentWrapper = styled.div`
   flex: 1;
   display: flex;
-  /* flex-direction: ${(props) => (props.mobile ? "column" : "row")}; */
 
   flex-direction: row;
-  @media (max-width: 750px) {
+  @media (max-width: ${process.env.mobileWidth}) {
     flex-direction: column;
   }
+  margin: 2rem;
 `;
 
 export default function Home({ data }) {
+  // Suppress JSS warnings
+  if (typeof window === "undefined") {
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+      if (
+        args[0] !==
+        'Warning: [JSS] Rule is not linked. Missing sheet option "link: true".'
+      ) {
+        originalWarn(...args);
+      }
+    };
+  }
+
   const pageDictionary = getPageDictionary(data);
-
-  // const maxWidth = "650px";
-
-  // const isClientMobile = () => {
-  //   return typeof window !== "undefined" &&
-  //     window.matchMedia(`(max-width: ${maxWidth})`).matches
-  //     ? true
-  //     : false;
-  // };
-  // const [mobile, setMobile] = useState(isClientMobile());
-
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setMobile(isClientMobile());
-  //   }
-
-  //   window.addEventListener("resize", handleResize);
-  // });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(1);
@@ -84,7 +77,6 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* <NoSsr> */}
         <HomePageContainer>
           <HeaderWrapper>
             <Header
@@ -110,7 +102,6 @@ export default function Home({ data }) {
             />
           </MainContentWrapper>
         </HomePageContainer>
-        {/* </NoSsr> */}
       </main>
     </>
   );

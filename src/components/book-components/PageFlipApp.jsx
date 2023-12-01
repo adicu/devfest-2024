@@ -16,7 +16,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
 
-  padding: 1em;
+  padding: 1rem;
 `;
 
 const Book = styled.div`
@@ -26,7 +26,7 @@ const Book = styled.div`
   top: 0%;
   height: 100%;
 
-  @media (min-height: 600px) {
+  /* @media (min-height: 600px) {
     top: 5%;
     height: 90%;
   }
@@ -34,12 +34,12 @@ const Book = styled.div`
   @media (min-height: 800px) {
     top: 7.5%;
     height: 85%;
-  }
+  } */
 
   width: 100%;
 
   border: ${colorSpine} solid 2px;
-  box-shadow: 10px 10px black;
+  /* box-shadow: 10px 10px black; */
 `;
 
 export const LeftPage = styled.div`
@@ -177,8 +177,8 @@ const PageFlipApp = (props) => {
   return (
     <>
       <Container>
-        <button onClick={goLeft}>Previous</button>
-        <button onClick={goRight}>Next</button>
+        {/* <button onClick={goLeft}>Previous</button>
+        <button onClick={goRight}>Next</button> */}
 
         <Book>
           <TransitionGroup>

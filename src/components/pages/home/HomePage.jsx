@@ -2,25 +2,15 @@ import styled from "@emotion/styled";
 
 import starBurst from "../../../../public/images/home/starburst.svg";
 
-const HomePageLeft = (props) => {
+const HomePage = (props) => {
   const Container = styled.div`
     width: 100%;
     height: 100%;
     user-select: none;
-    /* background-color: #e9e1d9; */
-    /* display: flex; */
-    /* flex-direction: column; */
 
     background-image: url(${starBurst.src});
     background-position: left;
     background-repeat: no-repeat;
-  `;
-
-  const TopDiv = styled.div`
-    /* flex: 1; */
-    /* width: 100%; */
-    /* height: 10%; */
-    background-color: red;
   `;
 
   const DevFestTitle = styled.h1`
@@ -28,7 +18,6 @@ const HomePageLeft = (props) => {
     margin-right: 1rem;
     font-size: 2.3rem;
     float: right;
-    /* width: 100%; */
   `;
 
   const InfoDiv = styled.div`
@@ -37,7 +26,7 @@ const HomePageLeft = (props) => {
     margin-right: 1rem;
 
     float: right;
-    /* width: ${props.mobile ? "90%" : "80%"}; */
+    width: "90%"; // TODO adjust this based on mobile/fit
     padding: 1em;
 
     border: black solid 1px;
@@ -46,7 +35,7 @@ const HomePageLeft = (props) => {
     text-align: center;
 
     p {
-      /* font-size: ${props.mobile ? "12px" : "14px"}; */
+      font-size: "14px"; // TODO adjust this based on mobile/fit
     }
   `;
 
@@ -57,10 +46,6 @@ const HomePageLeft = (props) => {
     background-color: #000d74;
     border-radius: none;
     box-shadow: 1px 1px black;
-  `;
-
-  const BottomDiv = styled.div`
-    /* flex: 1; */
   `;
 
   const FAQTitle = styled.h2`
@@ -93,19 +78,17 @@ const HomePageLeft = (props) => {
   `;
 
   const Question = styled.p`
-    /* font-size: ${props.mobile ? "12px" : "14px"}; */
+    font-size: "14px"; // TODO adjust this based on mobile/fit
     font-weight: bold;
     margin-bottom: 0.1em;
   `;
   const Answer = styled.p`
-    /* font-size: ${props.mobile ? "12px" : "14px"}; */
-
+    font-size: "14px"; // TODO adjust this based on mobile/fit
     margin-bottom: 0.1em;
   `;
 
   return (
     <Container>
-      {/* <TopDiv> */}
       <DevFestTitle>DevFest</DevFestTitle>
       <br />
       <InfoDiv>
@@ -123,8 +106,6 @@ const HomePageLeft = (props) => {
         <br />
         <RegisterButton href="#">Register</RegisterButton>
       </InfoDiv>
-      {/* </TopDiv> */}
-      {/* <BottomDiv> */}
       <br />
       <FAQTitle>FAQ</FAQTitle>
       <FAQDiv>
@@ -146,9 +127,8 @@ const HomePageLeft = (props) => {
           align wi...
         </Answer>
       </FAQDiv>
-      {/* </BottomDiv> */}
     </Container>
   );
 };
 
-export default HomePageLeft;
+export default HomePage;
