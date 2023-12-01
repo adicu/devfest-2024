@@ -29,6 +29,8 @@ const HomePageContainer = styled.div`
   flex-direction: column;
   /* height: 100vh; */
   /* height: 96%; */
+  /* height: 100%; */
+  overflow: hidden;
   position: absolute;
   bottom: 0;
   top: 0;

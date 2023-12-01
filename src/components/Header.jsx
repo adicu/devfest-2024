@@ -107,11 +107,21 @@ const Header = (props) => {
     props.updatePage(props.pageDictionary["Home"]);
   };
 
+  const preventDragHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <HeaderContainer>
       <TitleImageDiv onClick={goHome}>
-        <TitleImage src="/images/titles/devfest.svg" />
-        <TitleImage src="/images/titles/24.svg" />
+        <TitleImage
+          onDragStart={preventDragHandler}
+          src="/images/titles/devfest.svg"
+        />
+        <TitleImage
+          onDragStart={preventDragHandler}
+          src="/images/titles/24.svg"
+        />
       </TitleImageDiv>
       <ButtonsContainer>
         {/* <Button> Schedule </Button> */}

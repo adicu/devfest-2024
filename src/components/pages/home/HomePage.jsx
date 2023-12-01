@@ -139,9 +139,16 @@ const HomePage = (props) => {
     console.log("register button clicked");
   };
 
+  const preventDragHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Container>
-      <AboutImage src="/images/titles/about.svg" />
+      <AboutImage
+        onDragStart={preventDragHandler}
+        src="/images/titles/about.svg"
+      />
       <br />
       <AboutDiv>
         <p>
@@ -159,7 +166,7 @@ const HomePage = (props) => {
         <RegisterButton onClick={register}>Register</RegisterButton>
       </AboutDiv>
       <br />
-      <FAQImage src="/images/titles/faq.svg" />
+      <FAQImage onDragStart={preventDragHandler} src="/images/titles/faq.svg" />
       <FAQDiv>
         <Question> Is the hackathon online or in-person?</Question>
         <Answer>DevFest will be held in-person.</Answer>

@@ -68,6 +68,9 @@ export const RightPage = styled.div`
   border-left: ${colorSpine} solid 1px;
 `;
 
+const perspective = "150vw";
+// const perspective = "2000px";
+
 const useStyles = createUseStyles({
   pageleftEnter: {
     zIndex: ({ forward }) => (forward ? 105 : 102),
@@ -75,14 +78,14 @@ const useStyles = createUseStyles({
       forward ? "right center" : "right center",
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(90deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        ? `perspective(${perspective}) rotateY(90deg)`
+        : `perspective(${perspective}) rotateY(0deg)`,
   },
   pageleftEnterActive: {
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        ? `perspective(${perspective}) rotateY(0deg)`
+        : `perspective(${perspective}) rotateY(0deg)`,
     transition: `all ${delay}ms ease-in-out`,
     transitionDelay: ({ forward }) => (forward ? `${delay}ms` : "0ms"),
   },
@@ -92,14 +95,14 @@ const useStyles = createUseStyles({
       forward ? "left center" : "right center",
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        ? `perspective(${perspective}) rotateY(0deg)`
+        : `perspective(${perspective}) rotateY(0deg)`,
   },
   pageleftExitActive: {
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(90deg)",
+        ? `perspective(${perspective}) rotateY(0deg)`
+        : `perspective(${perspective}) rotateY(90deg)`,
     transition: `all ${delay}ms ease-in-out`,
   },
   pagerightEnter: {
@@ -107,14 +110,14 @@ const useStyles = createUseStyles({
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(-90deg)",
+        ? `perspective(${perspective}) rotateY(0deg)`
+        : `perspective(${perspective}) rotateY(-90deg)`,
   },
   pagerightEnterActive: {
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        ? `perspective(${perspective}) rotateY(0deg)`
+        : `perspective(${perspective}) rotateY(0deg)`,
     transition: `all ${delay}ms ease-in-out`,
     transitionDelay: ({ forward }) => (forward ? `0ms` : `${delay}ms`),
   },
@@ -123,14 +126,14 @@ const useStyles = createUseStyles({
     transformOrigin: ({ forward }) => (forward ? "left center" : "left center"),
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(0deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        ? `perspective(${perspective}) rotateY(0deg)`
+        : `perspective(${perspective}) rotateY(0deg)`,
   },
   pagerightExitActive: {
     transform: ({ forward }) =>
       forward
-        ? "perspective(1200px) rotateY(-90deg)"
-        : "perspective(1200px) rotateY(0deg)",
+        ? `perspective(${perspective}) rotateY(-90deg)`
+        : `perspective(${perspective}) rotateY(0deg)`,
     transition: `all ${delay}ms ease-in-out`,
   },
 });
@@ -144,6 +147,14 @@ const PageFlipApp = (props) => {
   );
 
   useEffect(() => {
+    if (props.parentPage % 2 == 1 && currentPage == props.parentPage + 1) {
+      return;
+    }
+
+    if (props.parentPage % 2 == 0 && currentPage == props.parentPage - 1) {
+      return;
+    }
+
     setCurrentPage(props.parentPage);
 
     if (props.previousPage < props.parentPage) {

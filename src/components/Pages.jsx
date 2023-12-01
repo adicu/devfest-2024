@@ -24,6 +24,10 @@ export default function Pages(
       mobile={mobile}
     />,
     <ComingSoonPage mobile={mobile} />,
+    <div>Test 2</div>,
+    <div>Test 3</div>,
+    <div>Test 4</div>,
+    <div>Test 5</div>,
     <div className="page-no-mobile"></div>,
   ];
 
