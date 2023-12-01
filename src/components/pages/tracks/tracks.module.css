@@ -1,5 +1,5 @@
-@import url("~@fontsource/open-sans");
-@import url("~@fontsource/roboto");
+/* @import url("~@fontsource/open-sans");
+@import url("~@fontsource/roboto"); */
 
 @font-face {
   font-family: "Badaboom";
@@ -14,10 +14,10 @@
 @media (min-width: 1001px) and (max-width: 1024px) {
   .trackimage {
     margin: 5px 0;
-  } 
+  }
 }
 
-@media (min-width: 649px) and (max-width: 1000px){
+@media (min-width: 649px) and (max-width: 1000px) {
   .trackimage {
     margin: 20px 0;
   }

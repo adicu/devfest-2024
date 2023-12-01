@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const colorPage = "#F5F5F5";
+const colorPage = "#F0E7E2";
 
 const Page = (props) => {
   const Container = styled.div`
@@ -8,6 +8,7 @@ const Page = (props) => {
     height: 100%;
     width: 100%;
     user-select: none;
+    overflow: scroll;
   `;
 
   function divClicked() {

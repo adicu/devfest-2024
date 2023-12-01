@@ -11,14 +11,10 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.10.6",
-    "@fontsource/open-sans": "^4.5.14",
-    "@fontsource/roboto": "^4.5.8",
-    "next": "13.3.0",
+    "next": "^13.5.6",
     "react": "18.2.0",
-    "react-countdown": "^2.3.5",
     "react-dom": "18.2.0",
     "react-jss": "^10.10.0",
-    "react-pageflip": "^2.0.3",
     "react-transition-group": "^4.4.5"
   }
 }

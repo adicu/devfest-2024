@@ -7,7 +7,7 @@ const HomePageLeft = (props) => {
     width: 100%;
     height: 100%;
     user-select: none;
-    background-color: #e9e1d9;
+    /* background-color: #e9e1d9; */
     /* display: flex; */
     /* flex-direction: column; */
 
