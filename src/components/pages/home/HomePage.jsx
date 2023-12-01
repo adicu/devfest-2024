@@ -40,10 +40,6 @@ const HomePage = (props) => {
 
     text-align: center;
 
-    p {
-      font-size: 1.1rem;
-    }
-
     @media (max-width: ${process.env.mobileWidth}) {
       box-shadow: 3px 3px black;
       float: center;
@@ -51,9 +47,15 @@ const HomePage = (props) => {
       margin-right: 0.3rem;
       padding: 0.3rem;
       padding-bottom: 0.7rem;
+    }
 
+    p {
+      font-size: 1rem;
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
       p {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
     }
   `;
@@ -115,21 +117,21 @@ const HomePage = (props) => {
   `;
 
   const Question = styled.p`
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0.1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
   `;
 
   const Answer = styled.p`
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 1rem;
+      font-size: 0.8rem;
       margin-bottom: 0.2rem;
     }
   `;
@@ -184,8 +186,7 @@ const HomePage = (props) => {
         </Question>
         <Answer>
           The tracks provide participants with specific topics or fields to
-          focus on while working on their projects. Additionally, these tracks
-          align wi...
+          focus on while working on their projects.
         </Answer>
       </FAQDiv>
     </Container>

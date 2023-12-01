@@ -60,6 +60,7 @@ const Button = styled.button`
   border-top: 1px solid #888;
   border-left: 1px solid #888;
   border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
@@ -127,6 +128,9 @@ const Header = (props) => {
   useOutsideAlerter(wrapperRef);
 
   const changeDropdown = () => {
+    // if (!isDropdownOpen) {
+    // setDropdownOpen(true);
+    // }
     setDropdownOpen(!isDropdownOpen);
   };
 
@@ -156,14 +160,14 @@ const Header = (props) => {
           src="/images/titles/24.svg"
         />
       </TitleImageDiv>
-      <ButtonsContainer>
+      <ButtonsContainer ref={wrapperRef}>
         {/* <Button> Schedule </Button> */}
 
         <Button onClick={changeDropdown}>
-          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
+          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "►"}</Arrow>
         </Button>
         {isDropdownOpen && (
-          <OptionsContainer ref={wrapperRef} isDropdownOpen={isDropdownOpen}>
+          <OptionsContainer isDropdownOpen={isDropdownOpen}>
             {trackOptions.map((option, index) => (
               <OptionButton
                 key={index}

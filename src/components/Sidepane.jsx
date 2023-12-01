@@ -48,6 +48,15 @@ const Sidepane = (props) => {
 
       font-size: 1rem;
     }
+
+    /* overflow-y: scroll;
+    overflow-x: none;
+
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+      display: none;
+    } */
   `;
 
   const TextBox = styled.div`
@@ -85,20 +94,21 @@ const Sidepane = (props) => {
   return (
     <Container className="mobile-hidden">
       <FlexContainer>
-        <LinksPane>
+        {/* <LinksPane>
           <p>Important Links</p>
-        </LinksPane>
+        </LinksPane> */}
         <ADIPane>
           <TextBox>Who is ADI?</TextBox>
 
           <p>
-            We are Columbia's premier tech club... blah blah blah lorem ipsum
-            etc etc
+            <a href="https://www.adicu.com/">ADI</a> (Application Development
+            Initiative) is a student group at Columbia University that aims to
+            foster a community of students interested in technology.
           </p>
 
-          <SocialLinks>
+          {/* <SocialLinks>
             <p>Social Links</p>
-          </SocialLinks>
+          </SocialLinks> */}
 
           <HostedByADI>Hosted by ADI</HostedByADI>
         </ADIPane>

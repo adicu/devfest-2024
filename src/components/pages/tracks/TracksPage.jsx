@@ -8,9 +8,8 @@ const TracksPage = (props) => {
   `;
 
   const TitleDiv = styled.div`
-    margin: 0.5rem;
     margin-left: 1rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
       img {

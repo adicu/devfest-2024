@@ -145,7 +145,7 @@ const MobilePageFlipApp = (props) => {
     <>
       <Container>
         <Book>
-          <TransitionGroup>
+          {/* <TransitionGroup>
             <CSSTransition
               key={currentPage}
               timeout={delay * 2}
@@ -155,22 +155,22 @@ const MobilePageFlipApp = (props) => {
                 exit: classes.pagerightExit,
                 exitActive: classes.pagerightExitActive,
               }}
+            > */}
+          <RightPage>
+            <Page
+              updatePage={props.updatePage}
+              maxPage={pages.length}
+              pageNumber={currentPage}
+              left={false}
+              goLeft={goLeft}
+              goRight={goRight}
+              mobile={true}
             >
-              <RightPage>
-                <Page
-                  updatePage={props.updatePage}
-                  maxPage={pages.length}
-                  pageNumber={currentPage}
-                  left={false}
-                  goLeft={goLeft}
-                  goRight={goRight}
-                  mobile={true}
-                >
-                  {pages[currentPage - 1]}
-                </Page>
-              </RightPage>
-            </CSSTransition>
-          </TransitionGroup>
+              {pages[currentPage - 1]}
+            </Page>
+          </RightPage>
+          {/* </CSSTransition> */}
+          {/* </TransitionGroup> */}
         </Book>
         <Arrows>
           {/* TODO: Fix arrow appearences */}
