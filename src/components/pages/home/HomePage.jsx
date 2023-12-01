@@ -21,7 +21,7 @@ const HomePage = (props) => {
       float: center;
       margin-right: 0;
       margin-top: 0.3rem;
-      height: 2.5rem;
+      height: 2.3rem;
     }
   `;
 
@@ -41,7 +41,7 @@ const HomePage = (props) => {
     text-align: center;
 
     p {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
 
     @media (max-width: ${process.env.mobileWidth}) {
@@ -53,7 +53,7 @@ const HomePage = (props) => {
       padding-bottom: 0.7rem;
 
       p {
-        font-size: 12px;
+        font-size: 1rem;
       }
     }
   `;
@@ -72,6 +72,7 @@ const HomePage = (props) => {
 
     @media (max-width: ${process.env.mobileWidth}) {
       font-size: 14px;
+      font-size: 1.3rem;
     }
   `;
 
@@ -84,7 +85,7 @@ const HomePage = (props) => {
       float: center;
       margin-left: 1rem;
       margin-top: 0.3rem;
-      height: 2.5rem;
+      height: 2.3rem;
     }
   `;
 
@@ -106,28 +107,29 @@ const HomePage = (props) => {
     @media (max-width: ${process.env.mobileWidth}) {
       box-shadow: 3px 3px black;
       float: center;
-      margin-left: 0.1rem;
+      margin-left: 0.3rem;
+      width: auto;
       margin-right: 0.3rem;
       padding: 0.3rem;
     }
   `;
 
   const Question = styled.p`
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 0.1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 12px;
+      font-size: 1rem;
     }
   `;
 
   const Answer = styled.p`
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 12px;
+      font-size: 1rem;
       margin-bottom: 0.2rem;
     }
   `;
@@ -152,10 +154,10 @@ const HomePage = (props) => {
       <br />
       <AboutDiv>
         <p>
-          This week-long celebration of all things tech features workshops,
-          speaker panels, and a hackathon to end all hackathons. Whether you're
-          just getting started in the world of programming or you're a seasoned
-          pro, DevFest has something for you.
+          This <strong>week-long celebration of all things tech</strong>{" "}
+          features workshops, speaker panels, and a hackathon to end all
+          hackathons. Whether you're just getting started in the world of
+          programming or you're a seasoned pro, DevFest has something for you.
         </p>
         <br />
         <p>

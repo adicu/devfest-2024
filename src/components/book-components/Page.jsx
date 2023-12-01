@@ -10,6 +10,7 @@ const Page = (props) => {
     user-select: none;
 
     overflow-y: scroll;
+    overflow-x: hidden;
     scrollbar-width: none;
 
     ::-webkit-scrollbar {

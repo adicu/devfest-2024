@@ -23,12 +23,8 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    <ComingSoonPage mobile={mobile} />,
-    <div>Test 2</div>,
-    <div>Test 3</div>,
-    <div>Test 4</div>,
-    <div>Test 5</div>,
-    <div className="page-no-mobile"></div>,
+    <ComingSoonPage page="1" mobile={mobile} />,
+    <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
   ];
 
   return pages;

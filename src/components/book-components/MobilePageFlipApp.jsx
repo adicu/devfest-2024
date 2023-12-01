@@ -13,7 +13,7 @@ import rightArrow from "../../../public/images/icons/right-arrow.svg";
 
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 75;
+const delay = 50;
 
 const Container = styled.div`
   height: 100%;
@@ -29,7 +29,7 @@ const Book = styled.div`
 
   top: 0%;
   height: 100%;
-  flex: 7;
+  flex: 15;
 
   width: 100%;
 

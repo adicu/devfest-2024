@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "@emotion/styled";
 
 // import DevFestSVG from "../../public/images/titles/devfest-24.svg";
@@ -8,13 +8,18 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+
+  @media (max-width: ${process.env.mobileWidth}) {
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: auto; */
+    /* overflow: wrap; */
+  }
+
+  /* background-color: orange; */
 `;
 
 const TitleImageDiv = styled.div`
-  height: 4.5rem;
-  /* margin-left: 2rem; */
-  /* margin-right: 2rem; */
-  /* margin-top: 1rem; */
   height: 100%;
   float: left;
   display: flex;
@@ -25,7 +30,7 @@ const TitleImageDiv = styled.div`
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     float: center;
   }
 `;
@@ -33,23 +38,20 @@ const TitleImageDiv = styled.div`
 const TitleImage = styled.img`
   height: 4.5rem;
   @media (max-width: ${process.env.mobileWidth}) {
-    height: 2.5rem;
+    height: 3rem;
   }
 `;
 
-// Styled component for the buttons container
 const ButtonsContainer = styled.div`
-  /* margin-right: 2rem; */
   display: flex;
   gap: 0px;
   align-items: center;
   position: relative;
 `;
 
-// Styled component for the buttons
 const Button = styled.button`
-  background-color: #fff; /* Button background color */
-  color: #000; /* Button text color */
+  background-color: #fff;
+  color: #000;
   padding: 5px 10px;
   cursor: pointer;
   font-weight: bold;
@@ -61,6 +63,10 @@ const Button = styled.button`
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
+
+  @media (max-width: ${process.env.mobileWidth}) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Arrow = styled.span`
@@ -86,12 +92,39 @@ const OptionButton = styled.button`
   border: 1px solid #888;
   width: 100%;
   font-size: 1.5rem;
+
+  @media (max-width: ${process.env.mobileWidth}) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("About");
   const trackOptions = ["About", "Tracks"];
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          // alert("You clicked outside of me!");
+          setDropdownOpen(false);
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   const changeDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -130,7 +163,7 @@ const Header = (props) => {
           {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
         </Button>
         {isDropdownOpen && (
-          <OptionsContainer isDropdownOpen={isDropdownOpen}>
+          <OptionsContainer ref={wrapperRef} isDropdownOpen={isDropdownOpen}>
             {trackOptions.map((option, index) => (
               <OptionButton
                 key={index}

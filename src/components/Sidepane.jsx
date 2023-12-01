@@ -3,49 +3,105 @@ import styled from "@emotion/styled";
 const Sidepane = (props) => {
   const Container = styled.div`
     flex: 1;
-    /* display: flex; */
-    /* flex-direction: column; */
     height: 100%;
+
+    margin-right: 1rem;
   `;
 
   const FlexContainer = styled.div`
-    display: flex;
-    flex-direction: column;
     height: 100%;
     width: 100%;
-  `;
+    display: flex;
+    flex-direction: column;
 
-  const Pane = styled.div`
-    /* margin-left: 1rem;
-    margin-right: 0;
-    margin-top: 1rem;
-    margin-bottom: 1rem; */
     margin-right: 1rem;
-    flex: 1;
-    border: solid 3px;
   `;
 
   const LinksPane = styled.div`
-    height: 100%;
-    width: 100%;
+    flex: 1;
+    border: solid 3px;
+
+    margin-bottom: 1rem;
+
     background-color: white;
+
+    p {
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      font-size: 1rem;
+    }
   `;
 
   const ADIPane = styled.div`
-    height: 100%;
-    width: 100%;
+    position: relative;
+    flex: 1;
+    border: solid 3px;
+
     background-color: rgb(219, 186, 163);
+
+    p {
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      font-size: 1rem;
+    }
   `;
+
+  const TextBox = styled.div`
+    background-color: white;
+
+    font-size: 1.2rem;
+
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    text-align: center;
+
+    border: black solid 2px;
+  `;
+
+  const HostedByADI = styled.div`
+    background-color: white;
+
+    font-size: 1rem;
+
+    float: left;
+
+    border: black solid 1px;
+    border-bottom: 0;
+    border-left: 0;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  `;
+
+  const SocialLinks = styled.div``;
 
   return (
     <Container className="mobile-hidden">
       <FlexContainer>
-        <Pane>
-          <LinksPane>hi 1</LinksPane>
-        </Pane>
-        <Pane>
-          <ADIPane>hi 2</ADIPane>
-        </Pane>
+        <LinksPane>
+          <p>Important Links</p>
+        </LinksPane>
+        <ADIPane>
+          <TextBox>Who is ADI?</TextBox>
+
+          <p>
+            We are Columbia's premier tech club... blah blah blah lorem ipsum
+            etc etc
+          </p>
+
+          <SocialLinks>
+            <p>Social Links</p>
+          </SocialLinks>
+
+          <HostedByADI>Hosted by ADI</HostedByADI>
+        </ADIPane>
       </FlexContainer>
     </Container>
   );

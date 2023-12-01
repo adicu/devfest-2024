@@ -27,22 +27,13 @@ export async function getServerSideProps() {
 const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
-  /* height: 96%; */
-  /* height: 100%; */
   overflow: hidden;
   position: absolute;
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
-  /* height: 95%; */
-  /* margin-top: 2%;
-  margin-bottom: 3rem;
-  margin-left: 3rem;
-  margin-right: 3rem; */
   margin: 1%;
-  /* background-color: red; */
 `;
 
 const HeaderWrapper = styled.div`
