@@ -1,4 +1,1 @@
-- Create sidebar
-- Fix Tracks page
-- Fix Coming Soon page
-- Fix Header on mobile
+- use correct link

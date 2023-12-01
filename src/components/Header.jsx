@@ -9,6 +9,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   padding: 0.5rem 1rem;
 
+  user-select: none;
   @media (max-width: ${process.env.mobileWidth}) {
     flex-direction: column;
     align-items: center;
