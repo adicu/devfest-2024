@@ -91,7 +91,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       {/* <Title>DEVFEST 24</Title> */}
-      <TitleImage src="/images/titles/devfest-24.svg" />
+      <TitleImage src="/images/titles/devfest.svg" />
       <ButtonsContainer>
         <Button> Schedule </Button>
         <div>
