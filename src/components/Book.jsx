@@ -13,29 +13,24 @@ const Book = (props) => {
 
   return (
     <>
-      {props.mobile ? (
-        <MobileContainer>
-          <MobilePageFlipApp
-            data={props.data}
-            pageDictionary={props.pageDictionary}
-            parentPage={props.currentPage}
-            previousPage={props.previousPage}
-            updatePage={props.updatePage}
-            mobile={props.mobile}
-          />
-        </MobileContainer>
-      ) : (
-        <Container>
-          <PageFlipApp
-            data={props.data}
-            pageDictionary={props.pageDictionary}
-            parentPage={props.currentPage}
-            previousPage={props.previousPage}
-            updatePage={props.updatePage}
-            mobile={props.mobile}
-          />
-        </Container>
-      )}
+      <MobileContainer className="mobile-shown">
+        <MobilePageFlipApp
+          data={props.data}
+          pageDictionary={props.pageDictionary}
+          parentPage={props.currentPage}
+          previousPage={props.previousPage}
+          updatePage={props.updatePage}
+        />
+      </MobileContainer>
+      <Container className="mobile-hidden">
+        <PageFlipApp
+          data={props.data}
+          pageDictionary={props.pageDictionary}
+          parentPage={props.currentPage}
+          previousPage={props.previousPage}
+          updatePage={props.updatePage}
+        />
+      </Container>
     </>
   );
 };

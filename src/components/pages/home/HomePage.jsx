@@ -37,7 +37,7 @@ const HomePageLeft = (props) => {
     margin-right: 1rem;
 
     float: right;
-    width: ${props.mobile ? "90%" : "80%"};
+    /* width: ${props.mobile ? "90%" : "80%"}; */
     padding: 1em;
 
     border: black solid 1px;
@@ -46,7 +46,7 @@ const HomePageLeft = (props) => {
     text-align: center;
 
     p {
-      font-size: ${props.mobile ? "12px" : "14px"};
+      /* font-size: ${props.mobile ? "12px" : "14px"}; */
     }
   `;
 
@@ -93,12 +93,12 @@ const HomePageLeft = (props) => {
   `;
 
   const Question = styled.p`
-    font-size: ${props.mobile ? "12px" : "14px"};
+    /* font-size: ${props.mobile ? "12px" : "14px"}; */
     font-weight: bold;
     margin-bottom: 0.1em;
   `;
   const Answer = styled.p`
-    font-size: ${props.mobile ? "12px" : "14px"};
+    /* font-size: ${props.mobile ? "12px" : "14px"}; */
 
     margin-bottom: 0.1em;
   `;

@@ -38,7 +38,6 @@
   padding: 0;
   margin: 0;
   font-family: "PlotHolesBB";
-  /* font-family: "Roboto"; */
 }
 
 html,
@@ -46,4 +45,22 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+/* Desktop */
+.mobile-shown {
+  display: none;
+}
+.mobile-hidden {
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 750px) {
+  .mobile-shown {
+    display: block;
+  }
+  .mobile-hidden {
+    display: none;
+  }
 }
