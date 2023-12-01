@@ -16,7 +16,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
 
-  padding: 1rem;
+  /* padding: 1rem; */
 `;
 
 const Book = styled.div`

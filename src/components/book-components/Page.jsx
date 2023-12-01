@@ -8,7 +8,13 @@ const Page = (props) => {
     height: 100%;
     width: 100%;
     user-select: none;
-    /* overflow: scroll; */
+
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
   `;
 
   function divClicked() {

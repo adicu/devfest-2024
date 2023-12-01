@@ -6,27 +6,33 @@ const HomePage = (props) => {
   const Container = styled.div`
     width: 100%;
     height: 100%;
-    user-select: none;
 
     background-image: url(${starBurst.src});
     background-position: left;
     background-repeat: no-repeat;
   `;
 
-  const DevFestTitle = styled.h1`
-    margin-top: 0.5rem;
+  const AboutImage = styled.img`
     margin-right: 1rem;
-    font-size: 2.3rem;
+    margin-top: 10%;
     float: right;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      float: center;
+      margin-right: 0;
+      margin-top: 0.3rem;
+      height: 2.5rem;
+    }
   `;
 
-  const InfoDiv = styled.div`
+  const AboutDiv = styled.div`
     background-color: white;
     margin: 0.5rem;
     margin-right: 1rem;
 
     float: right;
-    width: "90%"; // TODO adjust this based on mobile/fit
+
+    margin-left: 15%;
     padding: 1em;
 
     border: black solid 1px;
@@ -35,30 +41,51 @@ const HomePage = (props) => {
     text-align: center;
 
     p {
-      font-size: "14px"; // TODO adjust this based on mobile/fit
+      font-size: 1.3rem; // TODO adjust this based on mobile/fit
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      box-shadow: 3px 3px black;
+      float: center;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+      padding: 0.3rem;
+      padding-bottom: 0.7rem;
+
+      p {
+        font-size: 12px;
+      }
     }
   `;
 
-  const RegisterButton = styled.a`
+  const RegisterButton = styled.button`
     text-decoration: none;
-    padding: 0.5em;
+    padding: 0.5rem;
     color: white;
     background-color: #000d74;
     border-radius: none;
     box-shadow: 1px 1px black;
+
+    cursor: pointer;
+
+    font-size: 1.8rem;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      font-size: 14px;
+    }
   `;
 
-  const FAQTitle = styled.h2`
-    display: inline-block;
-    margin-top: 1rem;
-    margin-left: 1em;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
-    color: black;
-    background-color: rgb(93, 151, 179);
-    border: black solid 1px;
+  const FAQImage = styled.img`
+    float: left;
+    margin-left: 1rem;
+    margin-top: 10%;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      float: center;
+      margin-left: 1rem;
+      margin-top: 0.3rem;
+      height: 2.5rem;
+    }
   `;
 
   const FAQDiv = styled.div`
@@ -75,23 +102,48 @@ const HomePage = (props) => {
     box-shadow: 5px 5px black;
 
     text-align: left;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      box-shadow: 3px 3px black;
+      float: center;
+      margin-left: 0.1rem;
+      margin-right: 0.3rem;
+      padding: 0.3rem;
+    }
   `;
 
   const Question = styled.p`
-    font-size: "14px"; // TODO adjust this based on mobile/fit
+    font-size: 1.3rem; // TODO adjust this based on mobile/fit
     font-weight: bold;
-    margin-bottom: 0.1em;
+    margin-bottom: 0.1rem;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      font-size: 12px;
+    }
   `;
+
   const Answer = styled.p`
-    font-size: "14px"; // TODO adjust this based on mobile/fit
-    margin-bottom: 0.1em;
+    font-size: 1.2rem; // TODO adjust this based on mobile/fit
+    margin-bottom: 1rem;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      font-size: 12px;
+      margin-bottom: 0.2rem;
+    }
   `;
+
+  const register = (event) => {
+    event.stopPropagation();
+    window.location.href = "https://www.columbia.edu/";
+
+    console.log("register button clicked");
+  };
 
   return (
     <Container>
-      <DevFestTitle>DevFest</DevFestTitle>
+      <AboutImage src="/images/titles/about.svg" />
       <br />
-      <InfoDiv>
+      <AboutDiv>
         <p>
           This week-long celebration of all things tech features workshops,
           speaker panels, and a hackathon to end all hackathons. Whether you're
@@ -104,10 +156,10 @@ const HomePage = (props) => {
           and build amazing projects.
         </p>
         <br />
-        <RegisterButton href="#">Register</RegisterButton>
-      </InfoDiv>
+        <RegisterButton onClick={register}>Register</RegisterButton>
+      </AboutDiv>
       <br />
-      <FAQTitle>FAQ</FAQTitle>
+      <FAQImage src="/images/titles/faq.svg" />
       <FAQDiv>
         <Question> Is the hackathon online or in-person?</Question>
         <Answer>DevFest will be held in-person.</Answer>

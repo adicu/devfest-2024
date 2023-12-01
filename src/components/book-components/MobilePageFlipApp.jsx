@@ -19,7 +19,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
 
-  padding: 1em;
+  /* padding: 1em; */
   display: flex;
   flex-direction: column;
 `;
@@ -35,7 +35,7 @@ const Book = styled.div`
   width: 100%;
 
   border: ${colorSpine} solid 2px;
-  box-shadow: 10px 10px black;
+  /* box-shadow: 10px 10px black; */
 `;
 
 const Arrows = styled.div`

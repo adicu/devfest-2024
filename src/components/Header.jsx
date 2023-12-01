@@ -7,22 +7,39 @@ import styled from "@emotion/styled";
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #fff; /* Header background color */
-  color: #000; /* Text color */
-  padding: 7px 20px; /* Add padding as needed */
+  padding: 0.5rem 1rem;
+`;
 
-  /* background-color: purple; */
+const TitleImageDiv = styled.div`
+  height: 4.5rem;
+  /* margin-left: 2rem; */
+  /* margin-right: 2rem; */
+  /* margin-top: 1rem; */
+  height: 100%;
+  float: left;
+  display: flex;
+
+  cursor: pointer;
+
+  @media (max-width: ${process.env.mobileWidth}) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: center;
+  }
 `;
 
 const TitleImage = styled.img`
-  height: 4rem;
-  float: left;
-  object-fit: cover;
+  height: 4.5rem;
+  @media (max-width: ${process.env.mobileWidth}) {
+    height: 2.5rem;
+  }
 `;
 
 // Styled component for the buttons container
 const ButtonsContainer = styled.div`
+  /* margin-right: 2rem; */
   display: flex;
   gap: 0px;
   align-items: center;
@@ -43,6 +60,7 @@ const Button = styled.button`
   border-right: 1px solid #888;
   display: flex;
   justify-content: space-between;
+  font-size: 1.5rem;
 `;
 
 const Arrow = styled.span`
@@ -67,12 +85,13 @@ const OptionButton = styled.button`
   font-weight: bold;
   border: 1px solid #888;
   width: 100%;
+  font-size: 1.5rem;
 `;
 
-const Header = () => {
+const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Index");
-  const trackOptions = ["Index", "Track 1", "Track 2", "Judges"];
+  const [selectedOption, setSelectedOption] = useState("About");
+  const trackOptions = ["About", "Tracks"];
 
   const changeDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -80,37 +99,38 @@ const Header = () => {
 
   const handleDropdownChange = (option) => {
     setSelectedOption(option);
+    props.updatePage(props.pageDictionary[option]);
     changeDropdown();
   };
 
-  //Use this instead if you want dropdown options to take up as much space as index button
-  /*<ButtonsContainer>
-        <Button> Schedule </Button>
-      </ButtonsContainer>
-  */
+  const goHome = () => {
+    props.updatePage(props.pageDictionary["Home"]);
+  };
+
   return (
     <HeaderContainer>
-      {/* <Title>DEVFEST 24</Title> */}
-      <TitleImage src="/images/titles/devfest.svg" />
+      <TitleImageDiv onClick={goHome}>
+        <TitleImage src="/images/titles/devfest.svg" />
+        <TitleImage src="/images/titles/24.svg" />
+      </TitleImageDiv>
       <ButtonsContainer>
-        <Button> Schedule </Button>
-        <div>
-          <Button onClick={changeDropdown}>
-            {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
-          </Button>
-          {isDropdownOpen && (
-            <OptionsContainer isDropdownOpen={isDropdownOpen}>
-              {trackOptions.map((option, index) => (
-                <OptionButton
-                  key={index}
-                  onClick={() => handleDropdownChange(option)}
-                >
-                  {option}
-                </OptionButton>
-              ))}
-            </OptionsContainer>
-          )}
-        </div>
+        {/* <Button> Schedule </Button> */}
+
+        <Button onClick={changeDropdown}>
+          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
+        </Button>
+        {isDropdownOpen && (
+          <OptionsContainer isDropdownOpen={isDropdownOpen}>
+            {trackOptions.map((option, index) => (
+              <OptionButton
+                key={index}
+                onClick={() => handleDropdownChange(option)}
+              >
+                {option}
+              </OptionButton>
+            ))}
+          </OptionsContainer>
+        )}
       </ButtonsContainer>
     </HeaderContainer>
   );
