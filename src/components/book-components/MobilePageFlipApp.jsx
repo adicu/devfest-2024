@@ -105,9 +105,16 @@ const useStyles = createUseStyles({
 });
 
 const MobilePageFlipApp = (props) => {
-  const pages = Pages(props.data, props.updatePage, props.pageDictionary);
+  let pages = Pages(props.data, props.updatePage, props.pageDictionary);
 
-  // TODO Check for any empty <></> pages and remove them
+  // Remove "page-no-mobile" pages
+  for (let i = 0; i < pages.length; i++) {
+    console.log(pages[i].props.className);
+    if (pages[i].props.className == "page-no-mobile") {
+      pages.splice(i, 1);
+      i++;
+    }
+  }
 
   useEffect(() => {
     setCurrentPage(props.parentPage);
@@ -132,7 +139,7 @@ const MobilePageFlipApp = (props) => {
   }
 
   function goRight() {
-    if (currentPage < pages.length * 2) {
+    if (currentPage < pages.length) {
       props.updatePage(currentPage + 1);
     }
   }
@@ -155,17 +162,13 @@ const MobilePageFlipApp = (props) => {
               <RightPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length * 2}
+                  maxPage={pages.length}
                   pageNumber={currentPage}
                   left={false}
                   goLeft={goLeft}
                   goRight={goRight}
                 >
-                  {
-                    pages[Math.floor((currentPage + 1) / 2) - 1][
-                      Math.abs((currentPage % 2) - 1)
-                    ]
-                  }
+                  {pages[currentPage - 1]}
                 </Page>
               </RightPage>
             </CSSTransition>

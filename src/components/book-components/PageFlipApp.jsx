@@ -169,7 +169,7 @@ const PageFlipApp = (props) => {
     desktopPage += 1;
     let mobilePage = 2 * desktopPage - 1;
 
-    if (mobilePage < pages.length * 2) {
+    if (mobilePage < pages.length) {
       props.updatePage(mobilePage);
     }
   }
@@ -177,9 +177,6 @@ const PageFlipApp = (props) => {
   return (
     <>
       <Container>
-        {/* <button onClick={goLeft}>Previous</button>
-        <button onClick={goRight}>Next</button> */}
-
         <Book>
           <TransitionGroup>
             <CSSTransition
@@ -195,13 +192,13 @@ const PageFlipApp = (props) => {
               <LeftPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length * 2}
+                  maxPage={pages.length}
                   pageNumber={2 * Math.floor((currentPage + 1) / 2) - 1}
                   left={true}
                   goLeft={goLeft}
                   goRight={goRight}
                 >
-                  {pages[Math.floor((currentPage + 1) / 2) - 1][0]}
+                  {pages[2 * Math.floor((currentPage + 1) / 2) - 2]}
                 </Page>
               </LeftPage>
             </CSSTransition>
@@ -219,13 +216,13 @@ const PageFlipApp = (props) => {
               <RightPage>
                 <Page
                   updatePage={props.updatePage}
-                  maxPage={pages.length * 2}
+                  maxPage={pages.length}
                   pageNumber={2 * Math.floor((currentPage + 1) / 2)}
                   left={false}
                   goLeft={goLeft}
                   goRight={goRight}
                 >
-                  {pages[Math.floor((currentPage + 1) / 2) - 1][1]}
+                  {pages[2 * Math.floor((currentPage + 1) / 2) - 1]}
                 </Page>
               </RightPage>
             </CSSTransition>
