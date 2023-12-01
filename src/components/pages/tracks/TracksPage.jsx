@@ -5,34 +5,13 @@ const TracksPage = (props) => {
     width: 100%;
     height: 100%;
     user-select: none;
-    /* background-color: #e9e1d9; */
-    display: flex;
-    flex-direction: column;
+    display: block;
+    /* flex-direction: column; */
   `;
 
-  const SVGImageDiv = styled.div``;
-
   const TitleDiv = styled.div`
-    /* flex: 0; */
-    /* align-items: center; */
-    /* background-color: yellow; */
-    /* text-align: center; */
-    /* justify-content: center; */
-
-    /* width: 100%; */
-    /* text-align: center; */
-
-    /* height: 3rem; */
     margin: 0.5rem;
     margin-left: 1rem;
-    img {
-      /* display: block; */
-      /* margin: 0 auto; */
-      /* margin-right: auto; */
-      /* margin-left: auto; */
-      /* align-self: center; */
-      /* height: 4rem; */
-    }
 
     @media (max-width: ${process.env.mobileWidth}) {
       img {
@@ -41,64 +20,81 @@ const TracksPage = (props) => {
     }
   `;
   const Top = styled.div`
-    flex: 3;
+    /* flex: 3; */
     position: relative;
     max-width: 100%;
 
-    margin: 1rem;
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: row;
+
+    margin: 0.3rem;
     background-color: yellow;
   `;
   const Bottom = styled.div`
     flex: 2;
-    position: relative;
+    /* position: relative; */
     max-width: 100%;
   `;
 
-  const PoliticsImage = styled.img`
-    position: absolute;
-    /* height: 70%; */
+  const TopLeft = styled.div`
+    /* position: absolute; */
     width: 40%;
 
     left: 0;
     top: 0;
   `;
 
-  const Politics = styled.div`
-    position: absolute;
-    /* height: 70%; */
+  const TopRight = styled.div`
+    /* position: absolute; */
 
-    width: 58%;
+    width: 60%;
 
     right: 0;
-
-    z-index: 6;
   `;
 
-  const PoliticsText = styled.div`
+  const TextBox = styled.div`
     background-color: white;
     /* margin-right: 1rem; */
 
+    margin-bottom: 0.3rem;
     border: black solid 2px;
+
+    p {
+      font-size: 1rem;
+    }
   `;
 
-  const PoliticsTitle = styled.p`
-    background-color: white;
+  const TitleBox = styled.div`
+    background-color: purple;
+    text-align: center;
 
-    border: black solid 2px;
+    /* width: 50%; */
+    display: inline-block;
 
-    font-size: 1.4rem;
-
-    font-weight: bold;
+    margin-bottom: 0.3rem;
+    p {
+      background-color: white;
+      border: black solid 1px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   `;
 
   const EnvironmentImage = styled.img`
-    position: absolute;
-    width: 58%;
+    /* position: absolute; */
+    width: 100%;
 
-    right: 0;
-    bottom: 0;
+    /* z-index: 5; */
+  `;
 
-    z-index: 5;
+  const PoliticsImage = styled.img`
+    /* position: absolute; */
+    width: 90%;
+
+    /* z-index: 5; */
   `;
 
   const preventDragHandler = (e) => {
@@ -114,14 +110,18 @@ const TracksPage = (props) => {
         />
       </TitleDiv>
       <Top>
-        <PoliticsImage
-          onDragStart={preventDragHandler}
-          src="/images/tracks/politics_image.svg"
-        />
+        <TopLeft>
+          <PoliticsImage
+            onDragStart={preventDragHandler}
+            src="/images/tracks/politics_image.svg"
+          />
+        </TopLeft>
 
-        <Politics>
-          <PoliticsTitle>Politics</PoliticsTitle>
-          <PoliticsText>
+        <TopRight>
+          <TitleBox>
+            <p>Politics</p>
+          </TitleBox>
+          <TextBox>
             <p>
               Your mission is to increase political
               <strong> awareness and participation </strong>
@@ -129,15 +129,15 @@ const TracksPage = (props) => {
               awareness, engagement, and informed decision-making among
               citizens?
             </p>
-          </PoliticsText>
-        </Politics>
+          </TextBox>
 
-        <EnvironmentImage
-          onDragStart={preventDragHandler}
-          src="/images/tracks/environment_image.svg"
-        />
+          <EnvironmentImage
+            onDragStart={preventDragHandler}
+            src="/images/tracks/environment_image.svg"
+          />
+        </TopRight>
       </Top>
-
+      {/* <br /> */}
       <Bottom>Bottom</Bottom>
     </Container>
   );
