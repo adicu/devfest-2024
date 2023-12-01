@@ -41,7 +41,7 @@ const HomePage = (props) => {
     text-align: center;
 
     p {
-      font-size: 1.3rem; // TODO adjust this based on mobile/fit
+      font-size: 1.3rem;
     }
 
     @media (max-width: ${process.env.mobileWidth}) {
@@ -113,7 +113,7 @@ const HomePage = (props) => {
   `;
 
   const Question = styled.p`
-    font-size: 1.3rem; // TODO adjust this based on mobile/fit
+    font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 0.1rem;
 
@@ -123,7 +123,7 @@ const HomePage = (props) => {
   `;
 
   const Answer = styled.p`
-    font-size: 1.2rem; // TODO adjust this based on mobile/fit
+    font-size: 1.2rem;
     margin-bottom: 1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
