@@ -10,6 +10,7 @@ const TracksPage = (props) => {
   const TitleDiv = styled.div`
     margin: 0.5rem;
     margin-left: 1rem;
+    margin-top: 1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
       img {
@@ -25,10 +26,17 @@ const TracksPage = (props) => {
     flex-direction: row;
 
     margin: 0.3rem;
-    /* background-color: yellow; */
   `;
   const Bottom = styled.div`
     max-width: 100%;
+
+    /* background-color: red; */
+
+    display: flex;
+    flex-direction: row;
+
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
   `;
 
   const TopLeft = styled.div`
@@ -119,6 +127,19 @@ const TracksPage = (props) => {
     width: 100%;
   `;
 
+  const MentalHealthImageDiv = styled.div`
+    flex: 3;
+  `;
+
+  const MentalHealthImage = styled.img`
+    width: 100%;
+  `;
+
+  const MentalHealthText = styled.div`
+    flex: 3;
+    margin-left: 0.3rem;
+  `;
+
   const PoliticsImage = styled.img`
     width: 90%;
   `;
@@ -178,74 +199,30 @@ const TracksPage = (props) => {
           </EnvironmentBox>
         </TopRight>
       </Top>
-      {/* <br /> */}
-      <Bottom>Bottom</Bottom>
+      <Bottom>
+        <MentalHealthImageDiv>
+          <MentalHealthImage
+            onDragStart={preventDragHandler}
+            src="/images/tracks/mental_health_image.svg"
+          />
+        </MentalHealthImageDiv>
+
+        <MentalHealthText>
+          <TitleBox>
+            <p>Mental Health</p>
+          </TitleBox>
+          <TextBox>
+            <p>
+              <strong>Mental health</strong> is at the forefront of wellNESS.
+              How can we promote a culture of openness and wellbeing? This track
+              asks you to develop a project that addresses challenges in mental
+              health or posits innovative ways to bring awareness to this topic.
+            </p>
+          </TextBox>
+        </MentalHealthText>
+      </Bottom>
     </Container>
   );
-
-  // return (
-  //   <Container>
-  //     <div style={{ position: "relative" }}>
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/tracks_title.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/politics_title.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/politics_text.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/white_house.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/environment.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/mental_health_title.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //         }}
-  //         src="/images/tracks/mental_health_text.svg"
-  //       />
-  //       <img
-  //         style={{
-  //           display: "flex",
-  //           height: "20%",
-  //           width: "100%",
-  //         }}
-  //         src="/images/tracks/zen.svg"
-  //       />
-  //     </div>
-  //   </Container>
-  // );
 };
 
 export default TracksPage;
