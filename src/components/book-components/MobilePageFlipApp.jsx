@@ -13,7 +13,7 @@ import rightArrow from "../../../public/images/icons/right-arrow.svg";
 
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 150;
+const delay = 75;
 
 const Container = styled.div`
   height: 100%;
@@ -105,11 +105,10 @@ const useStyles = createUseStyles({
 });
 
 const MobilePageFlipApp = (props) => {
-  let pages = Pages(props.data, props.updatePage, props.pageDictionary);
+  let pages = Pages(props.data, props.updatePage, props.pageDictionary, true);
 
   // Remove "page-no-mobile" pages
   for (let i = 0; i < pages.length; i++) {
-    console.log(pages[i].props.className);
     if (pages[i].props.className == "page-no-mobile") {
       pages.splice(i, 1);
       i++;
@@ -167,6 +166,7 @@ const MobilePageFlipApp = (props) => {
                   left={false}
                   goLeft={goLeft}
                   goRight={goRight}
+                  mobile={true}
                 >
                   {pages[currentPage - 1]}
                 </Page>

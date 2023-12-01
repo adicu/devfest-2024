@@ -10,7 +10,7 @@ import Page from "./Page";
 
 const colorBook = "#F5F5F5";
 const colorSpine = "black";
-const delay = 100;
+const delay = 75;
 
 const Container = styled.div`
   height: 100%;
@@ -136,7 +136,12 @@ const useStyles = createUseStyles({
 });
 
 const PageFlipApp = (props) => {
-  const pages = Pages(props.data, props.updatePage, props.pageDictionary);
+  const pages = Pages(
+    props.data,
+    props.updatePage,
+    props.pageDictionary,
+    false
+  );
 
   useEffect(() => {
     setCurrentPage(props.parentPage);
@@ -197,6 +202,7 @@ const PageFlipApp = (props) => {
                   left={true}
                   goLeft={goLeft}
                   goRight={goRight}
+                  mobile={false}
                 >
                   {pages[2 * Math.floor((currentPage + 1) / 2) - 2]}
                 </Page>
@@ -221,6 +227,7 @@ const PageFlipApp = (props) => {
                   left={false}
                   goLeft={goLeft}
                   goRight={goRight}
+                  mobile={false}
                 >
                   {pages[2 * Math.floor((currentPage + 1) / 2) - 1]}
                 </Page>

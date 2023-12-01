@@ -12,10 +12,12 @@ const Page = (props) => {
   `;
 
   function divClicked() {
-    if (props.left == true) {
-      props.goLeft();
-    } else {
-      props.goRight();
+    if (props.mobile == false) {
+      if (props.left == true) {
+        props.goLeft();
+      } else {
+        props.goRight();
+      }
     }
   }
 

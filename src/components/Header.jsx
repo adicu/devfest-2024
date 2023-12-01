@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
+// import DevFestSVG from "../../public/images/titles/devfest-24.svg";
+
 // Styled component for the header container
 const HeaderContainer = styled.div`
   display: flex;
@@ -9,20 +11,20 @@ const HeaderContainer = styled.div`
   background-color: #fff; /* Header background color */
   color: #000; /* Text color */
   padding: 7px 20px; /* Add padding as needed */
+
+  /* background-color: purple; */
 `;
 
-// Styled component for the title
-const Title = styled.div`
-  flex: 1; /* Take up available space, pushing buttons to the right */
-  font-size: 40px; /* Adjust the font size as needed */
-  font-weight: bold;
-  font-family: 'Lilita One', sans-serif;
+const TitleImage = styled.img`
+  height: 4rem;
+  float: left;
+  object-fit: cover;
 `;
 
 // Styled component for the buttons container
 const ButtonsContainer = styled.div`
   display: flex;
-  gap: 0px; 
+  gap: 0px;
   align-items: center;
   position: relative;
 `;
@@ -53,7 +55,7 @@ const OptionsContainer = styled.div`
   top: 100%;
   left: 0;
   width: 100%;
-  display: ${props => (props.isDropdownOpen ? "block" : "none")};
+  display: ${(props) => (props.isDropdownOpen ? "block" : "none")};
   z-index: 1;
 `;
 
@@ -88,22 +90,26 @@ const Header = () => {
   */
   return (
     <HeaderContainer>
-      <Title>DEVFEST 24</Title>
+      {/* <Title>DEVFEST 24</Title> */}
+      <TitleImage src="/images/titles/devfest-24.svg" />
       <ButtonsContainer>
         <Button> Schedule </Button>
         <div>
-        <Button onClick={changeDropdown}>
-          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
-        </Button>
-        {isDropdownOpen && (
-          <OptionsContainer isDropdownOpen={isDropdownOpen}>
-            {trackOptions.map((option, index) => (
-              <OptionButton key={index} onClick={() => handleDropdownChange(option)}>
-                {option}
-              </OptionButton>
-            ))}
-          </OptionsContainer>
-        )}
+          <Button onClick={changeDropdown}>
+            {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "▶"}</Arrow>
+          </Button>
+          {isDropdownOpen && (
+            <OptionsContainer isDropdownOpen={isDropdownOpen}>
+              {trackOptions.map((option, index) => (
+                <OptionButton
+                  key={index}
+                  onClick={() => handleDropdownChange(option)}
+                >
+                  {option}
+                </OptionButton>
+              ))}
+            </OptionsContainer>
+          )}
         </div>
       </ButtonsContainer>
     </HeaderContainer>
