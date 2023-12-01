@@ -5,8 +5,6 @@ const TracksPage = (props) => {
     width: 100%;
     height: 100%;
     user-select: none;
-    display: block;
-    /* flex-direction: column; */
   `;
 
   const TitleDiv = styled.div`
@@ -20,56 +18,90 @@ const TracksPage = (props) => {
     }
   `;
   const Top = styled.div`
-    /* flex: 3; */
     position: relative;
     max-width: 100%;
 
-    /* display: inline-block; */
     display: flex;
     flex-direction: row;
 
     margin: 0.3rem;
-    background-color: yellow;
+    /* background-color: yellow; */
   `;
   const Bottom = styled.div`
-    flex: 2;
-    /* position: relative; */
     max-width: 100%;
   `;
 
   const TopLeft = styled.div`
-    /* position: absolute; */
-    width: 40%;
-
-    left: 0;
-    top: 0;
+    flex: 5;
+    z-index: 2;
   `;
 
   const TopRight = styled.div`
-    /* position: absolute; */
-
-    width: 60%;
-
-    right: 0;
+    flex: 7;
+    z-index: 1;
   `;
 
   const TextBox = styled.div`
     background-color: white;
-    /* margin-right: 1rem; */
 
     margin-bottom: 0.3rem;
     border: black solid 2px;
 
     p {
-      font-size: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  `;
+
+  const TextBoxEnvironment = styled.div`
+    width: 130%;
+    z-index: 7;
+    background-color: white;
+
+    margin-bottom: 0.3rem;
+    border: black solid 2px;
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: 0.7rem;
+      }
     }
   `;
 
   const TitleBox = styled.div`
-    background-color: purple;
-    text-align: center;
+    display: inline-block;
 
-    /* width: 50%; */
+    margin-bottom: 0.3rem;
+    p {
+      background-color: white;
+      border: black solid 1px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  `;
+
+  const EnvironmentBox = styled.div`
+    position: relative;
+    width: 100%;
+  `;
+
+  const EnvironmentTitle = styled.div`
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
     display: inline-block;
 
     margin-bottom: 0.3rem;
@@ -84,17 +116,11 @@ const TracksPage = (props) => {
   `;
 
   const EnvironmentImage = styled.img`
-    /* position: absolute; */
     width: 100%;
-
-    /* z-index: 5; */
   `;
 
   const PoliticsImage = styled.img`
-    /* position: absolute; */
     width: 90%;
-
-    /* z-index: 5; */
   `;
 
   const preventDragHandler = (e) => {
@@ -115,6 +141,16 @@ const TracksPage = (props) => {
             onDragStart={preventDragHandler}
             src="/images/tracks/politics_image.svg"
           />
+
+          <TextBoxEnvironment>
+            <p>
+              In the face of climate change,
+              <strong> environmental involvement</strong> is more crucial than
+              ever. We encourage you to use technology to amplify awareness of
+              these issues and empower others to work towards the wellbeing of
+              our planet.
+            </p>
+          </TextBoxEnvironment>
         </TopLeft>
 
         <TopRight>
@@ -131,10 +167,15 @@ const TracksPage = (props) => {
             </p>
           </TextBox>
 
-          <EnvironmentImage
-            onDragStart={preventDragHandler}
-            src="/images/tracks/environment_image.svg"
-          />
+          <EnvironmentBox>
+            <EnvironmentImage
+              onDragStart={preventDragHandler}
+              src="/images/tracks/environment_image.svg"
+            />
+            <EnvironmentTitle>
+              <p>Environment</p>
+            </EnvironmentTitle>
+          </EnvironmentBox>
         </TopRight>
       </Top>
       {/* <br /> */}
