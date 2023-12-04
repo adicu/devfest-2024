@@ -66,6 +66,10 @@ const Button = styled.button`
   justify-content: space-between;
   font-size: 1.5rem;
 
+  width: 200px;
+  z-index: 5;
+  text-align: center;
+
   @media (max-width: ${process.env.mobileWidth}) {
     font-size: 1.1rem;
   }
@@ -82,7 +86,7 @@ const OptionsContainer = styled.div`
   left: 0;
   width: 100%;
   display: ${(props) => (props.isDropdownOpen ? "block" : "none")};
-  z-index: 1;
+  z-index: 10000;
 `;
 
 const OptionButton = styled.button`
@@ -103,7 +107,7 @@ const OptionButton = styled.button`
 const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("About");
-  const trackOptions = ["About", "Tracks"];
+  const trackOptions = ["About", "Tracks", "Sponsors", "Schedule", "Workshops"];
 
   function useOutsideAlerter(ref) {
     useEffect(() => {

@@ -1,7 +1,4 @@
-import getSchedulePages from "../pages/schedule/getSchedulePages";
 import getSpeakerPages from "../pages/speakers/getSpeakerPages";
-
-import getSchedulePageDict from "../pages/schedule/getSchedulePageDict";
 
 export function getPageDictionary(data) {
   const homePage = 1;
@@ -14,6 +11,9 @@ export function getPageDictionary(data) {
     Home: homePage,
     About: homePage,
     Tracks: tracksPage,
+    Sponsors: 3,
+    Schedule: 4,
+    Workshops: 5,
     // Schedule: schedulePage,
     // Speakers: speakersPage,
     // Judges: judgesPage,
