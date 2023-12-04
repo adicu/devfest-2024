@@ -2,6 +2,10 @@ import HomePage from "./pages/home/HomePage";
 import TracksPage from "./pages/tracks/TracksPage";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
+import SponsorsPage from "./pages/sponsors/SponsorsPage";
+import SchedulePage from "./pages/schedule/SchedulePage";
+import WorkshopsPage from "./pages/workshops/WorkshopsPage";
+
 export default function Pages(
   data,
   updatePage = null,
@@ -23,8 +27,12 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    <ComingSoonPage page="1" mobile={mobile} />,
-    <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
+    <SponsorsPage mobile={mobile} />,
+
+    <SchedulePage mobile={mobile} />,
+    <WorkshopsPage mobile={mobile} />,
+    <ComingSoonPage mobile={mobile} />,
+    // <ComingSoonPage className="page-no-mobile" mobile={mobile} />,
   ];
 
   return pages;

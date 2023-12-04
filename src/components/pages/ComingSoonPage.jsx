@@ -30,7 +30,7 @@ const ComingSoonPage = (props) => {
 
   return (
     <Container>
-      <TextBox>
+      {/* <TextBox>
         {props.page == "1" ? (
           <>
             <p>Coming Soon:</p>
@@ -45,6 +45,9 @@ const ComingSoonPage = (props) => {
         ) : (
           <p className="mobile-hidden">To Be Continued...</p>
         )}
+      </TextBox> */}
+      <TextBox>
+        <p>To Be Continued...</p>
       </TextBox>
     </Container>
   );

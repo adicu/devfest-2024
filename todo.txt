@@ -1,6 +1,0 @@
-- use correct link
-- update date of devfest in FAQ section
-
-- Sam - gcal experience page
-
-- stuff in Google Drive 
