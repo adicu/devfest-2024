@@ -9,6 +9,8 @@ const Page = (props) => {
     width: 100%;
     user-select: none;
 
+    padding: 1rem;
+
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;

@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+const textSizeMobile = "0.7rem";
+const textSize = "0.9rem";
+const titleSizeMobile = "1.3rem";
+const titleSize = "1.3rem";
+
 const TracksPage = (props) => {
   const Container = styled.div`
     width: 100%;
@@ -27,12 +32,15 @@ const TracksPage = (props) => {
     margin: 0.3rem;
   `;
   const Bottom = styled.div`
-    max-width: 100%;
+    /* max-width: 100%; */
+    width: 100%;
 
     /* background-color: red; */
 
     display: flex;
     flex-direction: row;
+    /* display: inline-block; */
+    /* position: relative; */
 
     margin-left: 0.3rem;
     margin-right: 0.3rem;
@@ -51,19 +59,57 @@ const TracksPage = (props) => {
   const TextBox = styled.div`
     background-color: white;
 
+    /* height: 70%; */
+
     margin-bottom: 0.3rem;
     border: black solid 2px;
 
     p {
-      font-size: 0.9rem;
+      font-size: ${textSize};
     }
 
     @media (max-width: ${process.env.mobileWidth}) {
       p {
-        font-size: 0.7rem;
+        font-size: ${textSizeMobile};
       }
     }
   `;
+
+  const MentalHealthTextBox = styled.div`
+    background-color: white;
+
+    height: 100%;
+
+    margin-bottom: 0.3rem;
+    border: black solid 2px;
+
+    p {
+      font-size: ${textSize};
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: ${textSizeMobile};
+      }
+    }
+  `;
+
+  // const MobileTextBox = styled.div`
+  //   background-color: white;
+
+  //   margin-bottom: 0.3rem;
+  //   border: black solid 2px;
+
+  //   p {
+  //     font-size: ${textSize};
+  //   }
+
+  //   @media (max-width: ${process.env.mobileWidth}) {
+  //     p {
+  //       font-size: ${textSizeMobile};
+  //     }
+  //   }
+  // `;
 
   const TextBoxEnvironment = styled.div`
     width: 130%;
@@ -74,12 +120,12 @@ const TracksPage = (props) => {
     border: black solid 2px;
 
     p {
-      font-size: 0.9rem;
+      font-size: ${textSize};
     }
 
     @media (max-width: ${process.env.mobileWidth}) {
       p {
-        font-size: 0.7rem;
+        font-size: ${textSizeMobile};
       }
     }
   `;
@@ -91,7 +137,7 @@ const TracksPage = (props) => {
     p {
       background-color: white;
       border: black solid 1px;
-      font-size: 1.3rem;
+      font-size: ${titleSize};
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
@@ -115,7 +161,7 @@ const TracksPage = (props) => {
     p {
       background-color: white;
       border: black solid 1px;
-      font-size: 1.3rem;
+      font-size: ${titleSize};
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
@@ -128,15 +174,28 @@ const TracksPage = (props) => {
 
   const MentalHealthImageDiv = styled.div`
     flex: 3;
+    height: 100%;
+    /* width: 50%; */
+    /* background-color: purple; */
+    /* display: inline-block; */
+    /* padding-left: 0.3rem; */
   `;
 
   const MentalHealthImage = styled.img`
     width: 100%;
+    /* height: 100%; */
   `;
 
   const MentalHealthText = styled.div`
     flex: 3;
     margin-left: 0.3rem;
+    /* height: 100%; */
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    /* height: 100%; */
+    /* background-color: yellow; */
   `;
 
   const PoliticsImage = styled.img`
@@ -205,19 +264,18 @@ const TracksPage = (props) => {
             src="/images/tracks/mental_health_image.svg"
           />
         </MentalHealthImageDiv>
-
         <MentalHealthText>
           <TitleBox>
             <p>Mental Health</p>
           </TitleBox>
-          <TextBox>
+          <MentalHealthTextBox>
             <p>
               <strong>Mental health</strong> is at the forefront of wellNESS.
               How can we promote a culture of openness and wellbeing? This track
               asks you to develop a project that addresses challenges in mental
               health or posits innovative ways to bring awareness to this topic.
             </p>
-          </TextBox>
+          </MentalHealthTextBox>
         </MentalHealthText>
       </Bottom>
     </Container>
