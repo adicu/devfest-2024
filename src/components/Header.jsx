@@ -229,7 +229,7 @@ const Header = (props) => {
           src="/images/titles/24.svg"
         />
       </TitleImageDiv>
-      <div class="mobile-hidden">
+      <div className="mobile-hidden">
         <ButtonNext onClick={goLeft}>Previous</ButtonNext>
         <ButtonNext onClick={goRight}>Next</ButtonNext>
         <NextPageMessage>
