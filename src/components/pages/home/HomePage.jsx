@@ -2,6 +2,14 @@ import styled from "@emotion/styled";
 
 import starBurst from "../../../../public/images/home/starburst.svg";
 
+const svgTitleSize = "5.5vw";
+const svgTitleSizeMobile = "14vw";
+const svgTitleSizeBig = "7rem";
+
+const textSizeMobile = "0.8rem";
+const textSize = "1vw";
+const textSizeBig = "1.3rem";
+
 const HomePage = (props) => {
   const Container = styled.div`
     width: 100%;
@@ -21,7 +29,18 @@ const HomePage = (props) => {
       float: center;
       margin-right: 0;
       margin-top: 0.3rem;
-      height: 2.3rem;
+      /* height: 2.3rem; */
+    }
+
+    /* background-color: red; */
+    height: ${svgTitleSize};
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      height: ${svgTitleSizeMobile};
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      height: ${svgTitleSizeBig};
     }
   `;
 
@@ -50,12 +69,18 @@ const HomePage = (props) => {
     }
 
     p {
-      font-size: 1rem;
+      font-size: ${textSize};
     }
 
     @media (max-width: ${process.env.mobileWidth}) {
       p {
-        font-size: 0.8rem;
+        font-size: ${textSizeMobile};
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${textSizeBig};
       }
     }
   `;
@@ -73,7 +98,7 @@ const HomePage = (props) => {
     font-size: 1.8rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 14px;
+      /* font-size: 14px; */
       font-size: 1.3rem;
     }
   `;
@@ -87,7 +112,17 @@ const HomePage = (props) => {
       float: center;
       margin-left: 1rem;
       margin-top: 0.3rem;
-      height: 2.3rem;
+      /* height: 2.3rem; */
+    }
+
+    height: ${svgTitleSize};
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      height: ${svgTitleSizeMobile};
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      height: ${svgTitleSizeBig};
     }
   `;
 
@@ -126,22 +161,30 @@ const HomePage = (props) => {
   `;
 
   const Question = styled.p`
-    font-size: 1rem;
+    font-size: ${textSize};
     font-weight: bold;
     margin-bottom: 0.1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 0.8rem;
+      font-size: ${textSizeMobile};
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      font-size: ${textSizeBig};
     }
   `;
 
   const Answer = styled.p`
-    font-size: 1rem;
+    font-size: ${textSize};
     margin-bottom: 1rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      font-size: 0.8rem;
-      margin-bottom: 0.2rem;
+      font-size: ${textSizeMobile};
+      /* margin-bottom: 0.2rem; */
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      font-size: ${textSizeBig};
     }
   `;
 

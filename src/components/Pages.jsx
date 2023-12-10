@@ -27,12 +27,11 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    <SponsorsPage mobile={mobile} />,
-
-    <SchedulePage mobile={mobile} />,
-    <WorkshopsPage mobile={mobile} />,
-    <ComingSoonPage mobile={mobile} />,
-    // <ComingSoonPage className="page-no-mobile" mobile={mobile} />,
+    // <SponsorsPage mobile={mobile} />,
+    // <SchedulePage mobile={mobile} />,
+    // <WorkshopsPage mobile={mobile} />,
+    <ComingSoonPage page="1" mobile={mobile} />,
+    <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
   ];
 
   return pages;

@@ -10,6 +10,9 @@ const Page = (props) => {
     user-select: none;
 
     padding: 1rem;
+    @media (max-width: ${process.env.mobileWidth}) {
+      padding: 0;
+    }
 
     overflow-y: scroll;
     overflow-x: hidden;

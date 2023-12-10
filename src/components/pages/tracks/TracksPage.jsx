@@ -1,11 +1,40 @@
 import styled from "@emotion/styled";
 
-const textSizeMobile = "0.7rem";
-const textSize = "0.9rem";
-const titleSizeMobile = "1.3rem";
-const titleSize = "1.3rem";
+// const textSizeMobile = "0.8rem";
+const svgTitleSize = "5.5vw";
+const svgTitleSizeMobile = "14vw";
+const svgTitleSizeBig = "7rem";
+
+const textSizeMobile = "3vw";
+const textSize = "1vw";
+const textSizeBig = "1.3rem";
+
+const titleSizeMobile = "4.6vw";
+const titleSize = "1.8vw";
+const titleSizeBig = "2rem";
 
 const TracksPage = (props) => {
+  const NextPageMessage = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* margin-right: 0.2rem; */
+    /* margin-top: 0.2rem; */
+    color: gray;
+
+    /* background-color: red; */
+
+    font-size: 1vw;
+
+    z-index: 1;
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      display: none;
+    }
+
+    /* background-color: yellow; */
+  `;
+
   const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -13,12 +42,29 @@ const TracksPage = (props) => {
   `;
 
   const TitleDiv = styled.div`
-    margin-left: 1rem;
+    position: relative;
+    /* margin-left: 1rem; */
     padding-top: 1rem;
+
+    /* width: ${svgTitleSize}; */
+    width: 100%;
+    text-align: center;
+    img {
+      height: ${svgTitleSize};
+    }
+
+    /* background-color: red; */
 
     @media (max-width: ${process.env.mobileWidth}) {
       img {
-        height: 2.3rem;
+        /* height: 2.3rem; */
+        height: ${svgTitleSizeMobile};
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      img {
+        height: ${svgTitleSizeBig};
       }
     }
   `;
@@ -32,15 +78,10 @@ const TracksPage = (props) => {
     margin: 0.3rem;
   `;
   const Bottom = styled.div`
-    /* max-width: 100%; */
     width: 100%;
-
-    /* background-color: red; */
 
     display: flex;
     flex-direction: row;
-    /* display: inline-block; */
-    /* position: relative; */
 
     margin-left: 0.3rem;
     margin-right: 0.3rem;
@@ -59,8 +100,6 @@ const TracksPage = (props) => {
   const TextBox = styled.div`
     background-color: white;
 
-    /* height: 70%; */
-
     margin-bottom: 0.3rem;
     border: black solid 2px;
 
@@ -71,6 +110,12 @@ const TracksPage = (props) => {
     @media (max-width: ${process.env.mobileWidth}) {
       p {
         font-size: ${textSizeMobile};
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${textSizeBig};
       }
     }
   `;
@@ -92,24 +137,13 @@ const TracksPage = (props) => {
         font-size: ${textSizeMobile};
       }
     }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${textSizeBig};
+      }
+    }
   `;
-
-  // const MobileTextBox = styled.div`
-  //   background-color: white;
-
-  //   margin-bottom: 0.3rem;
-  //   border: black solid 2px;
-
-  //   p {
-  //     font-size: ${textSize};
-  //   }
-
-  //   @media (max-width: ${process.env.mobileWidth}) {
-  //     p {
-  //       font-size: ${textSizeMobile};
-  //     }
-  //   }
-  // `;
 
   const TextBoxEnvironment = styled.div`
     width: 130%;
@@ -128,6 +162,12 @@ const TracksPage = (props) => {
         font-size: ${textSizeMobile};
       }
     }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${textSizeBig};
+      }
+    }
   `;
 
   const TitleBox = styled.div`
@@ -141,6 +181,18 @@ const TracksPage = (props) => {
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: ${titleSizeMobile};
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${titleSizeBig};
+      }
     }
   `;
 
@@ -166,39 +218,45 @@ const TracksPage = (props) => {
       padding-left: 1rem;
       padding-right: 1rem;
     }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: ${titleSizeMobile};
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${titleSizeBig};
+      }
+    }
   `;
 
   const EnvironmentImage = styled.img`
+    border: black solid 1px;
     width: 100%;
   `;
 
   const MentalHealthImageDiv = styled.div`
     flex: 3;
     height: 100%;
-    /* width: 50%; */
-    /* background-color: purple; */
-    /* display: inline-block; */
-    /* padding-left: 0.3rem; */
   `;
 
   const MentalHealthImage = styled.img`
+    border: black solid 1px;
     width: 100%;
-    /* height: 100%; */
   `;
 
   const MentalHealthText = styled.div`
     flex: 3;
     margin-left: 0.3rem;
-    /* height: 100%; */
-    /* display: inline-block; */
+    margin-right: 0.6rem;
     display: flex;
     flex-direction: column;
-    /* width: 50%; */
-    /* height: 100%; */
-    /* background-color: yellow; */
   `;
 
   const PoliticsImage = styled.img`
+    border: black solid 1px;
     width: 90%;
   `;
 
@@ -209,6 +267,7 @@ const TracksPage = (props) => {
   return (
     <Container>
       <TitleDiv>
+        {/* <NextPageMessage>(Click to advance)</NextPageMessage> */}
         <img
           onDragStart={preventDragHandler}
           src="/images/tracks/tracks_title.svg"
