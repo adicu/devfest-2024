@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const svgTitleSize = "5.5vw";
+const svgTitleSize = "4.0vw";
 const svgTitleSizeMobile = "14vw";
 const svgTitleSizeBig = "7rem";
 
@@ -21,8 +21,8 @@ const TitleDiv = styled.div`
     /* margin-left: 1rem; */
     padding-top: 1rem;
 
-     width: ${svgTitleSize};
-    //width: 50%;
+    // width: ${svgTitleSize};
+    width: 100%;
     text-align: center;
     img {
       height: ${svgTitleSize};
@@ -42,6 +42,81 @@ const TitleDiv = styled.div`
         height: ${svgTitleSizeBig};
       }
     }
+  `;
+
+const TextBox = styled.div`
+    background-color: white;
+    height:100%;
+
+    margin-bottom: 0.3rem;
+    border: black solid 2px;
+    
+
+    p {
+      font-size: ${textSize};
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: ${textSizeMobile};
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      p {
+        font-size: ${textSizeBig};
+      }
+    }
+  `;
+
+const Top = styled.div`
+    position: relative;
+    max-width: 100%;
+    height: 30%;
+  
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem;
+  `;
+const TopLeft = styled.div`
+    flex: 4;
+    margin-right:0.5rem;
+  `;
+const TopRight = styled.div`
+    flex: 6;
+    margin-left:0.5rem;
+  `;
+
+const Middle = styled.div`
+    position: relative;
+    max-width: 100%;
+    height: 30%;
+  
+    display: flex;
+    flex-direction: row;
+
+    margin: 0.5rem;
+  `;
+const MidLeft = styled.div`
+    flex: 6;
+    margin-right:0.5rem;
+  `;
+const MidRight = styled.div`
+    flex: 4;
+    margin-left:0.5rem;
+  `;
+
+const Bottom = styled.div`
+    position: relative;
+    max-width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem;
+  `;
+
+const BottomDiv = styled.div`
+    flex: 1;
   `;
 
 const WorkshopsPage = (props) => {
@@ -74,14 +149,55 @@ const WorkshopsPage = (props) => {
 
 
   return (
-      <Container>
-        <TitleDiv>
-          {/* <NextPageMessage>(Click to advance)</NextPageMessage> */}
-          <img
-              onDragStart={preventDragHandler}
-              src="/images/workshops/workshops_title.svg"
-          />
-        </TitleDiv>
+        <Container>
+            <TitleDiv>
+              {/* <NextPageMessage>(Click to advance)</NextPageMessage> */}
+              <img
+                  onDragStart={preventDragHandler}
+                  src="/images/workshops/workshops_title.svg"
+              />
+            </TitleDiv>
+            <Top>
+                <TopLeft>
+                    <TextBox>
+                        <p>
+                            Monday
+                        </p>
+                    </TextBox>
+                </TopLeft>
+                <TopRight>
+                    <TextBox>
+                        <p>
+                            Tuesday
+                        </p>
+                    </TextBox>
+                </TopRight>
+            </Top>
+            <Middle>
+                <MidLeft>
+                    <TextBox>
+                        <p>
+                            Wednesday
+                        </p>
+                    </TextBox>
+                </MidLeft>
+                <MidRight>
+                    <TextBox>
+                        <p>
+                            Thursday
+                        </p>
+                    </TextBox>
+                </MidRight>
+            </Middle>
+            <Bottom>
+                <BottomDiv>
+                    <TextBox>
+                        <p>
+                            Friday
+                        </p>
+                    </TextBox>
+                </BottomDiv>
+            </Bottom>
       </Container>
   );
 };
