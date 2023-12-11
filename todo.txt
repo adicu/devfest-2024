@@ -1,0 +1,6 @@
+- Fix header dropdown
+    - Make it change to what the current page is on when the page is changed in other ways
+    - Remove the gap underneath it.
+    - Make sure the width is right on all screens.
+
+- Other stuff from Google Doc
