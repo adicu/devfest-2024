@@ -277,7 +277,7 @@ const TracksPage = (props) => {
         <TopLeft>
           <PoliticsImage
             onDragStart={preventDragHandler}
-            src="/images/tracks/politics_image.svg"
+            src="/images/tracks/politics_image.jpg"
           />
 
           <TextBoxEnvironment>
@@ -308,7 +308,7 @@ const TracksPage = (props) => {
           <EnvironmentBox>
             <EnvironmentImage
               onDragStart={preventDragHandler}
-              src="/images/tracks/environment_image.svg"
+              src="/images/tracks/environment_image.jpg"
             />
             <EnvironmentTitle>
               <p>Environment</p>
@@ -320,7 +320,7 @@ const TracksPage = (props) => {
         <MentalHealthImageDiv>
           <MentalHealthImage
             onDragStart={preventDragHandler}
-            src="/images/tracks/mental_health_image.svg"
+            src="/images/tracks/mental_health_image.jpg"
           />
         </MentalHealthImageDiv>
         <MentalHealthText>
