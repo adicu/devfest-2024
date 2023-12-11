@@ -109,17 +109,32 @@ const preventDragHandler = (e) => {
 
 return (
   <Container>
+    {/*
     <TitleDiv>
       <img
         onDragStart={preventDragHandler}
         src="/images/sponsors/sponsors_title.svg"
       />
     </TitleDiv>
+    */}   
+    <TitleDiv>
+      <img style={{width:'100%'}}
+        onDragStart={preventDragHandler}
+        src="/images/sponsors/withsupportfrom_title.svg"
+      />
+    </TitleDiv>
     <Top>
       <TopLeft>
-      <TextBox>
+        {/*
+        <TextBox>
           <p>
             DevFest '24 has been made possible with the help of our sponsors!
+          </p>
+        </TextBox>
+        */}
+        <TextBox>
+          <p>
+            DevFest '24 has been made possible with the help of...
           </p>
         </TextBox>
       </TopLeft>
@@ -130,10 +145,10 @@ return (
         style={{width:200}}
         src="/images/sponsors/janestreet.png"/>
       </SponsorsBox>
-      <SponsorsBox>
+      <SponsorsBox style={{padding: '40px'}}>
         <img
         style={{width:200}}
-        src="/images/sponsors/echo3d.jpg"/>
+        src="/images/sponsors/echo3d.png"/>
       </SponsorsBox>
       <SponsorsBox>
         <img
