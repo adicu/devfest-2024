@@ -135,6 +135,11 @@ return (
         style={{width:200}}
         src="/images/sponsors/echo3d.jpg"/>
       </SponsorsBox>
+      <SponsorsBox>
+        <img
+        style={{width:100}}
+        src="/images/sponsors/cscu.png"/>
+      </SponsorsBox>
     </Bottom>
   </Container>
 );
