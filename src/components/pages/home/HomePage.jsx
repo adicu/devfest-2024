@@ -4,7 +4,7 @@ import starBurst from "../../../../public/images/home/starburst.svg";
 
 const svgTitleSize = "5.5vw";
 const svgTitleSizeMobile = "14vw";
-const svgTitleSizeBig = "6rem";
+const svgTitleSizeBig = "5rem";
 
 const textSizeMobile = "0.8rem";
 const textSize = "1vw";
