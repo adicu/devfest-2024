@@ -5,7 +5,8 @@ const svgTitleSize = "5.5vw";
 const svgTitleSizeMobile = "14vw";
 const svgTitleSizeBig = "5rem";
 
-const textSizeMobile = "0.8rem";
+// const textSizeMobile = "0.75rem";
+const textSizeMobile = "2.8vw";
 const textSize = "1vw";
 const textSizeBig = "1.1rem";
 

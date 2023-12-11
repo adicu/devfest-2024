@@ -6,11 +6,11 @@ const svgTitleSize = "5.5vw";
 const svgTitleSizeMobile = "14vw";
 const svgTitleSizeBig = "5rem";
 
-const textSizeMobile = "0.8rem";
+const textSizeMobile = "3vw";
 const textSize = "1vw";
 const textSizeBig = "1.1rem";
 
-const dateSizeMobile = "1.6rem";
+const dateSizeMobile = "6vw";
 const dateSize = "2vw";
 const dateSizeBig = "2.2rem";
 
@@ -98,7 +98,7 @@ const HomePage = (props) => {
     @media (max-width: ${process.env.mobileWidth}) {
       .bigdate {
         font-size: ${dateSizeMobile};
-        margin-bottom: 0.2rem;
+        /* margin-bottom: 0.2rem; */
       }
     }
 
