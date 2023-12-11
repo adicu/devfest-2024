@@ -229,13 +229,13 @@ const Header = (props) => {
           src="/images/titles/24.svg"
         />
       </TitleImageDiv>
-      <div className="mobile-hidden">
+      {/* <div className="mobile-hidden">
         <ButtonNext onClick={goLeft}>Previous</ButtonNext>
         <ButtonNext onClick={goRight}>Next</ButtonNext>
         <NextPageMessage>
           (Or click on the right page to advance)
         </NextPageMessage>
-      </div>
+      </div> */}
       <ButtonsContainer ref={wrapperRef}>
         {/* <Button> Schedule </Button> */}
 

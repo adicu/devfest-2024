@@ -14,6 +14,7 @@ const ComingSoonPage = (props) => {
 
     background-image: ${props.page == "1" ? `url(${starBurst.src})` : "none"};
     background-repeat: no-repeat;
+    background-position: left;
   `;
 
   const TextBox = styled.div`

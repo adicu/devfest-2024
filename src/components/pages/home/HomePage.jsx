@@ -10,10 +10,16 @@ const textSizeMobile = "0.8rem";
 const textSize = "1vw";
 const textSizeBig = "1.1rem";
 
+const dateSizeMobile = "1.6rem";
+const dateSize = "2vw";
+const dateSizeBig = "2.2rem";
+
 const HomePage = (props) => {
   const Container = styled.div`
     width: 100%;
     height: 100%;
+
+    /* background-color: purple; */
 
     background-image: url(${starBurst.src});
     background-position: left;
@@ -81,6 +87,24 @@ const HomePage = (props) => {
     @media (min-width: ${process.env.bigWidth}) {
       p {
         font-size: ${textSizeBig};
+      }
+    }
+
+    .bigdate {
+      font-size: ${dateSize};
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: ${process.env.mobileWidth}) {
+      .bigdate {
+        font-size: ${dateSizeMobile};
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    @media (min-width: ${process.env.bigWidth}) {
+      .bigdate {
+        font-size: ${dateSizeBig};
       }
     }
   `;
@@ -188,11 +212,24 @@ const HomePage = (props) => {
     }
   `;
 
+  //   const BigDate = styled.p`
+  //     font-size: ${dateSize};
+  //     margin-bottom: 1rem;
+
+  //     @media (max-width: ${process.env.mobileWidth}) {
+  //       font-size: ${dateSizeMobile};
+  //       margin-bottom: 0.2rem;
+  //     }
+
+  //     @media (min-width: ${process.env.bigWidth}) {
+  //       font-size: ${dateSizeBig};
+  //     }
+  //   `;
+
   const register = (event) => {
     event.stopPropagation();
-    window.location.href = "https://www.columbia.edu/";
-
-    console.log("register button clicked");
+    window.location.href =
+      "https://docs.google.com/forms/d/e/1FAIpQLSe80mii-9-7a-YEzShJt-WaBpfxWJzesrbOmULxTcu_YjHOAQ/viewform?usp=sf_link";
   };
 
   const preventDragHandler = (e) => {
@@ -207,6 +244,7 @@ const HomePage = (props) => {
       />
       <br />
       <AboutDiv>
+        <p className="bigdate">Jan 29 - Feb 4</p>
         <p>
           This <strong>week-long celebration of all things tech</strong>{" "}
           features workshops, speaker panels, and a hackathon to end all
