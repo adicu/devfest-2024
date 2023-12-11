@@ -219,6 +219,12 @@ const HomePage = (props) => {
           and build amazing projects.
         </p>
         <br />
+        <p>
+          <a href="https://calendar.google.com/calendar/u/0/r?cid=Y19iYzE0YzE1ZjU5MDJhOWFlZDk2NjMxMGU0OTNjYjllYzU5ZGRjZWMyMzdiZDI5NjNiYjRmNjdhMDE5YmJmMzVhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">
+            Tentative Schedule (GCal)
+          </a>
+        </p>
+        <br />
         <RegisterButton onClick={register}>Register</RegisterButton>
       </AboutDiv>
       <br />
