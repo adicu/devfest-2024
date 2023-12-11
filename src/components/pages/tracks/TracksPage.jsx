@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 // const textSizeMobile = "0.8rem";
 const svgTitleSize = "5.5vw";
 const svgTitleSizeMobile = "14vw";
-const svgTitleSizeBig = "7rem";
+const svgTitleSizeBig = "6rem";
 
-const textSizeMobile = "3vw";
+const textSizeMobile = "0.8rem";
 const textSize = "1vw";
-const textSizeBig = "1.3rem";
+const textSizeBig = "1.1rem";
 
 const titleSizeMobile = "4.6vw";
 const titleSize = "1.8vw";

@@ -4,11 +4,11 @@ import starBurst from "../../../../public/images/home/starburst.svg";
 
 const svgTitleSize = "5.5vw";
 const svgTitleSizeMobile = "14vw";
-const svgTitleSizeBig = "7rem";
+const svgTitleSizeBig = "6rem";
 
 const textSizeMobile = "0.8rem";
 const textSize = "1vw";
-const textSizeBig = "1.3rem";
+const textSizeBig = "1.1rem";
 
 const HomePage = (props) => {
   const Container = styled.div`
@@ -218,12 +218,12 @@ const HomePage = (props) => {
           Come join us and learn new skills, discover cutting-edge technologies,
           and build amazing projects.
         </p>
-        <br />
+        {/* <br />
         <p>
           <a href="https://calendar.google.com/calendar/u/0/r?cid=Y19iYzE0YzE1ZjU5MDJhOWFlZDk2NjMxMGU0OTNjYjllYzU5ZGRjZWMyMzdiZDI5NjNiYjRmNjdhMDE5YmJmMzVhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">
             Tentative Schedule (GCal)
           </a>
-        </p>
+        </p> */}
         <br />
         <RegisterButton onClick={register}>Register</RegisterButton>
       </AboutDiv>
