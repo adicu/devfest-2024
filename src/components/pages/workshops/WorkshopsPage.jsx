@@ -8,9 +8,11 @@ const textSizeMobile = "3vw";
 const textSize = "1vw";
 const textSizeBig = "1.3rem";
 
-const titleSizeMobile = "4.6vw";
-const titleSize = "1.8vw";
-const titleSizeBig = "2rem";
+const svgDaySize = "2.5vw";
+const svgDaySizeMobile = "10vw";
+const svgDaySizeBig = "5rem";
+
+
 
 const preventDragHandler = (e) => {
   e.preventDefault();
@@ -45,7 +47,7 @@ const TitleDiv = styled.div`
   `;
 
 const TextBox = styled.div`
-    background-color: white;
+    //background-color: white;
     height:100%;
 
     margin-bottom: 0.3rem;
@@ -53,20 +55,54 @@ const TextBox = styled.div`
     
 
     p {
+      position: relative;
       font-size: ${textSize};
+      margin-left: 2.0rem;
+      z-index:2;
     }
 
     @media (max-width: ${process.env.mobileWidth}) {
       p {
+        position: relative;
         font-size: ${textSizeMobile};
+        margin: 0.2rem;
+        z-index:2;
       }
     }
 
     @media (min-width: ${process.env.bigWidth}) {
       p {
+        position: relative;
         font-size: ${textSizeBig};
+        margin: 0.2rem;
+        z-index:2;
       }
     }
+    img {
+      height: ${svgDaySize};
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: ${process.env.mobileWidth}) {
+    img {
+      /* height: 2.3rem; */
+      height: ${svgDaySizeMobile};
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    }
+    
+    @media (min-width: ${process.env.bigWidth}) {
+    img {
+      height: ${svgDaySizeBig};
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    }
+  
   `;
 
 const Top = styled.div`
@@ -79,11 +115,19 @@ const Top = styled.div`
     margin: 0.5rem;
   `;
 const TopLeft = styled.div`
-    flex: 4;
+    flex:6;
     margin-right:0.5rem;
   `;
+const TopLeftSpeech = styled.div`
+    position: absolute;
+    display: block;
+    z-index:1;
+    img {
+      height: 10.0vw;
+    }
+`;
 const TopRight = styled.div`
-    flex: 6;
+    flex: 4;
     margin-left:0.5rem;
   `;
 
@@ -98,11 +142,11 @@ const Middle = styled.div`
     margin: 0.5rem;
   `;
 const MidLeft = styled.div`
-    flex: 6;
+    flex: 4;
     margin-right:0.5rem;
   `;
 const MidRight = styled.div`
-    flex: 4;
+    flex: 6;
     margin-left:0.5rem;
   `;
 
@@ -160,15 +204,29 @@ const WorkshopsPage = (props) => {
             <Top>
                 <TopLeft>
                     <TextBox>
+                        <img
+                            onDragStart={preventDragHandler}
+                            src="/images/workshops/Monday.svg"
+                        />
+                        <TopLeftSpeech>
+                            <img
+                                onDragStart={preventDragHandler}
+                                src="/images/workshops/text_bubble.svg"
+                            />
+                        </TopLeftSpeech>
                         <p>
-                            Monday
+                            Collaboration and tooling: git, VSCode, package managers, and deployment.
                         </p>
                     </TextBox>
                 </TopLeft>
                 <TopRight>
                     <TextBox>
+                        <img
+                            onDragStart={preventDragHandler}
+                            src="/images/workshops/Tuesday.svg"
+                        />
                         <p>
-                            Tuesday
+                            Backend: Creating the mitochondria of your web app.
                         </p>
                     </TextBox>
                 </TopRight>
@@ -176,15 +234,23 @@ const WorkshopsPage = (props) => {
             <Middle>
                 <MidLeft>
                     <TextBox>
+                        <img
+                            onDragStart={preventDragHandler}
+                            src="/images/workshops/Wednesday.svg"
+                        />
                         <p>
-                            Wednesday
+                            Frontend: I came, I saw, I designed. Intro to React, Next. js, HTML, JavaScript, TypeScript, and CSS.
                         </p>
                     </TextBox>
                 </MidLeft>
                 <MidRight>
                     <TextBox>
+                        <img
+                            onDragStart={preventDragHandler}
+                            src="/images/workshops/Thursday.svg"
+                        />
                         <p>
-                            Thursday
+                            AI/ML: Are you smarter than a recommendation system? Making machines do smart things.
                         </p>
                     </TextBox>
                 </MidRight>
@@ -192,8 +258,12 @@ const WorkshopsPage = (props) => {
             <Bottom>
                 <BottomDiv>
                     <TextBox>
+                        <img
+                            onDragStart={preventDragHandler}
+                            src="/images/workshops/Friday.svg"
+                        />
                         <p>
-                            Friday
+                            Lightning Talks.
                         </p>
                     </TextBox>
                 </BottomDiv>
