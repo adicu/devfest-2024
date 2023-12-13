@@ -1,16 +1,12 @@
 import styled from "@emotion/styled";
 
 const svgTitleSize = "4.0vw";
-const svgTitleSizeMobile = "14vw";
-const svgTitleSizeBig = "7rem";
-
-const textSizeMobile = "3vw";
-const textSize = "1vw";
-const textSizeBig = "1.3rem";
+const svgTitleSizeMobile = "7vw";
+const svgTitleSizeBig = "3.5rem";
 
 const svgDaySize = "2.5vw";
-const svgDaySizeMobile = "10vw";
-const svgDaySizeBig = "5rem";
+const svgDaySizeMobile = "7vw";
+const svgDaySizeBig = "3.5rem";
 
 
 
@@ -20,25 +16,20 @@ const preventDragHandler = (e) => {
 
 const TitleDiv = styled.div`
     position: relative;
-    /* margin-left: 1rem; */
     padding-top: 1rem;
+    margin-bottom: 1rem;
 
-    // width: ${svgTitleSize};
     width: 100%;
     text-align: center;
     img {
       height: ${svgTitleSize};
     }
-
-    /* background-color: red; */
-
+  
     @media (max-width: ${process.env.mobileWidth}) {
       img {
-        /* height: 2.3rem; */
         height: ${svgTitleSizeMobile};
       }
     }
-
     @media (min-width: ${process.env.bigWidth}) {
       img {
         height: ${svgTitleSizeBig};
@@ -47,60 +38,64 @@ const TitleDiv = styled.div`
   `;
 
 const TextBox = styled.div`
-    //background-color: white;
     height:100%;
-
     margin-bottom: 0.3rem;
-    border: black solid 2px;
-    
-
-    p {
-      position: relative;
-      font-size: ${textSize};
-      margin-left: 2.0rem;
-      z-index:2;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
+  
+    .day_title {
         position: relative;
-        font-size: ${textSizeMobile};
-        margin: 0.2rem;
+        height: ${svgDaySize};
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        z-index:2;
+    }
+    .ws_bubble {
+        position: relative;
+        width: 95%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        z-index:2;
+    }
+    .yellow {
+      z-index:1;
+    }
+    @media (max-width: ${process.env.mobileWidth}) {
+      .day_title {
+        position: relative;
+        height: ${svgDaySizeMobile};
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        z-index:2;
+      }
+      .ws_bubble {
+        position: relative;
+        height:60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         z-index:2;
       }
     }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        position: relative;
-        font-size: ${textSizeBig};
-        margin: 0.2rem;
-        z-index:2;
-      }
-    }
-    img {
-      height: ${svgDaySize};
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    @media (max-width: ${process.env.mobileWidth}) {
-    img {
-      /* height: 2.3rem; */
-      height: ${svgDaySizeMobile};
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    }
     
     @media (min-width: ${process.env.bigWidth}) {
-    img {
-      height: ${svgDaySizeBig};
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+      .day_title {
+        position: relative;
+        height: ${svgDaySizeBig};
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        z-index:2;
+      }
+      .ws_bubble {
+        position: relative;
+        height:60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        z-index:2;
+      }
     }
   
   `;
@@ -109,59 +104,39 @@ const Top = styled.div`
     position: relative;
     max-width: 100%;
     height: 30%;
-  
     display: flex;
     flex-direction: row;
-    margin: 0.5rem;
+    margin-bottom: 0.5rem;
   `;
 const TopLeft = styled.div`
-    flex:6;
-    margin-right:0.5rem;
+    flex:5;
   `;
-const TopLeftSpeech = styled.div`
-    position: absolute;
-    display: block;
-    z-index:1;
-    img {
-      height: 10.0vw;
-    }
-`;
 const TopRight = styled.div`
-    flex: 4;
-    margin-left:0.5rem;
+    flex: 5;
   `;
 
 const Middle = styled.div`
     position: relative;
     max-width: 100%;
     height: 30%;
-  
     display: flex;
     flex-direction: row;
-
-    margin: 0.5rem;
+    margin-bottom: 1rem;
   `;
 const MidLeft = styled.div`
-    flex: 4;
-    margin-right:0.5rem;
-  `;
+    flex: 5; 
+`;
 const MidRight = styled.div`
-    flex: 6;
-    margin-left:0.5rem;
+    flex: 5;
   `;
 
 const Bottom = styled.div`
-    position: relative;
-    max-width: 100%;
+    max-width: 80%;
     height: 20%;
-    display: flex;
-    flex-direction: row;
-    margin: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
   `;
 
-const BottomDiv = styled.div`
-    flex: 1;
-  `;
 
 const WorkshopsPage = (props) => {
   const NextPageMessage = styled.div`
@@ -181,8 +156,6 @@ const WorkshopsPage = (props) => {
     @media (max-width: ${process.env.mobileWidth}) {
       display: none;
     }
-
-    /* background-color: yellow; */
   `;
 
   const Container = styled.div`
@@ -204,69 +177,74 @@ const WorkshopsPage = (props) => {
             <Top>
                 <TopLeft>
                     <TextBox>
-                        <img
+                        <img class="day_title"
                             onDragStart={preventDragHandler}
                             src="/images/workshops/Monday.svg"
                         />
-                        <TopLeftSpeech>
-                            <img
-                                onDragStart={preventDragHandler}
-                                src="/images/workshops/text_bubble.svg"
-                            />
-                        </TopLeftSpeech>
-                        <p>
-                            Collaboration and tooling: git, VSCode, package managers, and deployment.
-                        </p>
+                        <img class="ws_bubble"
+                            onDragStart={preventDragHandler}
+                            src="/images/workshops/Monday_ws.svg"
+                        />
                     </TextBox>
                 </TopLeft>
                 <TopRight>
                     <TextBox>
-                        <img
+                        <br/><br/>
+                        <img class="day_title"
                             onDragStart={preventDragHandler}
                             src="/images/workshops/Tuesday.svg"
                         />
-                        <p>
-                            Backend: Creating the mitochondria of your web app.
-                        </p>
+                        <img className="ws_bubble"
+                             onDragStart={preventDragHandler}
+                             src="/images/workshops/Tuesday_ws.svg"
+                        />
                     </TextBox>
                 </TopRight>
             </Top>
             <Middle>
                 <MidLeft>
                     <TextBox>
-                        <img
+                        <img class="day_title"
                             onDragStart={preventDragHandler}
                             src="/images/workshops/Wednesday.svg"
                         />
-                        <p>
-                            Frontend: I came, I saw, I designed. Intro to React, Next. js, HTML, JavaScript, TypeScript, and CSS.
-                        </p>
+                        <img className="ws_bubble"
+                             onDragStart={preventDragHandler}
+                             src="/images/workshops/Wednesday_ws.svg"
+                        />
+                        <br/>
+                        <img className="ws_bubble yellow"
+                             onDragStart={preventDragHandler}
+                             src="/images/workshops/yellow.svg"
+                        />
                     </TextBox>
                 </MidLeft>
                 <MidRight>
                     <TextBox>
-                        <img
+                        <br/><br/>
+                        <img class="day_title"
                             onDragStart={preventDragHandler}
                             src="/images/workshops/Thursday.svg"
                         />
-                        <p>
-                            AI/ML: Are you smarter than a recommendation system? Making machines do smart things.
-                        </p>
+
+                        <img className="ws_bubble"
+                             onDragStart={preventDragHandler}
+                             src="/images/workshops/Thursday_ws.svg"
+                        />
                     </TextBox>
                 </MidRight>
             </Middle>
             <Bottom>
-                <BottomDiv>
-                    <TextBox>
-                        <img
-                            onDragStart={preventDragHandler}
-                            src="/images/workshops/Friday.svg"
-                        />
-                        <p>
-                            Lightning Talks.
-                        </p>
-                    </TextBox>
-                </BottomDiv>
+                <TextBox>
+                    <img class="day_title"
+                        onDragStart={preventDragHandler}
+                        src="/images/workshops/Friday.svg"
+                    />
+                    <img className="ws_bubble"
+                         onDragStart={preventDragHandler}
+                         src="/images/workshops/Friday_ws.svg"
+                    />
+                </TextBox>
             </Bottom>
       </Container>
   );
