@@ -37,7 +37,6 @@ const ComingSoonPage = (props) => {
             <p>Coming Soon:</p>
             <br />
             <p>- Speakers</p>
-            <p>- Schedule</p>
             <p>- Events</p>
             <p>- & MORE!</p>
             <br className="mobile-shown" />

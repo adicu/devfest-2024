@@ -144,7 +144,7 @@ const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("About");
   // const trackOptions = ["About", "Tracks", "Sponsors", "Schedule", "Workshops"];
-  const trackOptions = ["About", "Tracks"];
+  const trackOptions = ["About", "Tracks", "Schedule"];
 
   const pages = Pages(
     props.data,

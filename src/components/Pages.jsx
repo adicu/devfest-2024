@@ -28,7 +28,12 @@ export default function Pages(
       mobile={mobile}
     />,
     // <SponsorsPage mobile={mobile} />,
-    // <SchedulePage mobile={mobile} />,
+    <SchedulePage 
+      data={data}
+      updatePage={updatePage}
+      pageDictionary={pageDictionary}
+      mobile={mobile} 
+    />,
     <WorkshopsPage mobile={mobile} />,
     <ComingSoonPage page="1" mobile={mobile} />,
     <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
