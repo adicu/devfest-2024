@@ -6,7 +6,7 @@ import Book from "../components/Book";
 import Sidepane from "../components/Sidepane";
 import Header from "../components/Header";
 
-import { getPageDictionary } from "../components/book-components/getPageDictionary";
+import { getPageDictionary } from "../components/pageDictionary";
 
 export async function getServerSideProps() {
   try {
@@ -67,6 +67,9 @@ export default function Home({ data }) {
   }
 
   const pageDictionary = getPageDictionary(data);
+  const pageTitles = getPageDictionary(data, true);
+
+  console.log(pageTitles);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(1);

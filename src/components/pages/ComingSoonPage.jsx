@@ -12,7 +12,7 @@ const ComingSoonPage = (props) => {
     align-items: center;
     justify-content: center;
 
-    background-image: ${props.page == "1" ? `url(${starBurst.src})` : "none"};
+    background-image: url(${starBurst.src});
     background-repeat: no-repeat;
     background-position: left;
   `;

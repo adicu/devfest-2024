@@ -142,12 +142,17 @@ const Header = (props) => {
 
   const handleDropdownChange = (option) => {
     setSelectedOption(option);
+    console.log(
+      `Updating page to ${props.pageDictionary} option ${option}, which gives ${
+        props.pageDictionary[option]
+      } of type ${typeof props.pageDictionary[option]}`
+    );
     props.updatePage(props.pageDictionary[option]);
     changeDropdown();
   };
 
   const goHome = () => {
-    props.updatePage(props.pageDictionary["Home"]);
+    props.updatePage(props.pageDictionary["About"]);
   };
 
   const preventDragHandler = (e) => {

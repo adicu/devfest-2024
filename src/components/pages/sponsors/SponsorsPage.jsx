@@ -48,16 +48,6 @@ const SponsorsPage = (props) => {
 
     margin-bottom: 0.3rem;
     border: black solid 2px;
-
-    p {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: 0.7rem;
-      }
-    }
   `;
 
   const SponsorsBox = styled.div`
@@ -133,7 +123,7 @@ const SponsorsPage = (props) => {
         </TextBox>
         */}
           <TextBox>
-            <p>DevFest '24 has been made possible with the help of...</p>
+            <h5>DevFest '24 has been made possible with the help of...</h5>
           </TextBox>
         </TopLeft>
       </Top>

@@ -2,24 +2,10 @@ import styled from "@emotion/styled";
 
 import starBurst from "../../../../public/images/home/starburst.svg";
 
-const svgTitleSize = "5.5vw";
-const svgTitleSizeMobile = "14vw";
-const svgTitleSizeBig = "5rem";
-
-const textSizeMobile = "3vw";
-const textSize = "1vw";
-const textSizeBig = "1.1rem";
-
-const dateSizeMobile = "6vw";
-const dateSize = "2vw";
-const dateSizeBig = "2.2rem";
-
 const HomePage = (props) => {
   const Container = styled.div`
     width: 100%;
     height: 100%;
-
-    /* background-color: purple; */
 
     background-image: url(${starBurst.src});
     background-position: left;
@@ -35,18 +21,6 @@ const HomePage = (props) => {
       float: center;
       margin-right: 0;
       margin-top: 0.3rem;
-      /* height: 2.3rem; */
-    }
-
-    /* background-color: red; */
-    height: ${svgTitleSize};
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      height: ${svgTitleSizeMobile};
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      height: ${svgTitleSizeBig};
     }
   `;
 
@@ -73,39 +47,6 @@ const HomePage = (props) => {
       padding: 0.3rem;
       padding-bottom: 0.7rem;
     }
-    /* 
-    p {
-      font-size: ${textSize};
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: ${textSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        font-size: ${textSizeBig};
-      }
-    } */
-
-    /* .bigdate {
-      font-size: ${dateSize};
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      .bigdate {
-        font-size: ${dateSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      .bigdate {
-        font-size: ${dateSizeBig};
-      }
-    } */
   `;
 
   const RegisterButton = styled.button`
@@ -121,7 +62,6 @@ const HomePage = (props) => {
     font-size: 1.8rem;
 
     @media (max-width: ${process.env.mobileWidth}) {
-      /* font-size: 14px; */
       font-size: 1.3rem;
     }
   `;
@@ -135,17 +75,6 @@ const HomePage = (props) => {
       float: center;
       margin-left: 1rem;
       margin-top: 0.3rem;
-      /* height: 2.3rem; */
-    }
-
-    height: ${svgTitleSize};
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      height: ${svgTitleSizeMobile};
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      height: ${svgTitleSizeBig};
     }
   `;
 
@@ -158,15 +87,6 @@ const HomePage = (props) => {
     float: right;
     width: 95%;
     padding: 0.5rem;
-
-    /* height: 40%; */
-    /* overflow-y: scroll; */
-    /* overflow-x: hidden; */
-    /* scrollbar-width: none; */
-
-    /* ::-webkit-scrollbar { */
-    /* display: none; */
-    /* } */
 
     border: black solid 2px;
     box-shadow: 5px 5px black;
@@ -184,50 +104,18 @@ const HomePage = (props) => {
   `;
 
   const Question = styled.p`
-    /* font-size: ${textSize}; */
-    font-weight: bold;
+    font-family: "PlotHolesBB-Bold";
+
     margin-bottom: 0.1rem;
-
-    /* @media (max-width: ${process.env.mobileWidth}) {
-      font-size: ${textSizeMobile};
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      font-size: ${textSizeBig};
-    } */
   `;
 
   const Answer = styled.p`
-    /* font-size: ${textSize}; */
     margin-bottom: 1rem;
-    /* 
-    @media (max-width: ${process.env.mobileWidth}) {
-      font-size: ${textSizeMobile};
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      font-size: ${textSizeBig};
-    } */
   `;
-
-  //   const BigDate = styled.p`
-  //     font-size: ${dateSize};
-  //     margin-bottom: 1rem;
-
-  //     @media (max-width: ${process.env.mobileWidth}) {
-  //       font-size: ${dateSizeMobile};
-  //       margin-bottom: 0.2rem;
-  //     }
-
-  //     @media (min-width: ${process.env.bigWidth}) {
-  //       font-size: ${dateSizeBig};
-  //     }
-  //   `;
 
   const register = (event) => {
     event.stopPropagation();
-    window.location.href =
-      "https://docs.google.com/forms/d/e/1FAIpQLSe80mii-9-7a-YEzShJt-WaBpfxWJzesrbOmULxTcu_YjHOAQ/viewform?usp=sf_link";
+    window.location.href = "https://forms.gle/JUZKqNf16qDa63HY9";
   };
 
   const preventDragHandler = (e) => {
@@ -237,6 +125,7 @@ const HomePage = (props) => {
   return (
     <Container>
       <AboutImage
+        className="svg-page-title"
         onDragStart={preventDragHandler}
         src="/images/titles/about.svg"
       />
@@ -244,10 +133,15 @@ const HomePage = (props) => {
       <AboutDiv>
         <h3 className="margin-bottom-1rem">Jan 29 - Feb 4</h3>
         <p>
-          This <strong>week-long celebration of all things tech</strong>{" "}
+          This
+          <span className="font-bold">
+            {" "}
+            week-long celebration of all things tech{" "}
+          </span>
           features workshops, speaker panels, and a hackathon to end all
           hackathons. Whether you're just getting started in the world of
-          programming or you're a seasoned pro, DevFest has something for you.
+          programming or you're a seasoned pro,{" "}
+          <span className="font-bold">DevFest</span> has something for you.
         </p>
         <br />
         <p>
@@ -258,7 +152,11 @@ const HomePage = (props) => {
         <RegisterButton onClick={register}>Register</RegisterButton>
       </AboutDiv>
       <br />
-      <FAQImage onDragStart={preventDragHandler} src="/images/titles/faq.svg" />
+      <FAQImage
+        className="svg-page-title"
+        onDragStart={preventDragHandler}
+        src="/images/titles/faq.svg"
+      />
       <FAQDiv>
         <Question>Is the hackathon online or in-person?</Question>
         <Answer>
