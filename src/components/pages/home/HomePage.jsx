@@ -294,14 +294,7 @@ const HomePage = (props) => {
           focus on while working on their projects. Each track has specific
           prizes attached.
         </Answer>
-        <Question>
-          What are the hackathon tracks and what do they mean?
-        </Question>
-        <Answer>
-          The tracks provide participants with specific topics or fields to
-          focus on while working on their projects. Each track has specific
-          prizes attached.
-        </Answer>
+
         <Question>Do I have to follow a specific track?</Question>
         <Answer>
           No, you are welcome to submit a general project that does not belong
