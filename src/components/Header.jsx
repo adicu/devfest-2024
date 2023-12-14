@@ -14,22 +14,6 @@ const HeaderContainer = styled.div`
   @media (max-width: ${process.env.mobileWidth}) {
     flex-direction: column;
     align-items: center;
-    /* justify-content: auto; */
-    /* overflow: wrap; */
-  }
-
-  /* background-color: orange; */
-`;
-
-const NextPageMessage = styled.div`
-  color: gray;
-
-  font-size: 0.8rem;
-
-  z-index: 1;
-
-  @media (max-width: ${process.env.mobileWidth}) {
-    display: none;
   }
 `;
 
@@ -88,29 +72,6 @@ const Button = styled.button`
   }
 `;
 
-const ButtonNext = styled.button`
-  background-color: #fff;
-  color: #000;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-weight: bold;
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid #888;
-  border-left: 1px solid #888;
-  border-right: 1px solid #888;
-  border-bottom: 1px solid #888;
-  display: inline-block;
-  font-size: 1.5rem;
-
-  width: 9rem;
-  text-align: center;
-
-  :active {
-    background-color: #eee;
-  }
-`;
-
 const Arrow = styled.span`
   margin-left: 5px;
   display: inline-block;
@@ -143,8 +104,7 @@ const OptionButton = styled.button`
 const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("About");
-  // const trackOptions = ["About", "Tracks", "Sponsors", "Schedule", "Workshops"];
-  const trackOptions = ["About", "Tracks"];
+  const trackOptions = ["About", "Tracks", "Sponsors", "Schedule", "Workshops"];
 
   const pages = Pages(
     props.data,
@@ -177,9 +137,6 @@ const Header = (props) => {
   useOutsideAlerter(wrapperRef);
 
   const changeDropdown = () => {
-    // if (!isDropdownOpen) {
-    // setDropdownOpen(true);
-    // }
     setDropdownOpen(!isDropdownOpen);
   };
 
@@ -197,26 +154,6 @@ const Header = (props) => {
     e.preventDefault();
   };
 
-  function goLeft() {
-    let desktopPage = Math.floor((props.currentPage + 1) / 2);
-    desktopPage -= 1;
-    let mobilePage = 2 * desktopPage;
-
-    if (mobilePage > 1) {
-      props.updatePage(mobilePage);
-    }
-  }
-
-  function goRight() {
-    let desktopPage = Math.floor((props.currentPage + 1) / 2);
-    desktopPage += 1;
-    let mobilePage = 2 * desktopPage - 1;
-
-    if (mobilePage < pages.length) {
-      props.updatePage(mobilePage);
-    }
-  }
-
   return (
     <HeaderContainer>
       <TitleImageDiv onClick={goHome}>
@@ -229,16 +166,8 @@ const Header = (props) => {
           src="/images/titles/24.svg"
         />
       </TitleImageDiv>
-      {/* <div className="mobile-hidden">
-        <ButtonNext onClick={goLeft}>Previous</ButtonNext>
-        <ButtonNext onClick={goRight}>Next</ButtonNext>
-        <NextPageMessage>
-          (Or click on the right page to advance)
-        </NextPageMessage>
-      </div> */}
-      <ButtonsContainer ref={wrapperRef}>
-        {/* <Button> Schedule </Button> */}
 
+      <ButtonsContainer ref={wrapperRef}>
         <Button onClick={changeDropdown}>
           {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "►"}</Arrow>
         </Button>

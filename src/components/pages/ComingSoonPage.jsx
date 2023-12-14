@@ -22,7 +22,9 @@ const ComingSoonPage = (props) => {
 
     padding: 1rem;
 
-    font-size: 1.6rem;
+    p {
+      font-size: 1.6rem;
+    }
 
     border: black solid 2px;
 
@@ -32,24 +34,16 @@ const ComingSoonPage = (props) => {
   return (
     <Container>
       <TextBox>
-        {props.page == "1" ? (
-          <>
-            <p>Coming Soon:</p>
-            <br />
-            <p>- Speakers</p>
-            <p>- Schedule</p>
-            <p>- Events</p>
-            <p>- & MORE!</p>
-            <br className="mobile-shown" />
-            <p className="mobile-shown">To Be Continued...</p>
-          </>
-        ) : (
-          <p className="mobile-hidden">To Be Continued...</p>
-        )}
+        <>
+          <p>Coming Soon:</p>
+          <br />
+          <p>- Speakers</p>
+          <p>- Events</p>
+          <p>- & MORE DETAILS!</p>
+          <br />
+          <p>To Be Continued...</p>
+        </>
       </TextBox>
-      {/* <TextBox>
-        <p>To Be Continued...</p>
-      </TextBox> */}
     </Container>
   );
 };

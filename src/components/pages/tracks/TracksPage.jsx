@@ -15,27 +15,6 @@ const titleSize = "1.8vw";
 const titleSizeBig = "2rem";
 
 const TracksPage = (props) => {
-  const NextPageMessage = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    /* margin-right: 0.2rem; */
-    /* margin-top: 0.2rem; */
-    color: gray;
-
-    /* background-color: red; */
-
-    font-size: 1vw;
-
-    z-index: 1;
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      display: none;
-    }
-
-    /* background-color: yellow; */
-  `;
-
   const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -53,8 +32,6 @@ const TracksPage = (props) => {
     img {
       height: ${svgTitleSize};
     }
-
-    /* background-color: red; */
 
     @media (max-width: ${process.env.mobileWidth}) {
       img {
@@ -104,7 +81,7 @@ const TracksPage = (props) => {
     margin-bottom: 0.3rem;
     border: black solid 2px;
 
-    p {
+    /* p {
       font-size: ${textSize};
     }
 
@@ -118,7 +95,7 @@ const TracksPage = (props) => {
       p {
         font-size: ${textSizeBig};
       }
-    }
+    } */
   `;
 
   const MentalHealthTextBox = styled.div`
@@ -129,7 +106,7 @@ const TracksPage = (props) => {
     margin-bottom: 0.3rem;
     border: black solid 2px;
 
-    p {
+    /* p {
       font-size: ${textSize};
     }
 
@@ -143,7 +120,7 @@ const TracksPage = (props) => {
       p {
         font-size: ${textSizeBig};
       }
-    }
+    } */
   `;
 
   const TextBoxEnvironment = styled.div`
@@ -154,7 +131,7 @@ const TracksPage = (props) => {
     margin-bottom: 0.3rem;
     border: black solid 2px;
 
-    p {
+    /* p {
       font-size: ${textSize};
     }
 
@@ -168,23 +145,23 @@ const TracksPage = (props) => {
       p {
         font-size: ${textSizeBig};
       }
-    }
+    } */
   `;
 
   const TitleBox = styled.div`
     display: inline-block;
 
     margin-bottom: 0.3rem;
-    p {
+    h4 {
       background-color: white;
       border: black solid 1px;
-      font-size: ${titleSize};
+      /* font-size: ${titleSize}; */
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
-    @media (max-width: ${process.env.mobileWidth}) {
+    /* @media (max-width: ${process.env.mobileWidth}) {
       p {
         font-size: ${titleSizeMobile};
       }
@@ -194,7 +171,7 @@ const TracksPage = (props) => {
       p {
         font-size: ${titleSizeBig};
       }
-    }
+    } */
   `;
 
   const EnvironmentBox = styled.div`
@@ -211,16 +188,16 @@ const TracksPage = (props) => {
     display: inline-block;
 
     margin-bottom: 0.3rem;
-    p {
+    h4 {
       background-color: white;
       border: black solid 1px;
-      font-size: ${titleSize};
+      /* font-size: ${titleSize}; */
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
-    @media (max-width: ${process.env.mobileWidth}) {
+    /* @media (max-width: ${process.env.mobileWidth}) {
       p {
         font-size: ${titleSizeMobile};
       }
@@ -230,7 +207,7 @@ const TracksPage = (props) => {
       p {
         font-size: ${titleSizeBig};
       }
-    }
+    } */
   `;
 
   const EnvironmentImage = styled.img`
@@ -294,7 +271,7 @@ const TracksPage = (props) => {
 
         <TopRight>
           <TitleBox>
-            <p>Politics</p>
+            <h4>Politics</h4>
           </TitleBox>
           <TextBox>
             <p>
@@ -312,7 +289,7 @@ const TracksPage = (props) => {
               src="/images/tracks/environment_image.jpg"
             />
             <EnvironmentTitle>
-              <p>Environment</p>
+              <h4>Environment</h4>
             </EnvironmentTitle>
           </EnvironmentBox>
         </TopRight>
@@ -326,7 +303,7 @@ const TracksPage = (props) => {
         </MentalHealthImageDiv>
         <MentalHealthText>
           <TitleBox>
-            <p>Mental Health</p>
+            <h4>Mental Health</h4>
           </TitleBox>
           <MentalHealthTextBox>
             <p>

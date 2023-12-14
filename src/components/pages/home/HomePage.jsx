@@ -73,7 +73,7 @@ const HomePage = (props) => {
       padding: 0.3rem;
       padding-bottom: 0.7rem;
     }
-
+    /* 
     p {
       font-size: ${textSize};
     }
@@ -88,9 +88,9 @@ const HomePage = (props) => {
       p {
         font-size: ${textSizeBig};
       }
-    }
+    } */
 
-    .bigdate {
+    /* .bigdate {
       font-size: ${dateSize};
       margin-bottom: 1rem;
     }
@@ -98,7 +98,6 @@ const HomePage = (props) => {
     @media (max-width: ${process.env.mobileWidth}) {
       .bigdate {
         font-size: ${dateSizeMobile};
-        /* margin-bottom: 0.2rem; */
       }
     }
 
@@ -106,7 +105,7 @@ const HomePage = (props) => {
       .bigdate {
         font-size: ${dateSizeBig};
       }
-    }
+    } */
   `;
 
   const RegisterButton = styled.button`
@@ -185,31 +184,30 @@ const HomePage = (props) => {
   `;
 
   const Question = styled.p`
-    font-size: ${textSize};
+    /* font-size: ${textSize}; */
     font-weight: bold;
     margin-bottom: 0.1rem;
 
-    @media (max-width: ${process.env.mobileWidth}) {
+    /* @media (max-width: ${process.env.mobileWidth}) {
       font-size: ${textSizeMobile};
     }
 
     @media (min-width: ${process.env.bigWidth}) {
       font-size: ${textSizeBig};
-    }
+    } */
   `;
 
   const Answer = styled.p`
-    font-size: ${textSize};
+    /* font-size: ${textSize}; */
     margin-bottom: 1rem;
-
+    /* 
     @media (max-width: ${process.env.mobileWidth}) {
       font-size: ${textSizeMobile};
-      /* margin-bottom: 0.2rem; */
     }
 
     @media (min-width: ${process.env.bigWidth}) {
       font-size: ${textSizeBig};
-    }
+    } */
   `;
 
   //   const BigDate = styled.p`
@@ -244,7 +242,7 @@ const HomePage = (props) => {
       />
       <br />
       <AboutDiv>
-        <p className="bigdate">Jan 29 - Feb 4</p>
+        <h3 className="margin-bottom-1rem">Jan 29 - Feb 4</h3>
         <p>
           This <strong>week-long celebration of all things tech</strong>{" "}
           features workshops, speaker panels, and a hackathon to end all
@@ -256,12 +254,6 @@ const HomePage = (props) => {
           Come join us and learn new skills, discover cutting-edge technologies,
           and build amazing projects.
         </p>
-        {/* <br />
-        <p>
-          <a href="https://calendar.google.com/calendar/u/0/r?cid=Y19iYzE0YzE1ZjU5MDJhOWFlZDk2NjMxMGU0OTNjYjllYzU5ZGRjZWMyMzdiZDI5NjNiYjRmNjdhMDE5YmJmMzVhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">
-            Tentative Schedule (GCal)
-          </a>
-        </p> */}
         <br />
         <RegisterButton onClick={register}>Register</RegisterButton>
       </AboutDiv>

@@ -2,162 +2,154 @@ import styled from "@emotion/styled";
 
 const SponsorsPage = (props) => {
   const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  user-select: none;
-`;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+  `;
 
-const TitleDiv = styled.div`
-  margin-left: 1rem;
-  padding-top: 1rem;
+  const TitleDiv = styled.div`
+    margin-left: 1rem;
+    padding-top: 1rem;
 
-  @media (max-width: ${process.env.mobileWidth}) {
-    img {
-      height: 2.3rem;
+    @media (max-width: ${process.env.mobileWidth}) {
+      img {
+        height: 2.3rem;
+      }
     }
-  }
-`;
-const Top = styled.div`
-  position: relative;
-  max-width: 100%;
+  `;
+  const Top = styled.div`
+    position: relative;
+    max-width: 100%;
 
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  margin: 0.3rem;
-`;
-const Bottom = styled.div`
-  max-width: 100%;
+    margin: 0.3rem;
+  `;
+  const Bottom = styled.div`
+    max-width: 100%;
 
-  /* background-color: red; */
+    /* background-color: red; */
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
-`;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+  `;
 
-const TopLeft = styled.div`
-  flex: 5;
-  z-index: 2;
-`;
+  const TopLeft = styled.div`
+    flex: 5;
+    z-index: 2;
+  `;
 
-const TextBox = styled.div`
-  background-color: white;
+  const TextBox = styled.div`
+    background-color: white;
 
-  margin-bottom: 0.3rem;
-  border: black solid 2px;
+    margin-bottom: 0.3rem;
+    border: black solid 2px;
 
-  p {
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: ${process.env.mobileWidth}) {
     p {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
     }
-  }
-`;
 
-const SponsorsBox = styled.div`
-  display: flex;           
-  justify-content: center; 
-  align-items: center;     
-  text-align: center;     
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  `;
 
-  background-color: white;
-  margin-bottom: 0.3rem;
-  border: black solid 2px;
-  padding: 20px;
-  height: 100%;
+  const SponsorsBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-  p {
-    font-size: 0.9rem;
-  }
+    background-color: white;
+    margin-bottom: 0.3rem;
+    border: black solid 2px;
+    padding: 20px;
+    height: 100%;
 
-  @media (max-width: ${process.env.mobileWidth}) {
     p {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
     }
-  }
-`;
 
-const TextBoxEnvironment = styled.div`
-  width: 130%;
-  z-index: 7;
-  background-color: white;
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  `;
 
-  margin-bottom: 0.3rem;
-  border: black solid 2px;
+  const TextBoxEnvironment = styled.div`
+    width: 130%;
+    z-index: 7;
+    background-color: white;
 
-  p {
-    font-size: 0.9rem;
-  }
+    margin-bottom: 0.3rem;
+    border: black solid 2px;
 
-  @media (max-width: ${process.env.mobileWidth}) {
     p {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
     }
-  }
-`;
 
+    @media (max-width: ${process.env.mobileWidth}) {
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  `;
 
-const preventDragHandler = (e) => {
-  e.preventDefault();
-};
+  const preventDragHandler = (e) => {
+    e.preventDefault();
+  };
 
-return (
-  <Container>
-    {/*
+  return (
+    <Container>
+      {/*
     <TitleDiv>
       <img
         onDragStart={preventDragHandler}
         src="/images/sponsors/sponsors_title.svg"
       />
     </TitleDiv>
-    */}   
-    <TitleDiv>
-      <img style={{width:'100%'}}
-        onDragStart={preventDragHandler}
-        src="/images/sponsors/withsupportfrom_title.svg"
-      />
-    </TitleDiv>
-    <Top>
-      <TopLeft>
-        {/*
+    */}
+      <TitleDiv>
+        <img
+          style={{ width: "100%" }}
+          onDragStart={preventDragHandler}
+          src="/images/sponsors/withsupportfrom_title.svg"
+        />
+      </TitleDiv>
+      <Top>
+        <TopLeft>
+          {/*
         <TextBox>
           <p>
             DevFest '24 has been made possible with the help of our sponsors!
           </p>
         </TextBox>
         */}
-        <TextBox>
-          <p>
-            DevFest '24 has been made possible with the help of...
-          </p>
-        </TextBox>
-      </TopLeft>
-    </Top>
-    <Bottom>
-      <SponsorsBox>
-        <img
-        style={{width:200}}
-        src="/images/sponsors/janestreet.png"/>
-      </SponsorsBox>
-      <SponsorsBox style={{padding: '40px'}}>
-        <img
-        style={{width:200}}
-        src="/images/sponsors/echo3d.png"/>
-      </SponsorsBox>
-      <SponsorsBox>
-        <img
-        style={{width:100}}
-        src="/images/sponsors/cscu.png"/>
-      </SponsorsBox>
-    </Bottom>
-  </Container>
-);
+          <TextBox>
+            <p>DevFest '24 has been made possible with the help of...</p>
+          </TextBox>
+        </TopLeft>
+      </Top>
+      <Bottom>
+        <SponsorsBox>
+          <img style={{ width: 200 }} src="/images/sponsors/janestreet.png" />
+        </SponsorsBox>
+        <SponsorsBox style={{ padding: "40px" }}>
+          <img style={{ width: 200 }} src="/images/sponsors/echo3d.png" />
+        </SponsorsBox>
+        <SponsorsBox>
+          <img style={{ width: 100 }} src="/images/sponsors/cscu.png" />
+        </SponsorsBox>
+      </Bottom>
+    </Container>
+  );
 };
 
 export default SponsorsPage;

@@ -12,8 +12,6 @@ export default function Pages(
   pageDictionary = null,
   mobile = false
 ) {
-  // pages must be even to display properly on desktop.
-  // Create a dummy div with className "page-no-mobile" to display page only on desktop
   let pages = [
     <HomePage
       data={data}
@@ -27,11 +25,10 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    // <SponsorsPage mobile={mobile} />,
-    // <SchedulePage mobile={mobile} />,
+    <SponsorsPage mobile={mobile} />,
+    <SchedulePage mobile={mobile} />,
     <WorkshopsPage mobile={mobile} />,
-    <ComingSoonPage page="1" mobile={mobile} />,
-    <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
+    <ComingSoonPage mobile={mobile} />,
   ];
 
   return pages;

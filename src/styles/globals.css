@@ -65,6 +65,46 @@ body {
   }
 }
 
+/* General Style Classes */
 .position-relative {
-    position: relative;
+  position: relative;
+}
+
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+
+/* Font Sizing */
+p {
+  font-size: 1vw;
+}
+h3 {
+  font-size: 2vw;
+}
+h4 {
+  font-size: 1.8vw;
+}
+
+@media (max-width: 1000px) {
+  p {
+    font-size: 3vw;
+  }
+  h3 {
+    font-size: 6vw;
+  }
+  h4 {
+    font-size: 4.6vw;
+  }
+}
+
+@media (min-width: 2000px) {
+  p {
+    font-size: 1.1rem;
+  }
+  h3 {
+    font-size: 2.2rem;
+  }
+  h4 {
+    font-size: 2rem;
+  }
 }
