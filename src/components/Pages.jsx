@@ -29,7 +29,7 @@ export default function Pages(
     />,
     // <SponsorsPage mobile={mobile} />,
     // <SchedulePage mobile={mobile} />,
-    // <WorkshopsPage mobile={mobile} />,
+    <WorkshopsPage mobile={mobile} />,
     <ComingSoonPage page="1" mobile={mobile} />,
     <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
   ];
