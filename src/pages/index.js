@@ -89,6 +89,7 @@ export default function Home({ data }) {
           <HeaderWrapper>
             <Header
               pageDictionary={pageDictionary}
+              pageTitles={pageTitles}
               currentPage={currentPage}
               previousPage={previousPage}
               updatePage={updatePage}

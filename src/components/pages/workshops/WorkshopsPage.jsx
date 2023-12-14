@@ -1,9 +1,5 @@
 import styled from "@emotion/styled";
 
-const svgTitleSize = "4.0vw";
-const svgTitleSizeMobile = "7vw";
-const svgTitleSizeBig = "3.5rem";
-
 const svgDaySize = "2.5vw";
 const svgDaySizeMobile = "7vw";
 const svgDaySizeBig = "3.5rem";
@@ -19,20 +15,6 @@ const TitleDiv = styled.div`
 
   width: 100%;
   text-align: center;
-  img {
-    height: ${svgTitleSize};
-  }
-
-  @media (max-width: ${process.env.mobileWidth}) {
-    img {
-      height: ${svgTitleSizeMobile};
-    }
-  }
-  @media (min-width: ${process.env.bigWidth}) {
-    img {
-      height: ${svgTitleSizeBig};
-    }
-  }
 `;
 
 const TextBox = styled.div`
@@ -145,6 +127,7 @@ const WorkshopsPage = (props) => {
     <Container>
       <TitleDiv>
         <img
+          className="svg-page-title"
           onDragStart={preventDragHandler}
           src="/images/workshops/workshops_title.svg"
         />

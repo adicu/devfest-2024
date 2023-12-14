@@ -46,6 +46,7 @@ export function getPageDictionary(data = null, invert = false) {
     3: "Sponsors",
     4: "Schedule",
     5: "Workshops",
+    6: "Coming Soon",
   };
 
   if (!invert) {

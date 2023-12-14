@@ -110,9 +110,9 @@ const Page = (props) => {
         ) : (
           <RelativeDiv>
             {props.left ? (
-              <PreviousPageMessage>{"ᐊ"} Previous</PreviousPageMessage>
+              <PreviousPageMessage>{"ᐊ--"}</PreviousPageMessage>
             ) : (
-              <NextPageMessage>Next {"ᐅ"}</NextPageMessage>
+              <NextPageMessage>{"--ᐅ"}</NextPageMessage>
             )}
           </RelativeDiv>
         )}
