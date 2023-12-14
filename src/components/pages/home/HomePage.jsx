@@ -25,6 +25,8 @@ const HomePage = (props) => {
   `;
 
   const AboutDiv = styled.div`
+    user-select: text;
+
     background-color: white;
     margin: 0.5rem;
     margin-right: 1rem;
@@ -79,6 +81,8 @@ const HomePage = (props) => {
   `;
 
   const FAQDiv = styled.div`
+    user-select: text;
+
     background-color: white;
     margin-top: 0.3rem;
     margin-left: 2.5%;
@@ -148,6 +152,8 @@ const HomePage = (props) => {
           Come join us and learn new skills, discover cutting-edge technologies,
           and build amazing projects.
         </p>
+        <br />
+        <h5 className="font-bold">Priority Registration Ends December 31st</h5>
         <br />
         <RegisterButton onClick={register}>Register</RegisterButton>
       </AboutDiv>

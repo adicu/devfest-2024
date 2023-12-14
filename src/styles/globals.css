@@ -108,6 +108,11 @@ h5 {
 }
 .svg-page-title {
   height: 5.5vw;
+  max-width: 100%;
+}
+.svg-page-title-long {
+  height: 4.5vw;
+  max-width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -126,6 +131,9 @@ h5 {
   .svg-page-title {
     height: 14vw;
   }
+  .svg-page-title-long {
+    height: 10vw;
+  }
 }
 
 @media (min-width: 2000px) {
@@ -143,5 +151,8 @@ h5 {
   }
   .svg-page-title {
     height: 5rem;
+  }
+  .svg-page-title-long {
+    height: 4.2rem;
   }
 }

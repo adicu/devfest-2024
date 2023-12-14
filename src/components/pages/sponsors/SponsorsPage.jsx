@@ -11,11 +11,7 @@ const SponsorsPage = (props) => {
     margin-left: 1rem;
     padding-top: 1rem;
 
-    @media (max-width: ${process.env.mobileWidth}) {
-      img {
-        height: 2.3rem;
-      }
-    }
+    text-align: center;
   `;
   const Top = styled.div`
     position: relative;
@@ -51,7 +47,7 @@ const SponsorsPage = (props) => {
   `;
 
   const SponsorsBox = styled.div`
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -98,21 +94,21 @@ const SponsorsPage = (props) => {
 
   return (
     <Container>
-      {/*
-    <TitleDiv>
-      <img
-        onDragStart={preventDragHandler}
-        src="/images/sponsors/sponsors_title.svg"
-      />
-    </TitleDiv>
-    */}
       <TitleDiv>
         <img
-          style={{ width: "100%" }}
+          className="svg-page-title"
+          onDragStart={preventDragHandler}
+          src="/images/sponsors/sponsors_title.svg"
+        />
+      </TitleDiv>
+
+      {/* <TitleDiv>
+        <img
+          className="svg-page-title-long"
           onDragStart={preventDragHandler}
           src="/images/sponsors/withsupportfrom_title.svg"
         />
-      </TitleDiv>
+      </TitleDiv> */}
       <Top>
         <TopLeft>
           {/*
@@ -123,19 +119,22 @@ const SponsorsPage = (props) => {
         </TextBox>
         */}
           <TextBox>
-            <h5>DevFest '24 has been made possible with the help of...</h5>
+            <h5>DevFest '24 is made possible with the help of...</h5>
           </TextBox>
         </TopLeft>
       </Top>
       <Bottom>
         <SponsorsBox>
           <img style={{ width: 200 }} src="/images/sponsors/janestreet.png" />
+          {/* <h4>Jane Street</h4> */}
         </SponsorsBox>
         <SponsorsBox style={{ padding: "40px" }}>
           <img style={{ width: 200 }} src="/images/sponsors/echo3d.png" />
+          {/* <h4>Echo3D</h4> */}
         </SponsorsBox>
         <SponsorsBox>
           <img style={{ width: 100 }} src="/images/sponsors/cscu.png" />
+          {/* <h4>CS @ Columbia</h4> */}
         </SponsorsBox>
       </Bottom>
     </Container>
