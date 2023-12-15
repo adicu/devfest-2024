@@ -25,8 +25,6 @@ const SponsorsPage = (props) => {
   const Bottom = styled.div`
     max-width: 100%;
 
-    /* background-color: red; */
-
     display: flex;
     flex-direction: column;
 
@@ -57,35 +55,6 @@ const SponsorsPage = (props) => {
     border: black solid 2px;
     padding: 20px;
     height: 100%;
-
-    p {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: 0.7rem;
-      }
-    }
-  `;
-
-  const TextBoxEnvironment = styled.div`
-    width: 130%;
-    z-index: 7;
-    background-color: white;
-
-    margin-bottom: 0.3rem;
-    border: black solid 2px;
-
-    p {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: 0.7rem;
-      }
-    }
   `;
 
   const preventDragHandler = (e) => {
@@ -125,15 +94,15 @@ const SponsorsPage = (props) => {
       </Top>
       <Bottom>
         <SponsorsBox>
-          <img style={{ width: 200 }} src="/images/sponsors/janestreet.png" />
+          <img width={200} src="/images/sponsors/janestreet.png" />
           {/* <h4>Jane Street</h4> */}
         </SponsorsBox>
         <SponsorsBox style={{ padding: "40px" }}>
-          <img style={{ width: 200 }} src="/images/sponsors/echo3d.png" />
+          <img width={200} src="/images/sponsors/echo3d.png" />
           {/* <h4>Echo3D</h4> */}
         </SponsorsBox>
         <SponsorsBox>
-          <img style={{ width: 100 }} src="/images/sponsors/cscu.png" />
+          <img width={100} src="/images/sponsors/cscu.png" />
           {/* <h4>CS @ Columbia</h4> */}
         </SponsorsBox>
       </Bottom>

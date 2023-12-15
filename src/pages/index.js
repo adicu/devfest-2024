@@ -68,6 +68,7 @@ export default function Home({ data }) {
 
   const pageDictionary = getPageDictionary(data);
   const pageTitles = getPageDictionary(data, true);
+  const pageDictionaryDesktop = getPageDictionary(data, true, true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(1);
@@ -86,13 +87,26 @@ export default function Home({ data }) {
       </Head>
       <main>
         <HomePageContainer>
-          <HeaderWrapper>
+          <HeaderWrapper className="mobile-hidden">
             <Header
               pageDictionary={pageDictionary}
               pageTitles={pageTitles}
               currentPage={currentPage}
+              pageDictionaryDesktop={pageDictionaryDesktop}
               previousPage={previousPage}
               updatePage={updatePage}
+              mobile={false}
+            />
+          </HeaderWrapper>
+          <HeaderWrapper className="mobile-shown">
+            <Header
+              pageDictionary={pageDictionary}
+              pageTitles={pageTitles}
+              currentPage={currentPage}
+              pageDictionaryDesktop={pageDictionaryDesktop}
+              previousPage={previousPage}
+              updatePage={updatePage}
+              mobile={true}
             />
           </HeaderWrapper>
           <MainContentWrapper>

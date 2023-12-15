@@ -39,14 +39,18 @@ export default function Pages(
   return pages;
 }
 
-export function getPageDictionary(data = null, invert = false) {
+export function getPageDictionary(
+  data = null,
+  invert = false,
+  desktop = false
+) {
   let dict = {
     1: "About",
     2: "Tracks",
     3: "Sponsors",
     4: "Schedule",
     5: "Workshops",
-    6: "Coming Soon",
+    6: "Up Next",
   };
 
   if (!invert) {
@@ -59,6 +63,38 @@ export function getPageDictionary(data = null, invert = false) {
     }
 
     return inverted_dict;
+  }
+
+  if (desktop) {
+    let desktop_dict = {};
+
+    for (const key in dict) {
+      if (dict.hasOwnProperty(key)) {
+        const page = Number(key);
+
+        let otherPage;
+        let firstWord;
+        let secondWord;
+        if (page % 2 == 1) {
+          otherPage = page + 1;
+          firstWord = dict[page];
+          secondWord = dict[otherPage];
+        } else {
+          otherPage = page - 1;
+          firstWord = dict[otherPage];
+          secondWord = dict[page];
+        }
+
+        const res = `${firstWord}/${secondWord}`;
+        desktop_dict[page] = res;
+        desktop_dict[otherPage] = res;
+
+        // console.log(`Key ${page}, other key ${otherPage}`);
+        // desktop_dict[Number(key)]  = desktop_dict[dict[key]];
+      }
+    }
+
+    return desktop_dict;
   }
 
   return dict;

@@ -41,7 +41,7 @@ const TitleImage = styled.img`
 `;
 
 const ButtonsContainer = styled.div`
-  display: flex;
+  /* display: flex; */
   gap: 0px;
   align-items: center;
   position: relative;
@@ -63,12 +63,14 @@ const Button = styled.button`
   justify-content: space-between;
   font-size: 1.5rem;
 
-  width: 200px;
+  width: 350px;
+  max-width: 100%;
   z-index: 5;
   text-align: center;
 
   @media (max-width: ${process.env.mobileWidth}) {
     font-size: 1.1rem;
+    width: 200px;
   }
 `;
 
@@ -103,8 +105,17 @@ const OptionButton = styled.button`
 
 const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("About");
-  const trackOptions = ["About", "Tracks", "Sponsors", "Schedule", "Workshops"];
+  let trackOptions = [];
+
+  if (props.mobile) {
+    const uniqueValues = [...new Set(Object.values(props.pageTitles))];
+    trackOptions = uniqueValues;
+  } else {
+    const uniqueValues = [
+      ...new Set(Object.values(props.pageDictionaryDesktop)),
+    ];
+    trackOptions = uniqueValues;
+  }
 
   const pages = Pages(
     props.data,
@@ -115,19 +126,13 @@ const Header = (props) => {
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          // alert("You clicked outside of me!");
           setDropdownOpen(false);
         }
       }
-      // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
-        // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [ref]);
@@ -140,14 +145,17 @@ const Header = (props) => {
     setDropdownOpen(!isDropdownOpen);
   };
 
+  const getPageName = (option) => {
+    if (props.mobile) {
+      return option;
+    } else {
+      const parts = option.split("/");
+      return parts[0];
+    }
+  };
+
   const handleDropdownChange = (option) => {
-    setSelectedOption(option);
-    console.log(
-      `Updating page to ${props.pageDictionary} option ${option}, which gives ${
-        props.pageDictionary[option]
-      } of type ${typeof props.pageDictionary[option]}`
-    );
-    props.updatePage(props.pageDictionary[option]);
+    props.updatePage(props.pageDictionary[getPageName(option)]);
     changeDropdown();
   };
 
@@ -174,7 +182,10 @@ const Header = (props) => {
 
       <ButtonsContainer ref={wrapperRef}>
         <Button onClick={changeDropdown}>
-          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "►"}</Arrow>
+          {props.mobile
+            ? props.pageTitles[props.currentPage]
+            : props.pageDictionaryDesktop[props.currentPage]}
+          <Arrow>{isDropdownOpen ? "▼" : "►"}</Arrow>
         </Button>
         {isDropdownOpen && (
           <OptionsContainer isDropdownOpen={isDropdownOpen}>
