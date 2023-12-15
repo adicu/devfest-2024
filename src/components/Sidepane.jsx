@@ -23,7 +23,7 @@ const Sidepane = (props) => {
 
     margin-bottom: 1rem;
 
-    background-color: white;
+    background-color: rgb(219, 186, 163);
 
     p {
       margin-top: 1rem;
@@ -94,22 +94,36 @@ const Sidepane = (props) => {
   return (
     <Container className="mobile-hidden">
       <FlexContainer>
-        {/* <LinksPane>
-          <p>Important Links</p>
-        </LinksPane> */}
+        <LinksPane>
+          <TextBox>
+            Registration
+          </TextBox>
+          <p>
+            <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=3bf0dec29f&e=dd5be849ae">Register</a> by 
+            the priority deadline December 30th for a guaranteed spot
+          </p>
+          <TextBox>
+            ADI Discord
+          </TextBox>
+          <p>
+            <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=122ccd51fe&e=dd5be849ae">Join</a> our 
+            Discord community to discuss coding questions, find opportunities, and more!
+          </p>
+        </LinksPane>
+
         <ADIPane>
           <TextBox>Who is ADI?</TextBox>
-
           <p>
             <a href="https://www.adicu.com/">ADI</a> (Application Development
             Initiative) is a student group at Columbia University that aims to
             foster a community of students interested in technology.
           </p>
-
-          {/* <SocialLinks>
-            <p>Social Links</p>
-          </SocialLinks> */}
-
+          <SocialLinks>
+            <p> </p>
+            <p>Stay in touch: <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=59e4aa27f1&e=dd5be849ae">Instagram</a>
+            , <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=63797d4d4f&e=dd5be849ae">TikTok</a>
+            </p>
+          </SocialLinks>
           <HostedByADI>Hosted by ADI</HostedByADI>
         </ADIPane>
       </FlexContainer>
