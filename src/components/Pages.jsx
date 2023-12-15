@@ -25,7 +25,6 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    <SponsorsPage mobile={mobile} />,
     <SchedulePage
       data={data}
       updatePage={updatePage}
@@ -33,6 +32,7 @@ export default function Pages(
       mobile={mobile}
     />,
     <WorkshopsPage mobile={mobile} />,
+    <SponsorsPage mobile={mobile} />,
     <ComingSoonPage mobile={mobile} />,
   ];
 
@@ -47,9 +47,9 @@ export function getPageDictionary(
   let dict = {
     1: "About",
     2: "Tracks",
-    3: "Sponsors",
-    4: "Schedule",
-    5: "Workshops",
+    5: "Sponsors",
+    3: "Schedule",
+    4: "Workshops",
     6: "Up Next",
   };
 
