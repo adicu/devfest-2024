@@ -47,19 +47,21 @@ const HomePage = (props) => {
       margin-left: 0.3rem;
       margin-right: 0.3rem;
       padding: 0.3rem;
-      padding-bottom: 0.7rem;
+      padding-bottom: 1rem;
     }
   `;
 
-  const RegisterButton = styled.button`
+  const RegisterButton = styled.a`
     text-decoration: none;
-    padding: 0.5rem;
+    padding: 0.7rem;
     color: white;
     background-color: #000d74;
     border-radius: none;
     box-shadow: 1px 1px black;
 
     cursor: pointer;
+
+    /* margin-bottom: 2rem; */
 
     font-size: 1.8rem;
 
@@ -117,10 +119,10 @@ const HomePage = (props) => {
     margin-bottom: 1rem;
   `;
 
-  const register = (event) => {
-    event.stopPropagation();
-    window.location.href = "https://forms.gle/JUZKqNf16qDa63HY9";
-  };
+  //   const register = (event) => {
+  //     event.stopPropagation();
+  //     window.location.href = "https://forms.gle/JUZKqNf16qDa63HY9";
+  //   };
 
   const preventDragHandler = (e) => {
     e.preventDefault();
@@ -153,9 +155,11 @@ const HomePage = (props) => {
           and build amazing projects.
         </p>
         <br />
-        <h5 className="font-bold">Priority Registration Ends December 31st</h5>
+        <h5 className="font-bold">Priority Registration Ends December 30th</h5>
         <br />
-        <RegisterButton onClick={register}>Register</RegisterButton>
+        <RegisterButton href="https://forms.gle/JUZKqNf16qDa63HY9">
+          Register
+        </RegisterButton>
       </AboutDiv>
       <br />
       <FAQImage
@@ -214,7 +218,8 @@ const HomePage = (props) => {
         <Answer>
           If you have any questions or concerns, please don't hesitate to reach
           out to us via email at devfestorganizers@googlegroups.com or via our
-          Discord server where you can ping any of the organizers.
+          <a href="https://discord.gg/9VtwmYVRnH"> Discord server</a> where you
+          can ping any of the organizers.
         </Answer>
       </FAQDiv>
     </Container>

@@ -35,7 +35,7 @@ const ComingSoonPage = (props) => {
     <Container>
       <TextBox>
         <>
-          <p>Coming Soon:</p>
+          <p>Up Next:</p>
           <br />
           <p>- Speakers</p>
           <p>- Events</p>

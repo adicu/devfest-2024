@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
-const svgDaySize = "2.5vw";
-const svgDaySizeMobile = "7vw";
+const svgDaySize = "1.5vw";
+const svgDaySizeMobile = "4vw";
 const svgDaySizeBig = "3.5rem";
+
+import yellow from "../../../../public/images/workshops/yellow.svg";
 
 const preventDragHandler = (e) => {
   e.preventDefault();
@@ -17,6 +19,20 @@ const TitleDiv = styled.div`
   text-align: center;
 `;
 
+const TextBoxClassic = styled.div`
+  background-color: white;
+  text-align: center;
+  border: black solid 2px;
+
+  padding: 0.3rem;
+
+  margin-bottom: 3rem;
+
+  @media (max-width: ${process.env.mobileWidth}) {
+    margin-bottom: 1rem;
+  }
+`;
+
 const TextBox = styled.div`
   height: 100%;
   margin-bottom: 0.3rem;
@@ -28,18 +44,19 @@ const TextBox = styled.div`
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
+    margin-bottom: 0.7rem;
   }
   .ws_bubble {
     position: relative;
-    width: 95%;
+    width: 97%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
   }
-  .yellow {
+  /* .yellow {
     z-index: 1;
-  }
+  } */
   @media (max-width: ${process.env.mobileWidth}) {
     .day_title {
       position: relative;
@@ -51,7 +68,7 @@ const TextBox = styled.div`
     }
     .ws_bubble {
       position: relative;
-      height: 60%;
+      /* height: 60%; */
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -70,7 +87,7 @@ const TextBox = styled.div`
     }
     .ws_bubble {
       position: relative;
-      height: 60%;
+      /* height: 60%; */
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -82,10 +99,10 @@ const TextBox = styled.div`
 const Top = styled.div`
   position: relative;
   max-width: 100%;
-  height: 30%;
+  /* height: 30%; */
   display: flex;
   flex-direction: row;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 `;
 const TopLeft = styled.div`
   flex: 5;
@@ -97,13 +114,18 @@ const TopRight = styled.div`
 const Middle = styled.div`
   position: relative;
   max-width: 100%;
-  height: 30%;
+  /* height: 30%; */
   display: flex;
   flex-direction: row;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 `;
 const MidLeft = styled.div`
   flex: 5;
+
+  background-image: url(${yellow.src});
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
 `;
 const MidRight = styled.div`
   flex: 5;
@@ -111,7 +133,7 @@ const MidRight = styled.div`
 
 const Bottom = styled.div`
   max-width: 80%;
-  height: 20%;
+  /* height: 20%; */
   margin-left: auto;
   margin-right: auto;
 `;
@@ -132,6 +154,27 @@ const WorkshopsPage = (props) => {
           src="/images/workshops/workshops_title.svg"
         />
       </TitleDiv>
+      <div>
+        <TextBoxClassic>
+          <p>
+            For us, DevFest is special because it’s not just a hackathon — it’s
+            a weeklong celebration of learning and building. To this end, and
+            acknowledging that “hacking” can be a specific skill not covered in
+            class or work, our team has created a custom curriculum to take
+            people from all levels to hackathon-ready, within a week. Devfest
+            workshops aren’t just about the what, but the why—the philosophy
+            that underlies tech’s transformative power. Join us on this exciting
+            journey!
+          </p>
+          <br />
+          <p>
+            <span className="font-bold">
+              All workshops will be hybrid (on Zoom and on Columbia's campus),
+              8-9pm.
+            </span>
+          </p>
+        </TextBoxClassic>
+      </div>
       <Top>
         <TopLeft>
           <TextBox>
@@ -177,12 +220,12 @@ const WorkshopsPage = (props) => {
               onDragStart={preventDragHandler}
               src="/images/workshops/Wednesday_ws.svg"
             />
-            <br />
+            {/* <br />
             <img
               className="ws_bubble yellow"
               onDragStart={preventDragHandler}
               src="/images/workshops/yellow.svg"
-            />
+            /> */}
           </TextBox>
         </MidLeft>
         <MidRight>

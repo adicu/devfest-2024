@@ -40,6 +40,7 @@ const SponsorsPage = (props) => {
   const TextBox = styled.div`
     background-color: white;
 
+    padding: 0.3rem;
     margin-bottom: 0.3rem;
     border: black solid 2px;
   `;
@@ -53,8 +54,10 @@ const SponsorsPage = (props) => {
     background-color: white;
     margin-bottom: 0.3rem;
     border: black solid 2px;
-    padding: 20px;
+    /* padding: 20px; */
     height: 100%;
+
+    padding: ${(props) => (props.forty ? "40px" : "20px")};
   `;
 
   const preventDragHandler = (e) => {
@@ -97,7 +100,7 @@ const SponsorsPage = (props) => {
           <img width={200} src="/images/sponsors/janestreet.png" />
           {/* <h4>Jane Street</h4> */}
         </SponsorsBox>
-        <SponsorsBox style={{ padding: "40px" }}>
+        <SponsorsBox forty={true}>
           <img width={200} src="/images/sponsors/echo3d.png" />
           {/* <h4>Echo3D</h4> */}
         </SponsorsBox>
