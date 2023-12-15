@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 
+const textSize = "1.5vh";
+const titleSize = "2vh";
+
 const Sidepane = (props) => {
   const Container = styled.div`
     flex: 1;
@@ -30,7 +33,7 @@ const Sidepane = (props) => {
       margin-left: 1rem;
       margin-right: 1rem;
 
-      font-size: 1rem;
+      font-size: ${textSize};
     }
   `;
 
@@ -46,7 +49,7 @@ const Sidepane = (props) => {
       margin-left: 1rem;
       margin-right: 1rem;
 
-      font-size: 1rem;
+      font-size: ${textSize};
     }
 
     /* overflow-y: scroll;
@@ -62,7 +65,7 @@ const Sidepane = (props) => {
   const TextBox = styled.div`
     background-color: white;
 
-    font-size: 1.2rem;
+    font-size: ${titleSize};
 
     margin-top: 1rem;
     margin-left: 1.5rem;
@@ -76,7 +79,7 @@ const Sidepane = (props) => {
   const HostedByADI = styled.div`
     background-color: white;
 
-    font-size: 1rem;
+    font-size: ${textSize};
 
     float: left;
 
@@ -95,19 +98,15 @@ const Sidepane = (props) => {
     <Container className="mobile-hidden">
       <FlexContainer>
         <LinksPane>
-          <TextBox>
-            Registration
-          </TextBox>
+          <TextBox>Registration</TextBox>
           <p>
-            <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=3bf0dec29f&e=dd5be849ae">Register</a> by 
-            the priority deadline December 30th for a guaranteed spot
+            <a href="https://forms.gle/JUZKqNf16qDa63HY9">Register</a> by the
+            priority deadline December 30th for a guaranteed spot
           </p>
-          <TextBox>
-            ADI Discord
-          </TextBox>
+          <TextBox>Devfest Discord</TextBox>
           <p>
-            <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=122ccd51fe&e=dd5be849ae">Join</a> our 
-            Discord community to discuss coding questions, find opportunities, and more!
+            <a href="https://discord.gg/9VtwmYVRnH">Join</a> our Devfest Discord
+            community to ask questions, find teammates, and more!
           </p>
         </LinksPane>
 
@@ -120,11 +119,14 @@ const Sidepane = (props) => {
           </p>
           <SocialLinks>
             <p> </p>
-            <p>Stay in touch: <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=59e4aa27f1&e=dd5be849ae">Instagram</a>
-            , <a href="https://adicu.us4.list-manage.com/track/click?u=62d8b690f349b99dd7e0f3205&id=63797d4d4f&e=dd5be849ae">TikTok</a>
+            <p>
+              Stay in touch:{" "}
+              <a href="https://instagram.com/adicolumbia">Instagram</a>,{" "}
+              <a href="https://www.tiktok.com/@adicolumbia">TikTok</a>,{" "}
+              <a href="https://discord.com/invite/ms5sa2Yq7T">Discord</a>
             </p>
           </SocialLinks>
-          <HostedByADI>Hosted by ADI</HostedByADI>
+          {/* <HostedByADI>Hosted by ADI</HostedByADI> */}
         </ADIPane>
       </FlexContainer>
     </Container>
