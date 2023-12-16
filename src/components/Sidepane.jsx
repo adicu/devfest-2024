@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 
+const textSize = "1.5vh";
+const titleSize = "2vh";
+
 const Sidepane = (props) => {
   const Container = styled.div`
     flex: 1;
@@ -23,14 +26,14 @@ const Sidepane = (props) => {
 
     margin-bottom: 1rem;
 
-    background-color: white;
+    background-color: rgb(219, 186, 163);
 
     p {
       margin-top: 1rem;
       margin-left: 1rem;
       margin-right: 1rem;
 
-      font-size: 1rem;
+      font-size: ${textSize};
     }
   `;
 
@@ -46,7 +49,7 @@ const Sidepane = (props) => {
       margin-left: 1rem;
       margin-right: 1rem;
 
-      font-size: 1rem;
+      font-size: ${textSize};
     }
 
     /* overflow-y: scroll;
@@ -62,7 +65,7 @@ const Sidepane = (props) => {
   const TextBox = styled.div`
     background-color: white;
 
-    font-size: 1.2rem;
+    font-size: ${titleSize};
 
     margin-top: 1rem;
     margin-left: 1.5rem;
@@ -76,7 +79,7 @@ const Sidepane = (props) => {
   const HostedByADI = styled.div`
     background-color: white;
 
-    font-size: 1rem;
+    font-size: ${textSize};
 
     float: left;
 
@@ -94,23 +97,36 @@ const Sidepane = (props) => {
   return (
     <Container className="mobile-hidden">
       <FlexContainer>
-        {/* <LinksPane>
-          <p>Important Links</p>
-        </LinksPane> */}
+        <LinksPane>
+          <TextBox>Registration</TextBox>
+          <p>
+            <a href="https://forms.gle/JUZKqNf16qDa63HY9">Register</a> by the
+            priority deadline December 30th for a guaranteed spot
+          </p>
+          <TextBox>Devfest Discord</TextBox>
+          <p>
+            <a href="https://discord.gg/9VtwmYVRnH">Join</a> our Devfest Discord
+            community to ask questions, find teammates, and more!
+          </p>
+        </LinksPane>
+
         <ADIPane>
           <TextBox>Who is ADI?</TextBox>
-
           <p>
             <a href="https://www.adicu.com/">ADI</a> (Application Development
             Initiative) is a student group at Columbia University that aims to
             foster a community of students interested in technology.
           </p>
-
-          {/* <SocialLinks>
-            <p>Social Links</p>
-          </SocialLinks> */}
-
-          <HostedByADI>Hosted by ADI</HostedByADI>
+          <SocialLinks>
+            <p> </p>
+            <p>
+              Stay in touch:{" "}
+              <a href="https://instagram.com/adicolumbia">Instagram</a>,{" "}
+              <a href="https://www.tiktok.com/@adicolumbia">TikTok</a>,{" "}
+              <a href="https://discord.com/invite/ms5sa2Yq7T">Discord</a>
+            </p>
+          </SocialLinks>
+          {/* <HostedByADI>Hosted by ADI</HostedByADI> */}
         </ADIPane>
       </FlexContainer>
     </Container>

@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 
 const colorPage = "#F0E7E2";
 
+const pagePadding = "2rem";
+const pagePaddingMobile = "0.3rem";
+
 const Page = (props) => {
   const Container = styled.div`
     background-color: ${colorPage};
@@ -9,11 +12,8 @@ const Page = (props) => {
     width: 100%;
     user-select: none;
 
-    /* padding: 1rem; */
     padding: 0;
-    @media (max-width: ${process.env.mobileWidth}) {
-      padding: 0;
-    }
+    margin: 0;
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -41,7 +41,6 @@ const Page = (props) => {
 
     color: black;
 
-    /* background-color: white; */
     padding: 0.1rem;
 
     border: 1px solid #888;
@@ -68,7 +67,6 @@ const Page = (props) => {
 
     color: black;
 
-    /* background-color: white; */
     padding: 0.1rem;
 
     border: 1px solid #888;
@@ -93,11 +91,12 @@ const Page = (props) => {
   `;
 
   const Padding = styled.div`
+    margin: 0;
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: ${pagePadding};
     @media (max-width: ${process.env.mobileWidth}) {
-      padding: 0;
+      padding: ${pagePaddingMobile};
     }
   `;
 
@@ -111,9 +110,9 @@ const Page = (props) => {
         ) : (
           <RelativeDiv>
             {props.left ? (
-              <PreviousPageMessage>{"ᐊ"} Previous</PreviousPageMessage>
+              <PreviousPageMessage>{"ᐊ--"}</PreviousPageMessage>
             ) : (
-              <NextPageMessage>Next {"ᐅ"}</NextPageMessage>
+              <NextPageMessage>{"--ᐅ"}</NextPageMessage>
             )}
           </RelativeDiv>
         )}

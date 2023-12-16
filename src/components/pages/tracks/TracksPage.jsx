@@ -1,41 +1,6 @@
 import styled from "@emotion/styled";
 
-// const textSizeMobile = "0.8rem";
-const svgTitleSize = "5.5vw";
-const svgTitleSizeMobile = "14vw";
-const svgTitleSizeBig = "5rem";
-
-// const textSizeMobile = "0.75rem";
-const textSizeMobile = "2.8vw";
-const textSize = "1vw";
-const textSizeBig = "1.1rem";
-
-const titleSizeMobile = "4.6vw";
-const titleSize = "1.8vw";
-const titleSizeBig = "2rem";
-
 const TracksPage = (props) => {
-  const NextPageMessage = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    /* margin-right: 0.2rem; */
-    /* margin-top: 0.2rem; */
-    color: gray;
-
-    /* background-color: red; */
-
-    font-size: 1vw;
-
-    z-index: 1;
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      display: none;
-    }
-
-    /* background-color: yellow; */
-  `;
-
   const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -44,30 +9,10 @@ const TracksPage = (props) => {
 
   const TitleDiv = styled.div`
     position: relative;
-    /* margin-left: 1rem; */
     padding-top: 1rem;
 
-    /* width: ${svgTitleSize}; */
     width: 100%;
     text-align: center;
-    img {
-      height: ${svgTitleSize};
-    }
-
-    /* background-color: red; */
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      img {
-        /* height: 2.3rem; */
-        height: ${svgTitleSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      img {
-        height: ${svgTitleSizeBig};
-      }
-    }
   `;
   const Top = styled.div`
     position: relative;
@@ -103,22 +48,6 @@ const TracksPage = (props) => {
 
     margin-bottom: 0.3rem;
     border: black solid 2px;
-
-    p {
-      font-size: ${textSize};
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: ${textSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        font-size: ${textSizeBig};
-      }
-    }
   `;
 
   const MentalHealthTextBox = styled.div`
@@ -128,22 +57,6 @@ const TracksPage = (props) => {
 
     margin-bottom: 0.3rem;
     border: black solid 2px;
-
-    p {
-      font-size: ${textSize};
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: ${textSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        font-size: ${textSizeBig};
-      }
-    }
   `;
 
   const TextBoxEnvironment = styled.div`
@@ -153,47 +66,18 @@ const TracksPage = (props) => {
 
     margin-bottom: 0.3rem;
     border: black solid 2px;
-
-    p {
-      font-size: ${textSize};
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: ${textSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        font-size: ${textSizeBig};
-      }
-    }
   `;
 
   const TitleBox = styled.div`
     display: inline-block;
 
     margin-bottom: 0.3rem;
-    p {
+    h4 {
       background-color: white;
       border: black solid 1px;
-      font-size: ${titleSize};
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: ${titleSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        font-size: ${titleSizeBig};
-      }
     }
   `;
 
@@ -211,25 +95,12 @@ const TracksPage = (props) => {
     display: inline-block;
 
     margin-bottom: 0.3rem;
-    p {
+    h4 {
       background-color: white;
       border: black solid 1px;
-      font-size: ${titleSize};
       font-weight: bold;
       padding-left: 1rem;
       padding-right: 1rem;
-    }
-
-    @media (max-width: ${process.env.mobileWidth}) {
-      p {
-        font-size: ${titleSizeMobile};
-      }
-    }
-
-    @media (min-width: ${process.env.bigWidth}) {
-      p {
-        font-size: ${titleSizeBig};
-      }
     }
   `;
 
@@ -268,8 +139,8 @@ const TracksPage = (props) => {
   return (
     <Container>
       <TitleDiv>
-        {/* <NextPageMessage>(Click to advance)</NextPageMessage> */}
         <img
+          className="svg-page-title"
           onDragStart={preventDragHandler}
           src="/images/tracks/tracks_title.svg"
         />
@@ -284,22 +155,22 @@ const TracksPage = (props) => {
           <TextBoxEnvironment>
             <p>
               In the face of climate change,
-              <strong> environmental involvement</strong> is more crucial than
-              ever. We encourage you to use technology to amplify awareness of
-              these issues and empower others to work towards the wellbeing of
-              our planet.
+              <span className="font-bold"> environmental involvement</span> is
+              more crucial than ever. We encourage you to use technology to
+              amplify awareness of these issues and empower others to work
+              towards the wellbeing of our planet.
             </p>
           </TextBoxEnvironment>
         </TopLeft>
 
         <TopRight>
           <TitleBox>
-            <p>Politics</p>
+            <h4>Politics</h4>
           </TitleBox>
           <TextBox>
             <p>
               Your mission is to increase political
-              <strong> awareness and participation </strong>
+              <span className="font-bold"> awareness and participation </span>
               in elections. How can you leverage technology to enhance political
               awareness, engagement, and informed decision-making among
               citizens?
@@ -312,7 +183,7 @@ const TracksPage = (props) => {
               src="/images/tracks/environment_image.jpg"
             />
             <EnvironmentTitle>
-              <p>Environment</p>
+              <h4>Environment</h4>
             </EnvironmentTitle>
           </EnvironmentBox>
         </TopRight>
@@ -326,14 +197,15 @@ const TracksPage = (props) => {
         </MentalHealthImageDiv>
         <MentalHealthText>
           <TitleBox>
-            <p>Mental Health</p>
+            <h4>Mental Health</h4>
           </TitleBox>
           <MentalHealthTextBox>
             <p>
-              <strong>Mental health</strong> is at the forefront of wellNESS.
-              How can we promote a culture of openness and wellbeing? This track
-              asks you to develop a project that addresses challenges in mental
-              health or posits innovative ways to bring awareness to this topic.
+              <span className="font-bold">Mental health</span> is at the
+              forefront of wellNESS. How can we promote a culture of openness
+              and wellbeing? This track asks you to develop a project that
+              addresses challenges in mental health or posits innovative ways to
+              bring awareness to this topic.
             </p>
           </MentalHealthTextBox>
         </MentalHealthText>

@@ -12,8 +12,6 @@ export default function Pages(
   pageDictionary = null,
   mobile = false
 ) {
-  // pages must be even to display properly on desktop.
-  // Create a dummy div with className "page-no-mobile" to display page only on desktop
   let pages = [
     <HomePage
       data={data}
@@ -27,12 +25,77 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    // <SponsorsPage mobile={mobile} />,
-    // <SchedulePage mobile={mobile} />,
-    // <WorkshopsPage mobile={mobile} />,
-    <ComingSoonPage page="1" mobile={mobile} />,
-    <ComingSoonPage page="2" className="page-no-mobile" mobile={mobile} />,
+    <SchedulePage
+      data={data}
+      updatePage={updatePage}
+      pageDictionary={pageDictionary}
+      mobile={mobile}
+    />,
+    <WorkshopsPage mobile={mobile} />,
+    <SponsorsPage mobile={mobile} />,
+    <ComingSoonPage mobile={mobile} />,
   ];
 
   return pages;
+}
+
+export function getPageDictionary(
+  data = null,
+  invert = false,
+  desktop = false
+) {
+  let dict = {
+    1: "About",
+    2: "Tracks",
+    5: "Sponsors",
+    3: "Schedule",
+    4: "Workshops",
+    6: "Up Next",
+  };
+
+  if (!invert) {
+    let inverted_dict = {};
+
+    for (const key in dict) {
+      if (dict.hasOwnProperty(key)) {
+        inverted_dict[dict[key]] = Number(key);
+      }
+    }
+
+    return inverted_dict;
+  }
+
+  if (desktop) {
+    let desktop_dict = {};
+
+    for (const key in dict) {
+      if (dict.hasOwnProperty(key)) {
+        const page = Number(key);
+
+        let otherPage;
+        let firstWord;
+        let secondWord;
+        if (page % 2 == 1) {
+          otherPage = page + 1;
+          firstWord = dict[page];
+          secondWord = dict[otherPage];
+        } else {
+          otherPage = page - 1;
+          firstWord = dict[otherPage];
+          secondWord = dict[page];
+        }
+
+        const res = `${firstWord}/${secondWord}`;
+        desktop_dict[page] = res;
+        desktop_dict[otherPage] = res;
+
+        // console.log(`Key ${page}, other key ${otherPage}`);
+        // desktop_dict[Number(key)]  = desktop_dict[dict[key]];
+      }
+    }
+
+    return desktop_dict;
+  }
+
+  return dict;
 }

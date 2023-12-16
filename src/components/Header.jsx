@@ -14,22 +14,6 @@ const HeaderContainer = styled.div`
   @media (max-width: ${process.env.mobileWidth}) {
     flex-direction: column;
     align-items: center;
-    /* justify-content: auto; */
-    /* overflow: wrap; */
-  }
-
-  /* background-color: orange; */
-`;
-
-const NextPageMessage = styled.div`
-  color: gray;
-
-  font-size: 0.8rem;
-
-  z-index: 1;
-
-  @media (max-width: ${process.env.mobileWidth}) {
-    display: none;
   }
 `;
 
@@ -57,7 +41,7 @@ const TitleImage = styled.img`
 `;
 
 const ButtonsContainer = styled.div`
-  display: flex;
+  /* display: flex; */
   gap: 0px;
   align-items: center;
   position: relative;
@@ -79,35 +63,14 @@ const Button = styled.button`
   justify-content: space-between;
   font-size: 1.5rem;
 
-  width: 200px;
+  width: 350px;
+  max-width: 100%;
   z-index: 5;
   text-align: center;
 
   @media (max-width: ${process.env.mobileWidth}) {
     font-size: 1.1rem;
-  }
-`;
-
-const ButtonNext = styled.button`
-  background-color: #fff;
-  color: #000;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-weight: bold;
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid #888;
-  border-left: 1px solid #888;
-  border-right: 1px solid #888;
-  border-bottom: 1px solid #888;
-  display: inline-block;
-  font-size: 1.5rem;
-
-  width: 9rem;
-  text-align: center;
-
-  :active {
-    background-color: #eee;
+    width: 200px;
   }
 `;
 
@@ -142,9 +105,17 @@ const OptionButton = styled.button`
 
 const Header = (props) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("About");
-  // const trackOptions = ["About", "Tracks", "Sponsors", "Schedule", "Workshops"];
-  const trackOptions = ["About", "Tracks"];
+  let trackOptions = [];
+
+  if (props.mobile) {
+    const uniqueValues = [...new Set(Object.values(props.pageTitles))];
+    trackOptions = uniqueValues;
+  } else {
+    const uniqueValues = [
+      ...new Set(Object.values(props.pageDictionaryDesktop)),
+    ];
+    trackOptions = uniqueValues;
+  }
 
   const pages = Pages(
     props.data,
@@ -155,19 +126,13 @@ const Header = (props) => {
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          // alert("You clicked outside of me!");
           setDropdownOpen(false);
         }
       }
-      // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
-        // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [ref]);
@@ -177,45 +142,30 @@ const Header = (props) => {
   useOutsideAlerter(wrapperRef);
 
   const changeDropdown = () => {
-    // if (!isDropdownOpen) {
-    // setDropdownOpen(true);
-    // }
     setDropdownOpen(!isDropdownOpen);
   };
 
+  const getPageName = (option) => {
+    if (props.mobile) {
+      return option;
+    } else {
+      const parts = option.split("/");
+      return parts[0];
+    }
+  };
+
   const handleDropdownChange = (option) => {
-    setSelectedOption(option);
-    props.updatePage(props.pageDictionary[option]);
+    props.updatePage(props.pageDictionary[getPageName(option)]);
     changeDropdown();
   };
 
   const goHome = () => {
-    props.updatePage(props.pageDictionary["Home"]);
+    props.updatePage(props.pageDictionary["About"]);
   };
 
   const preventDragHandler = (e) => {
     e.preventDefault();
   };
-
-  function goLeft() {
-    let desktopPage = Math.floor((props.currentPage + 1) / 2);
-    desktopPage -= 1;
-    let mobilePage = 2 * desktopPage;
-
-    if (mobilePage > 1) {
-      props.updatePage(mobilePage);
-    }
-  }
-
-  function goRight() {
-    let desktopPage = Math.floor((props.currentPage + 1) / 2);
-    desktopPage += 1;
-    let mobilePage = 2 * desktopPage - 1;
-
-    if (mobilePage < pages.length) {
-      props.updatePage(mobilePage);
-    }
-  }
 
   return (
     <HeaderContainer>
@@ -229,18 +179,13 @@ const Header = (props) => {
           src="/images/titles/24.svg"
         />
       </TitleImageDiv>
-      {/* <div className="mobile-hidden">
-        <ButtonNext onClick={goLeft}>Previous</ButtonNext>
-        <ButtonNext onClick={goRight}>Next</ButtonNext>
-        <NextPageMessage>
-          (Or click on the right page to advance)
-        </NextPageMessage>
-      </div> */}
-      <ButtonsContainer ref={wrapperRef}>
-        {/* <Button> Schedule </Button> */}
 
+      <ButtonsContainer ref={wrapperRef}>
         <Button onClick={changeDropdown}>
-          {selectedOption} <Arrow>{isDropdownOpen ? "▼" : "►"}</Arrow>
+          {props.mobile
+            ? props.pageTitles[props.currentPage]
+            : props.pageDictionaryDesktop[props.currentPage]}
+          <Arrow>{isDropdownOpen ? "▼" : "►"}</Arrow>
         </Button>
         {isDropdownOpen && (
           <OptionsContainer isDropdownOpen={isDropdownOpen}>

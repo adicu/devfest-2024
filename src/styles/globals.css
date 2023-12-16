@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
   font-family: "Digital";
   src: url("/fonts/digital-7-mono.ttf") format("truetype");
@@ -33,11 +34,13 @@
   src: url("/fonts/PlotHolesBB-Italic.otf") format("opentype");
 }
 
+/* Catch-All Styles */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "PlotHolesBB";
+  font-weight: normal;
 }
 
 html,
@@ -47,12 +50,35 @@ body {
   overflow-y: hidden;
 }
 
+/* Font Classes */
+.font-regular {
+  font-family: "PlotHolesBB";
+}
+
+.font-bold {
+  font-family: "PlotHolesBB-Bold";
+}
+
+.font-italic {
+  font-family: "PlotHolesBB-Italic";
+}
+
+.font-bold-italic {
+  font-family: "PlotHolesBB-BoldItalic";
+}
+
 /* Desktop */
 .mobile-shown {
   display: none;
 }
+.mobile-shown-flex {
+  display: none;
+}
 .mobile-hidden {
   display: block;
+}
+.mobile-hidden-flex {
+  display: flex;
 }
 
 /* Mobile */
@@ -60,11 +86,86 @@ body {
   .mobile-shown {
     display: block;
   }
+  .mobile-shown-flex {
+    display: flex;
+  }
   .mobile-hidden {
+    display: none;
+  }
+  .mobile-hidden-flex {
     display: none;
   }
 }
 
+/* General Style Classes */
 .position-relative {
-    position: relative;
+  position: relative;
+}
+
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+
+/* Sizing */
+p {
+  font-size: 1vw;
+}
+h3 {
+  font-size: 2vw;
+}
+h4 {
+  font-size: 1.8vw;
+}
+h5 {
+  font-size: 1.3vw;
+}
+.svg-page-title {
+  height: 5.5vw;
+  max-width: 100%;
+}
+.svg-page-title-long {
+  height: 4.5vw;
+  max-width: 100%;
+}
+
+@media (max-width: 1000px) {
+  p {
+    font-size: 2.7vw;
+  }
+  h3 {
+    font-size: 6vw;
+  }
+  h4 {
+    font-size: 4.6vw;
+  }
+  h5 {
+    font-size: 4vw;
+  }
+  .svg-page-title {
+    height: 14vw;
+  }
+  .svg-page-title-long {
+    height: 10vw;
+  }
+}
+
+@media (min-width: 2000px) {
+  p {
+    font-size: 1.1rem;
+  }
+  h3 {
+    font-size: 2.2rem;
+  }
+  h4 {
+    font-size: 2rem;
+  }
+  h5 {
+    font-size: 1.4rem;
+  }
+  .svg-page-title {
+    height: 5rem;
+  }
+  .svg-page-title-long {
+    height: 4.2rem;
+  }
 }
