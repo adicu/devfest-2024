@@ -100,8 +100,7 @@ const Sidepane = (props) => {
         <LinksPane>
           <TextBox>Registration</TextBox>
           <p>
-            <a href="https://forms.gle/JUZKqNf16qDa63HY9">Register</a> by the
-            priority deadline December 30th for a guaranteed spot
+            <a href="https://forms.gle/JUZKqNf16qDa63HY9">Registration</a> closes January 24th.
           </p>
           <TextBox>Devfest Discord</TextBox>
           <p>
