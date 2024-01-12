@@ -72,7 +72,7 @@ export default function Home({ data }) {
     };
   }
 
-  console.log("DATA", data);
+  // console.log("DATA", data);
   const pageDictionary = getPageDictionary(data);
   const pageTitles = getPageDictionary(data, true);
   const pageDictionaryDesktop = getPageDictionary(data, true, true);

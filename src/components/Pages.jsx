@@ -3,8 +3,10 @@ import TracksPage from "./pages/tracks/TracksPage";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
 import SponsorsPage from "./pages/sponsors/SponsorsPage";
-import SchedulePage from "./pages/schedule/SchedulePage";
+// import SchedulePage from "./pages/schedule/SchedulePage";
 import WorkshopsPage from "./pages/workshops/WorkshopsPage";
+
+import { getSchedulePages } from "./pages/schedule/getSchedulePages";
 
 export default function Pages(
   data,
@@ -25,16 +27,23 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    <SchedulePage
-      data={data}
-      updatePage={updatePage}
-      pageDictionary={pageDictionary}
-      mobile={mobile}
-    />,
+    // <SchedulePage
+    //   data={data}
+    //   updatePage={updatePage}
+    //   pageDictionary={pageDictionary}
+    //   mobile={mobile}
+    // />,
+  ];
+
+  if (data !== undefined) {
+    pages = pages.concat(getSchedulePages(data));
+  }
+
+  pages = pages.concat([
     <WorkshopsPage mobile={mobile} />,
     <SponsorsPage mobile={mobile} />,
     <ComingSoonPage mobile={mobile} />,
-  ];
+  ]);
 
   return pages;
 }
@@ -61,6 +70,7 @@ export function getPageDictionary(
         inverted_dict[dict[key]] = Number(key);
       }
     }
+    console.log("Inverted Dict is " + inverted_dict);
 
     return inverted_dict;
   }
@@ -94,8 +104,12 @@ export function getPageDictionary(
       }
     }
 
+    console.log("Desktop dict is " + desktop_dict);
+
     return desktop_dict;
   }
+
+  console.log("Dict is " + dict);
 
   return dict;
 }
