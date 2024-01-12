@@ -10,9 +10,15 @@ import { getPageDictionary } from "../components/Pages";
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch(process.env.DATA_URL);
-    const data = await res.json();
-    return { props: { data } };
+    if (process.env.testing) {
+      const res = await fetch(`${process.env.DATA_URL}_testing`);
+      const data = await res.json();
+      return { props: { data } };
+    } else {
+      const res = await fetch(process.env.DATA_URL);
+      const data = await res.json();
+      return { props: { data } };
+    }
   } catch (err) {
     const data = {
       Workshops: [],
@@ -66,6 +72,7 @@ export default function Home({ data }) {
     };
   }
 
+  console.log("DATA", data);
   const pageDictionary = getPageDictionary(data);
   const pageTitles = getPageDictionary(data, true);
   const pageDictionaryDesktop = getPageDictionary(data, true, true);
