@@ -8,6 +8,8 @@ import WorkshopsPage from "./pages/workshops/WorkshopsPage";
 
 import { getSchedulePages } from "./pages/schedule/getSchedulePages";
 
+import { getSpeakerPages } from "./pages/speakers/getSpeakerPages";
+
 export default function Pages(
   data,
   updatePage = null,
@@ -42,8 +44,12 @@ export default function Pages(
   pages = pages.concat([
     <WorkshopsPage mobile={mobile} />,
     <SponsorsPage mobile={mobile} />,
-    <ComingSoonPage mobile={mobile} />,
+    // <ComingSoonPage mobile={mobile} />,
   ]);
+
+  if (data !== undefined) {
+    pages = pages.concat(getSpeakerPages(data));
+  }
 
   return pages;
 }
