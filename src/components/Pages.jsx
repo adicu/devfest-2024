@@ -84,8 +84,6 @@ export function getPageDictionary(
         inverted_dict[dict[key]] = Number(key);
       }
     }
-    console.log("Inverted Dict is " + inverted_dict);
-
     return inverted_dict;
   }
 
@@ -117,8 +115,6 @@ export function getPageDictionary(
         desktop_dict[otherPage] = res;
       }
     }
-
-    console.log(desktop_dict);
     return desktop_dict;
   }
 

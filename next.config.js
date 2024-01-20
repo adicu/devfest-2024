@@ -5,6 +5,7 @@ const nextConfig = {
     testing: true,
     mobileWidth: "1000px",
     bigWidth: "2000px",
+    registrationClosed: true,
   },
   async redirects() {
     return [
