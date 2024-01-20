@@ -37,19 +37,21 @@ export default function Pages(
     // />,
   ];
 
-  // if (data !== undefined) {
-  //   pages = pages.concat(getSchedulePages(data));
-  // }
-
-  pages = pages.concat([
-    <WorkshopsPage mobile={mobile} />,
-    <SponsorsPage mobile={mobile} />,
-    // <ComingSoonPage mobile={mobile} />,
-  ]);
+  pages = pages.concat([<WorkshopsPage mobile={mobile} />]);
 
   if (data !== undefined) {
-    pages = pages.concat(getSpeakerPages(data));
+    pages = pages.concat(getSchedulePages(data));
   }
+
+  pages = pages.concat([
+    <SponsorsPage mobile={mobile} />,
+    <ComingSoonPage mobile={mobile} />,
+    // <div className="page-no-mobile"></div>,
+  ]);
+
+  // if (data !== undefined) {
+  //   pages = pages.concat(getSpeakerPages(data));
+  // }
 
   return pages;
 }
@@ -62,10 +64,16 @@ export function getPageDictionary(
   let dict = {
     1: "About",
     2: "Tracks",
-    5: "Sponsors",
-    3: "Schedule",
-    4: "Workshops",
-    6: "Up Next",
+    3: "Workshops",
+    4: "Monday",
+    5: "Tuesday",
+    6: "Wednesday",
+    7: "Thursday",
+    8: "Friday",
+    9: "Saturday",
+    10: "Sunday",
+    11: "Sponsors",
+    12: "Up Next",
   };
 
   if (!invert) {
@@ -101,21 +109,18 @@ export function getPageDictionary(
           secondWord = dict[page];
         }
 
-        const res = `${firstWord}/${secondWord}`;
+        let res = `${firstWord}/${secondWord}`;
+        if (secondWord == undefined) {
+          res = firstWord;
+        }
         desktop_dict[page] = res;
         desktop_dict[otherPage] = res;
-
-        // console.log(`Key ${page}, other key ${otherPage}`);
-        // desktop_dict[Number(key)]  = desktop_dict[dict[key]];
       }
     }
 
-    console.log("Desktop dict is " + desktop_dict);
-
+    console.log(desktop_dict);
     return desktop_dict;
   }
-
-  console.log("Dict is " + dict);
 
   return dict;
 }

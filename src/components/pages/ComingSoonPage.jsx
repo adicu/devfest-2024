@@ -38,8 +38,6 @@ const ComingSoonPage = (props) => {
           <p>Up Next:</p>
           <br />
           <p>- Speakers</p>
-          <p>- Events</p>
-          <p>- & MORE DETAILS!</p>
           <br />
           <p>To Be Continued...</p>
         </>
