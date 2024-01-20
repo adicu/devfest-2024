@@ -37,9 +37,9 @@ export default function Pages(
     // />,
   ];
 
-  if (data !== undefined) {
-    pages = pages.concat(getSchedulePages(data));
-  }
+  // if (data !== undefined) {
+  //   pages = pages.concat(getSchedulePages(data));
+  // }
 
   pages = pages.concat([
     <WorkshopsPage mobile={mobile} />,
