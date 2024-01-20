@@ -6,28 +6,15 @@ import Book from "../components/Book";
 import Sidepane from "../components/Sidepane";
 import Header from "../components/Header";
 
+import { promises as fs } from "fs";
+
 import { getPageDictionary } from "../components/Pages";
 
-export async function getServerSideProps() {
-  try {
-    if (process.env.testing) {
-      const res = await fetch(`${process.env.DATA_URL}_testing`);
-      const data = await res.json();
-      return { props: { data } };
-    } else {
-      const res = await fetch(process.env.DATA_URL);
-      const data = await res.json();
-      return { props: { data } };
-    }
-  } catch (err) {
-    const data = {
-      Workshops: [],
-      Instructors: [],
-      Events: [],
-      Speakers: [],
-    };
-    return { props: { data } };
-  }
+export async function getStaticProps() {
+  const file = await fs.readFile(process.cwd() + "/data/data.json", "utf8");
+  const data = JSON.parse(file);
+
+  return { props: { data } };
 }
 
 const HomePageContainer = styled.div`
@@ -72,7 +59,6 @@ export default function Home({ data }) {
     };
   }
 
-  // console.log("DATA", data);
   const pageDictionary = getPageDictionary(data);
   const pageTitles = getPageDictionary(data, true);
   const pageDictionaryDesktop = getPageDictionary(data, true, true);
