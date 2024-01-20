@@ -1,5 +1,10 @@
 /* Fonts */
 @font-face {
+  font-family: "Badaboom";
+  src: url("/fonts/Badaboom.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "Digital";
   src: url("/fonts/digital-7-mono.ttf") format("truetype");
 }
@@ -56,6 +61,10 @@ body {
 }
 
 /* Font Classes */
+.font-badaboom {
+  font-family: "Badaboom";
+}
+
 .font-regular {
   font-family: "PlotHolesBB";
 }
@@ -119,6 +128,9 @@ body {
 p {
   font-size: 1vw;
 }
+h1 {
+  font-size: 5vw;
+}
 h3 {
   font-size: 2vw;
 }
@@ -140,6 +152,9 @@ h5 {
 @media (max-width: 1000px) {
   p {
     font-size: 2.7vw;
+  }
+  h1 {
+    font-size: 14vw;
   }
   h3 {
     font-size: 6vw;

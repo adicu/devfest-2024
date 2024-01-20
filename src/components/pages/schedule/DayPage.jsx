@@ -20,34 +20,62 @@ const TitleDiv = styled.div`
 `;
 
 const DayPage = (props) => {
-  //   console.log("Data for " + props.dayOfWeek + " is " + props.data);
-
   // Do any data modifications up here
   const dayOfWeek = props.dayOfWeek;
   const date = props.date;
   const events = props.events;
 
-  const preventDragHandler = (e) => {
-    e.preventDefault();
-  };
+  const red = "rgb(193, 69, 0)";
+  const yellow = "rgb(231, 187, 62)";
+  const blue = "rgb(88, 205,197)";
+
+  let headerColor = red;
+  switch (dayOfWeek) {
+    case "Monday":
+      headerColor = yellow;
+      break;
+    case "Tuesday":
+      headerColor = blue;
+      break;
+    case "Wednesday":
+      headerColor = red;
+      break;
+    case "Thursday":
+      headerColor = yellow;
+      break;
+    case "Friday":
+      headerColor = blue;
+      break;
+    case "Saturday":
+      headerColor = red;
+      break;
+    case "Sunday":
+      headerColor = yellow;
+      break;
+  }
+
+  const H1 = styled.h1`
+    font-style: normal;
+    color: ${headerColor};
+
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 0px 4px 0px #000000;
+  `;
 
   return (
     <Container>
       <TitleDiv>
-        <img
-          className="svg-page-title"
-          onDragStart={preventDragHandler}
-          src="/images/titles/schedule.svg"
-        />
+        <H1 className="font-badaboom">
+          {dayOfWeek} {date}
+        </H1>
       </TitleDiv>
-
-      <h1>
-        {dayOfWeek} {date}
-      </h1>
 
       {events.map((event, eventIndex) => (
         <h2 key={eventIndex}>
-          {event.Time} - {event["Event name"]}
+          {event.Time}
+          <br />
+          {event["Event name"]}
           <br />
           {event["Speaker name"]}
         </h2>
