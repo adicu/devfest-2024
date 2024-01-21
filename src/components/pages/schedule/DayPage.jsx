@@ -11,12 +11,40 @@ const Container = styled.div`
 `;
 
 const TitleDiv = styled.div`
+  flex: 1;
   position: relative;
   padding-top: 1rem;
 
   text-align: center;
 
   padding-bottom: 1rem;
+`;
+
+const EventDiv = styled.div`
+  margin-bottom: 1rem;
+
+  background-color: white;
+  border: black solid 1px;
+  font-weight: bold;
+  padding-left: 1rem;
+  padding-right: 1rem;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 100%;
+`;
+
+const MainContent = styled.div`
+  flex: 1;
+`;
+
+const GCalSection = styled.div`
+  text-align: center;
+  flex: 0;
 `;
 
 const DayPage = (props) => {
@@ -63,27 +91,80 @@ const DayPage = (props) => {
     text-shadow: 0px 4px 0px #000000;
   `;
 
+  const Time = styled.h3`
+    color: ${red};
+  `;
+
+  const SpeakerButton = styled.button`
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+
+    text-align: left;
+  `;
+
+  const handleClick = (e, speakerName) => {
+    // console.log(`Button clicked with argument: ${speakerName}`);
+
+    e.stopPropagation();
+  };
+
   return (
     <Container>
-      <TitleDiv>
-        <H1 className="font-badaboom">
-          {dayOfWeek} {date}
-        </H1>
-      </TitleDiv>
+      <FlexBox>
+        <MainContent>
+          <TitleDiv>
+            <H1 className="font-badaboom">
+              {dayOfWeek} {date}
+            </H1>
+          </TitleDiv>
 
-      {events.map((event, eventIndex) => (
-        <h2 key={eventIndex}>
-          {event.Time}
-          <br />
-          {event["Event name"]}
-          <br />
-          {event["Speaker name"]}
-        </h2>
-      ))}
+          {events.map((event, eventIndex) => (
+            <EventDiv key={eventIndex}>
+              <Time>{event.Time}</Time>
+              <h4>{event["Event name"]}</h4>
 
-      <a href="https://calendar.google.com/calendar/embed?showNav=0&showPrint=0&showCalendars=0&mode=week&wkst=2&src=c_bc14c15f5902a9aed966310e493cb9ec59ddcec237bd2963bb4f67a019bbf35a%40group.calendar.google.com&dates=20240129%2F20240204">
-        <h2>Google Calendar</h2>
-      </a>
+              {event["Speaker name"] == "" || event["Speaker name"] == "NA" ? (
+                <></>
+              ) : (
+                <SpeakerButton
+                  onClick={(e) => handleClick(e, event["Speaker name"])}
+                >
+                  <h4>
+                    {event["Speaker name"]}
+                    {/* {event["Company/Affiliation"] == ""
+                      ? ""
+                      : `(${event["Company/Affiliation"]})`} */}
+                  </h4>
+                </SpeakerButton>
+              )}
+
+              {event["Room (capacity)"] == "" ? (
+                <></>
+              ) : (
+                <h5>In Room {event["Room (capacity)"]}</h5>
+              )}
+
+              {event["if online, link?"] == "" ? (
+                <></>
+              ) : (
+                <h5>
+                  <a href={event["if online, link?"]}>URL</a>
+                </h5>
+              )}
+            </EventDiv>
+          ))}
+        </MainContent>
+
+        <GCalSection>
+          <a href="https://calendar.google.com/calendar/embed?showNav=0&showPrint=0&showCalendars=0&mode=week&wkst=2&src=c_bc14c15f5902a9aed966310e493cb9ec59ddcec237bd2963bb4f67a019bbf35a%40group.calendar.google.com&dates=20240129%2F20240204">
+            <h2>Google Calendar</h2>
+          </a>
+        </GCalSection>
+      </FlexBox>
     </Container>
   );
 };
