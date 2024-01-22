@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 const textSize = "1.5vh";
 const titleSize = "2vh";
 
+const gcal_url =
+  "https://calendar.google.com/calendar/embed?showNav=0&showPrint=0&showCalendars=0&mode=week&wkst=2&src=c_bc14c15f5902a9aed966310e493cb9ec59ddcec237bd2963bb4f67a019bbf35a%40group.calendar.google.com&dates=20240129%2F20240204";
+
 const Sidepane = (props) => {
   const Container = styled.div`
     flex: 1;
@@ -98,10 +101,22 @@ const Sidepane = (props) => {
     <Container className="mobile-hidden">
       <FlexContainer>
         <LinksPane>
-          <TextBox>Registration</TextBox>
+          {process.env.registrationClosed ? (
+            <></>
+          ) : (
+            <>
+              <TextBox>Registration</TextBox>
+              <p>
+                <a href="https://forms.gle/JUZKqNf16qDa63HY9">Registration</a>{" "}
+                closes January 24th.
+              </p>
+            </>
+          )}
+          <TextBox>Schedule </TextBox>
           <p>
-            <a href="https://forms.gle/JUZKqNf16qDa63HY9">Registration</a> closes January 24th.
+            <a href={gcal_url}>Google Calendar</a>
           </p>
+
           <TextBox>Devfest Discord</TextBox>
           <p>
             <a href="https://discord.gg/9VtwmYVRnH">Join</a> our Devfest Discord

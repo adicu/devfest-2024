@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
+    testing: true,
     mobileWidth: "1000px",
     bigWidth: "2000px",
+    registrationClosed: false,
   },
   async redirects() {
     return [

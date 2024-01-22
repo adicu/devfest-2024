@@ -155,11 +155,17 @@ const HomePage = (props) => {
           and build amazing projects.
         </p>
         <br />
-        <h5 className="font-bold">Registration Ends January 24th</h5>
-        <br />
-        <RegisterButton href="https://forms.gle/JUZKqNf16qDa63HY9">
-          Register
-        </RegisterButton>
+        {process.env.registrationClosed ? (
+          <h5 className="font-bold">Registration has Closed</h5>
+        ) : (
+          <>
+            <h5 className="font-bold">Registration Ends January 24th</h5>
+            <br />
+            <RegisterButton href="https://forms.gle/JUZKqNf16qDa63HY9">
+              Register
+            </RegisterButton>
+          </>
+        )}
       </AboutDiv>
       <br />
       <FAQImage

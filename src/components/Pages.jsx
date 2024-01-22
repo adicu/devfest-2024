@@ -3,8 +3,12 @@ import TracksPage from "./pages/tracks/TracksPage";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
 import SponsorsPage from "./pages/sponsors/SponsorsPage";
-import SchedulePage from "./pages/schedule/SchedulePage";
+// import SchedulePage from "./pages/schedule/SchedulePage";
 import WorkshopsPage from "./pages/workshops/WorkshopsPage";
+
+import { getSchedulePages } from "./pages/schedule/getSchedulePages";
+
+import { getSpeakerPages } from "./pages/speakers/getSpeakerPages";
 
 export default function Pages(
   data,
@@ -25,16 +29,29 @@ export default function Pages(
       pageDictionary={pageDictionary}
       mobile={mobile}
     />,
-    <SchedulePage
-      data={data}
-      updatePage={updatePage}
-      pageDictionary={pageDictionary}
-      mobile={mobile}
-    />,
-    <WorkshopsPage mobile={mobile} />,
+    // <SchedulePage
+    //   data={data}
+    //   updatePage={updatePage}
+    //   pageDictionary={pageDictionary}
+    //   mobile={mobile}
+    // />,
+  ];
+
+  pages = pages.concat([<WorkshopsPage mobile={mobile} />]);
+
+  if (data !== undefined) {
+    pages = pages.concat(getSchedulePages(data));
+  }
+
+  pages = pages.concat([
     <SponsorsPage mobile={mobile} />,
     <ComingSoonPage mobile={mobile} />,
-  ];
+    // <div className="page-no-mobile"></div>,
+  ]);
+
+  // if (data !== undefined) {
+  //   pages = pages.concat(getSpeakerPages(data));
+  // }
 
   return pages;
 }
@@ -47,10 +64,16 @@ export function getPageDictionary(
   let dict = {
     1: "About",
     2: "Tracks",
-    5: "Sponsors",
-    3: "Schedule",
-    4: "Workshops",
-    6: "Up Next",
+    3: "Workshops",
+    4: "Monday",
+    5: "Tuesday",
+    6: "Wednesday",
+    7: "Thursday",
+    8: "Friday",
+    9: "Saturday",
+    10: "Sunday",
+    11: "Sponsors",
+    12: "Up Next",
   };
 
   if (!invert) {
@@ -61,7 +84,6 @@ export function getPageDictionary(
         inverted_dict[dict[key]] = Number(key);
       }
     }
-
     return inverted_dict;
   }
 
@@ -85,15 +107,14 @@ export function getPageDictionary(
           secondWord = dict[page];
         }
 
-        const res = `${firstWord}/${secondWord}`;
+        let res = `${firstWord}/${secondWord}`;
+        if (secondWord == undefined) {
+          res = firstWord;
+        }
         desktop_dict[page] = res;
         desktop_dict[otherPage] = res;
-
-        // console.log(`Key ${page}, other key ${otherPage}`);
-        // desktop_dict[Number(key)]  = desktop_dict[dict[key]];
       }
     }
-
     return desktop_dict;
   }
 
