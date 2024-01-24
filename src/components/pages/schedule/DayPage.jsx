@@ -28,6 +28,8 @@ const EventDiv = styled.div`
   font-weight: bold;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  padding-bottom: 0.3rem;
 `;
 
 const FlexBox = styled.div`
@@ -99,10 +101,11 @@ const DayPage = (props) => {
     background: none !important;
     border: none;
     padding: 0 !important;
-    color: #069;
-    text-decoration: underline;
-    cursor: pointer;
+    /* color: #069; */
+    /* text-decoration: underline; */
+    /* cursor: pointer; */
 
+    color: #886753;
     text-align: left;
   `;
 
