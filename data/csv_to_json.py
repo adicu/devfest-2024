@@ -18,7 +18,7 @@ def csv_to_json(csv_file_path, json_file_path):
 				continue
 			if not row["Time"]:
 				continue
-			if not row["Event name"]:
+			if not row["Event name/title"]:
 				continue
 
 

@@ -128,9 +128,12 @@ const DayPage = (props) => {
           {events.map((event, eventIndex) => (
             <EventDiv key={eventIndex}>
               <Time>{event.Time}</Time>
-              <h4>{event["Event name"]}</h4>
+              <h4>{event["Event name/title"]}</h4>
 
-              {event["Speaker name"] == "" || event["Speaker name"] == "NA" ? (
+              {event["Speaker name"] == "" ||
+              event["Speaker name"] == "NA" ||
+              event["Event name/title"] ==
+                "Judging & Submission Presentations" ? (
                 <></>
               ) : (
                 <SpeakerButton
@@ -148,14 +151,14 @@ const DayPage = (props) => {
               {event["Room (capacity)"] == "" ? (
                 <></>
               ) : (
-                <h5>In Room {event["Room (capacity)"]}</h5>
+                <h5>{event["Room (capacity)"].replace(/\([^)]*\)/g, "")}</h5>
               )}
 
-              {event["if online, link?"] == "" ? (
+              {event["Zoom link"] == "" ? (
                 <></>
               ) : (
                 <h5>
-                  <a href={event["if online, link?"]}>URL</a>
+                  <a href={event["Zoom link"]}>URL</a>
                 </h5>
               )}
             </EventDiv>
