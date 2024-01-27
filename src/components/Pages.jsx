@@ -45,7 +45,7 @@ export default function Pages(
 
   pages = pages.concat([
     <SponsorsPage mobile={mobile} />,
-    <ComingSoonPage mobile={mobile} />,
+    // <ComingSoonPage mobile={mobile} />,
     // <div className="page-no-mobile"></div>,
   ]);
 
@@ -73,7 +73,8 @@ export function getPageDictionary(
     9: "Saturday",
     10: "Sunday",
     11: "Sponsors",
-    12: "Up Next",
+    12: "Judges",
+    13: "Speakers",
   };
 
   if (!invert) {

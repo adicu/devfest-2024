@@ -92,6 +92,9 @@ export function getSpeakerPages(data) {
     if (speakerName == "" || speakerName == "NA") {
       continue;
     }
+    if (events[i]["Headshot"] == "") {
+      continue;
+    }
     if (seen.has(speakerName)) {
       continue;
     }
