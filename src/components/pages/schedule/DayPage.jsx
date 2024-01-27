@@ -93,7 +93,7 @@ const DayPage = (props) => {
     text-shadow: 0px 4px 0px #000000;
   `;
 
-  const Time = styled.h3`
+  const Time = styled.h4`
     color: ${red};
   `;
 
@@ -115,6 +115,12 @@ const DayPage = (props) => {
     e.stopPropagation();
   };
 
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+  };
+
+  // console.log(events);
+
   return (
     <Container>
       <FlexBox>
@@ -127,42 +133,43 @@ const DayPage = (props) => {
 
           {events.map((event, eventIndex) =>
             event["Time"] == "" ? (
-              <></>
+              <span className="display-none" key={eventIndex}></span>
             ) : (
               <EventDiv key={eventIndex}>
                 <Time>{event.Time}</Time>
-                <h4>{event["Event name/title"]}</h4>
+                <h5>{event["Event name/title"]}</h5>
 
                 {event["Speaker name"] == "" ||
                 event["Speaker name"] == "NA" ||
                 event["Event name/title"] ==
-                  "Judging & Submission Presentations" ? (
+                  "Judging & Submission Presentations" ||
+                event["Event name/title"] == "Alumni Panel" ? (
                   <></>
                 ) : (
                   <SpeakerButton
                     onClick={(e) => handleClick(e, event["Speaker name"])}
                   >
-                    <h4>
+                    <h5>
                       {event["Speaker name"]}
                       {/* {event["Company/Affiliation"] == ""
                       ? ""
                       : `(${event["Company/Affiliation"]})`} */}
-                    </h4>
+                    </h5>
                   </SpeakerButton>
                 )}
 
                 {event["Room (capacity)"] == "" ? (
                   <></>
                 ) : (
-                  <h5>{event["Room (capacity)"].replace(/\([^)]*\)/g, "")}</h5>
+                  <h6>{event["Room (capacity)"].replace(/\([^)]*\)/g, "")}</h6>
                 )}
 
                 {event["Zoom link"] == "" ? (
                   <></>
                 ) : (
-                  <h5>
+                  <h6>
                     <a href={event["Zoom link"]}>URL</a>
-                  </h5>
+                  </h6>
                 )}
               </EventDiv>
             )
@@ -170,7 +177,10 @@ const DayPage = (props) => {
         </MainContent>
 
         <GCalSection>
-          <a href="https://calendar.google.com/calendar/embed?showNav=0&showPrint=0&showCalendars=0&mode=week&wkst=2&src=c_bc14c15f5902a9aed966310e493cb9ec59ddcec237bd2963bb4f67a019bbf35a%40group.calendar.google.com&dates=20240129%2F20240204">
+          <a
+            onClick={stopPropagation}
+            href="https://calendar.google.com/calendar/embed?showNav=0&showPrint=0&showCalendars=0&mode=week&wkst=2&src=c_bc14c15f5902a9aed966310e493cb9ec59ddcec237bd2963bb4f67a019bbf35a%40group.calendar.google.com&dates=20240129%2F20240204"
+          >
             <h2>Google Calendar</h2>
           </a>
         </GCalSection>

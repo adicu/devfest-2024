@@ -20,13 +20,18 @@ def csv_to_json(csv_file_path, json_file_path):
 		for row in csv_reader:
 			if not any(row.values()):
 				continue
-
+			
 			if row["Event name/title"] == "Judging & Submission Presentations" or (not row["Event name/title"] and last_name == "Judging & Submission Presentations"):
 				row["Event name/title"] = "Judging & Submission Presentations"
 
 				if not row["Speaker name"]:
 					continue
-				pass
+				
+			elif row["Event name/title"] == "Alumni Panel" or (not row["Event name/title"] and last_name == "Alumni Panel"):
+				row["Event name/title"] = "Alumni Panel"
+
+				if not row["Speaker name"]:
+					continue
 			elif not row["Event name/title"] or not row["Time"]:
 				continue
 

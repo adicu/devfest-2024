@@ -53,6 +53,8 @@ export default function Pages(
     pages = pages.concat(getSpeakerPages(data));
   }
 
+  pages = pages.concat([<div className="page-no-mobile"></div>]);
+
   return pages;
 }
 
@@ -75,6 +77,8 @@ export function getPageDictionary(
     11: "Sponsors",
     12: "Judges",
     13: "Speakers",
+    14: "Speakers",
+    15: "Speakers",
   };
 
   if (!invert) {
@@ -82,7 +86,13 @@ export function getPageDictionary(
 
     for (const key in dict) {
       if (dict.hasOwnProperty(key)) {
-        inverted_dict[dict[key]] = Number(key);
+        if (inverted_dict[dict[key]] !== undefined) {
+          if (Number(key) < inverted_dict[dict[key]]) {
+            inverted_dict[dict[key]] = Number(key);
+          }
+        } else {
+          inverted_dict[dict[key]] = Number(key);
+        }
       }
     }
     return inverted_dict;
@@ -109,7 +119,7 @@ export function getPageDictionary(
         }
 
         let res = `${firstWord}/${secondWord}`;
-        if (secondWord == undefined) {
+        if (secondWord == undefined || firstWord == secondWord) {
           res = firstWord;
         }
         desktop_dict[page] = res;
