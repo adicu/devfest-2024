@@ -83,6 +83,7 @@ export function getSpeakerPages(data) {
   const events = data.schedule;
 
   let speakers = [];
+  let judges = [];
   let seen = new Set();
 
   for (let i = 0; i < events.length; i++) {
@@ -91,11 +92,21 @@ export function getSpeakerPages(data) {
     if (speakerName == "" || speakerName == "NA") {
       continue;
     }
+    if (events[i]["Headshot"] == "") {
+      continue;
+    }
+    if (events[i]["Bio"] == "") {
+      continue;
+    }
     if (seen.has(speakerName)) {
       continue;
     }
 
-    speakers.push(events[i]);
+    if (events[i]["Event name/title"] == "Judging & Submission Presentations") {
+      judges.push(events[i]);
+    } else {
+      speakers.push(events[i]);
+    }
     seen.add(speakerName);
   }
 
@@ -103,12 +114,21 @@ export function getSpeakerPages(data) {
     speakers = speakers.concat(testingData);
   }
 
+  const splitJudges = splitArray(judges, 3);
   const splitArrays = splitArray(speakers, 3);
 
   let result = [];
 
+  for (let i = 0; i < splitJudges.length; i++) {
+    result.push(
+      <SpeakerPage judges={true} key={i} speakers={splitJudges[i]} />
+    );
+  }
+
   for (let i = 0; i < splitArrays.length; i++) {
-    result.push(<SpeakerPage key={i} speakers={splitArrays[i]} />);
+    result.push(
+      <SpeakerPage judges={false} key={i} speakers={splitArrays[i]} />
+    );
   }
 
   return result;

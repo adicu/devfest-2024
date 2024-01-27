@@ -45,13 +45,15 @@ export default function Pages(
 
   pages = pages.concat([
     <SponsorsPage mobile={mobile} />,
-    <ComingSoonPage mobile={mobile} />,
+    // <ComingSoonPage mobile={mobile} />,
     // <div className="page-no-mobile"></div>,
   ]);
 
-  // if (data !== undefined) {
-  //   pages = pages.concat(getSpeakerPages(data));
-  // }
+  if (data !== undefined) {
+    pages = pages.concat(getSpeakerPages(data));
+  }
+
+  pages = pages.concat([<div className="page-no-mobile"></div>]);
 
   return pages;
 }
@@ -73,7 +75,8 @@ export function getPageDictionary(
     9: "Saturday",
     10: "Sunday",
     11: "Sponsors",
-    12: "Up Next",
+    12: "Judges",
+    13: "Speakers",
   };
 
   if (!invert) {
@@ -81,7 +84,13 @@ export function getPageDictionary(
 
     for (const key in dict) {
       if (dict.hasOwnProperty(key)) {
-        inverted_dict[dict[key]] = Number(key);
+        if (inverted_dict[dict[key]] !== undefined) {
+          if (Number(key) < inverted_dict[dict[key]]) {
+            inverted_dict[dict[key]] = Number(key);
+          }
+        } else {
+          inverted_dict[dict[key]] = Number(key);
+        }
       }
     }
     return inverted_dict;
@@ -108,7 +117,7 @@ export function getPageDictionary(
         }
 
         let res = `${firstWord}/${secondWord}`;
-        if (secondWord == undefined) {
+        if (secondWord == undefined || firstWord == secondWord) {
           res = firstWord;
         }
         desktop_dict[page] = res;

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    testing: true,
+    testing: false,
     mobileWidth: "1000px",
     bigWidth: "2000px",
     registrationClosed: true,

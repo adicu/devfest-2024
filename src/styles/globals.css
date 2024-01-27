@@ -124,6 +124,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.display-none {
+  display: none;
+}
+
 /* Sizing */
 p {
   font-size: 1vw;
@@ -137,8 +141,14 @@ h3 {
 h4 {
   font-size: 1.6vw;
 }
+.h4 {
+  height: 3vw;
+}
 h5 {
   font-size: 1.3vw;
+}
+h6 {
+  font-size: 1.1vw;
 }
 .svg-page-title {
   height: 5.5vw;
@@ -147,6 +157,9 @@ h5 {
 .svg-page-title-long {
   height: 4.5vw;
   max-width: 100%;
+}
+.max-height {
+  max-height: 13vw;
 }
 
 @media (max-width: 1000px) {
@@ -162,14 +175,23 @@ h5 {
   h4 {
     font-size: 4.6vw;
   }
+  .h4 {
+    height: 8vw;
+  }
   h5 {
     font-size: 4vw;
+  }
+  h6 {
+    font-size: 3vw;
   }
   .svg-page-title {
     height: 14vw;
   }
   .svg-page-title-long {
     height: 10vw;
+  }
+  .max-height {
+    max-height: 25vw;
   }
 }
 
@@ -183,13 +205,22 @@ h5 {
   h4 {
     font-size: 2rem;
   }
+  .h4 {
+    height: 4rem;
+  }
   h5 {
     font-size: 1.4rem;
+  }
+  h6 {
+    font-size: 1.2rem;
   }
   .svg-page-title {
     height: 5rem;
   }
   .svg-page-title-long {
     height: 4.2rem;
+  }
+  .max-height {
+    max-height: 10vw;
   }
 }
