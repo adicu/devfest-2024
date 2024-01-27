@@ -125,44 +125,48 @@ const DayPage = (props) => {
             </H1>
           </TitleDiv>
 
-          {events.map((event, eventIndex) => (
-            <EventDiv key={eventIndex}>
-              <Time>{event.Time}</Time>
-              <h4>{event["Event name/title"]}</h4>
+          {events.map((event, eventIndex) =>
+            event["Time"] == "" ? (
+              <></>
+            ) : (
+              <EventDiv key={eventIndex}>
+                <Time>{event.Time}</Time>
+                <h4>{event["Event name/title"]}</h4>
 
-              {event["Speaker name"] == "" ||
-              event["Speaker name"] == "NA" ||
-              event["Event name/title"] ==
-                "Judging & Submission Presentations" ? (
-                <></>
-              ) : (
-                <SpeakerButton
-                  onClick={(e) => handleClick(e, event["Speaker name"])}
-                >
-                  <h4>
-                    {event["Speaker name"]}
-                    {/* {event["Company/Affiliation"] == ""
+                {event["Speaker name"] == "" ||
+                event["Speaker name"] == "NA" ||
+                event["Event name/title"] ==
+                  "Judging & Submission Presentations" ? (
+                  <></>
+                ) : (
+                  <SpeakerButton
+                    onClick={(e) => handleClick(e, event["Speaker name"])}
+                  >
+                    <h4>
+                      {event["Speaker name"]}
+                      {/* {event["Company/Affiliation"] == ""
                       ? ""
                       : `(${event["Company/Affiliation"]})`} */}
-                  </h4>
-                </SpeakerButton>
-              )}
+                    </h4>
+                  </SpeakerButton>
+                )}
 
-              {event["Room (capacity)"] == "" ? (
-                <></>
-              ) : (
-                <h5>{event["Room (capacity)"].replace(/\([^)]*\)/g, "")}</h5>
-              )}
+                {event["Room (capacity)"] == "" ? (
+                  <></>
+                ) : (
+                  <h5>{event["Room (capacity)"].replace(/\([^)]*\)/g, "")}</h5>
+                )}
 
-              {event["Zoom link"] == "" ? (
-                <></>
-              ) : (
-                <h5>
-                  <a href={event["Zoom link"]}>URL</a>
-                </h5>
-              )}
-            </EventDiv>
-          ))}
+                {event["Zoom link"] == "" ? (
+                  <></>
+                ) : (
+                  <h5>
+                    <a href={event["Zoom link"]}>URL</a>
+                  </h5>
+                )}
+              </EventDiv>
+            )
+          )}
         </MainContent>
 
         <GCalSection>

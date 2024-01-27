@@ -49,9 +49,9 @@ export default function Pages(
     // <div className="page-no-mobile"></div>,
   ]);
 
-  // if (data !== undefined) {
-  //   pages = pages.concat(getSpeakerPages(data));
-  // }
+  if (data !== undefined) {
+    pages = pages.concat(getSpeakerPages(data));
+  }
 
   return pages;
 }
