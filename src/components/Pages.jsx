@@ -77,8 +77,6 @@ export function getPageDictionary(
     11: "Sponsors",
     12: "Judges",
     13: "Speakers",
-    14: "Speakers",
-    15: "Speakers",
   };
 
   if (!invert) {
