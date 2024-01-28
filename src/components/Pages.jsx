@@ -53,7 +53,7 @@ export default function Pages(
     pages = pages.concat(getSpeakerPages(data));
   }
 
-  pages = pages.concat([<div className="page-no-mobile"></div>]);
+  // pages = pages.concat([<div className="page-no-mobile"></div>]);
 
   return pages;
 }
@@ -77,6 +77,7 @@ export function getPageDictionary(
     11: "Sponsors",
     12: "Judges",
     13: "Speakers",
+    14: "Speakers",
   };
 
   if (!invert) {
