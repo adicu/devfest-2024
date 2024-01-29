@@ -32,7 +32,7 @@ const TitleDiv = styled.div`
 `;
 
 const EventDiv = styled.div`
-  margin-bottom: 0.3rem;
+  margin-bottom: 1rem;
 
   background-color: white;
   border: black solid 1px;
@@ -41,25 +41,6 @@ const EventDiv = styled.div`
   padding-right: 1rem;
 
   padding-bottom: 0.3rem;
-`;
-
-const EventDescription = styled.div`
-  margin-bottom: 0.3rem;
-
-  /* background-color: white; */
-  /* border: black solid 1px; */
-  font-weight: bold;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
-
-  margin-left: 1rem;
-  margin-right: 1rem;
-
-  p {
-    color: #646464;
-  }
-
-  /* padding-bottom: 0.3rem; */
 `;
 
 const FlexBox = styled.div`
@@ -77,6 +58,10 @@ const MainContent = styled.div`
 const GCalSection = styled.div`
   text-align: center;
   flex: 0;
+`;
+
+const Cancelled = styled.h4`
+  color: red;
 `;
 
 const DayPage = (props) => {
@@ -227,71 +212,80 @@ const DayPage = (props) => {
           {events.map((event, eventIndex) => (
             <div key={eventIndex}>
               {event["Time"] == "" ? (
-                <span className="display-none" key={eventIndex}></span>
+                event["Speaker name"] == "Akbar Noman" ? (
+                  <></>
+                ) : (
+                  <></>
+                )
               ) : (
-                <>
-                  <EventDiv>
+                <EventDiv>
+                  {event["Speaker name"] == "Akbar Noman" ? (
+                    <Cancelled>Cancelled</Cancelled>
+                  ) : (
                     <Time>{event.Time}</Time>
-                    <h5>{event["Event name/title"]}</h5>
+                  )}
 
-                    {event["Speaker name"] == "" ||
-                    event["Speaker name"] == "NA" ||
-                    event["Event name/title"] ==
-                      "Judging & Submission Presentations" ||
-                    event["Event name/title"] == "Alumni Panel" ? (
-                      <></>
-                    ) : (
-                      <SpeakerButton
-                        onClick={(e) => handleClick(e, event["Speaker name"])}
-                      >
-                        <h5>
-                          {event["Speaker name"]}
-                          {/* {event["Company/Affiliation"] == ""
+                  <h5>{event["Event name/title"]}</h5>
+
+                  {event["Speaker name"] == "" ||
+                  event["Speaker name"] == "NA" ||
+                  event["Event name/title"] ==
+                    "Judging & Submission Presentations" ||
+                  event["Event name/title"] == "Alumni Panel" ? (
+                    <></>
+                  ) : (
+                    <SpeakerButton
+                      onClick={(e) => handleClick(e, event["Speaker name"])}
+                    >
+                      <h5>
+                        {event["Speaker name"]}
+                        {/* {event["Company/Affiliation"] == ""
                         ? ""
                         : ` from ${event["Company/Affiliation"]}`} */}
-                        </h5>
-                      </SpeakerButton>
-                    )}
+                      </h5>
+                    </SpeakerButton>
+                  )}
 
-                    {/* {event["Event description"] == "" ? (
+                  {/* {event["Event description"] == "" ? (
                   <></>
                 ) : (
                   <h6>{event["Event description"]}</h6>
                 )} */}
 
-                    {event["Room (capacity)"] == "" ? (
-                      <></>
-                    ) : (
-                      <h6>
-                        {event["Room (capacity)"].replace(/\([^)]*\)/g, "")}
-                      </h6>
-                    )}
-
-                    {event["Zoom link"] == "" ? (
-                      <></>
-                    ) : (
-                      <h6>
-                        <a onClick={stopPropagation} href={event["Zoom link"]}>
-                          Zoom
-                        </a>{" "}
-                        password: <span className="font-sans">devfest24</span>
-                      </h6>
-                    )}
-                  </EventDiv>
-
-                  {event["Event description"] == "" ? (
+                  {event["Speaker name"] == "Akbar Noman" ? (
                     <></>
                   ) : (
-                    <EventDescription>
-                      <p>{event["Event description"]}</p>
-                    </EventDescription>
+                    <>
+                      {event["Room (capacity)"] == "" ? (
+                        <></>
+                      ) : (
+                        <h6>
+                          {event["Room (capacity)"].replace(/\([^)]*\)/g, "")}
+                        </h6>
+                      )}
+
+                      {event["Zoom link"] == "" ? (
+                        <></>
+                      ) : (
+                        <h6>
+                          <a
+                            onClick={stopPropagation}
+                            href={event["Zoom link"]}
+                          >
+                            Zoom
+                          </a>{" "}
+                          password: <span className="font-sans">devfest24</span>
+                        </h6>
+                      )}
+                    </>
                   )}
-                </>
+                </EventDiv>
               )}
 
               {event["Speaker name"] == "" ||
               event["Speaker name"] == "NA" ||
               event["Event name/title"] == "Alumni Panel" ||
+              // event["Speaker name"] == "Akbar Noman" ||
               event["Event name/title"] ==
                 "Judging & Submission Presentations" ? (
                 <></>
