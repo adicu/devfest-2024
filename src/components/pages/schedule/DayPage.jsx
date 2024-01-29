@@ -152,11 +152,17 @@ const DayPage = (props) => {
                     <h5>
                       {event["Speaker name"]}
                       {/* {event["Company/Affiliation"] == ""
-                      ? ""
-                      : `(${event["Company/Affiliation"]})`} */}
+                        ? ""
+                        : ` from ${event["Company/Affiliation"]}`} */}
                     </h5>
                   </SpeakerButton>
                 )}
+
+                {/* {event["Event description"] == "" ? (
+                  <></>
+                ) : (
+                  <h6>{event["Event description"]}</h6>
+                )} */}
 
                 {event["Room (capacity)"] == "" ? (
                   <></>
@@ -168,7 +174,10 @@ const DayPage = (props) => {
                   <></>
                 ) : (
                   <h6>
-                    <a href={event["Zoom link"]}>URL</a>
+                    <a onClick={stopPropagation} href={event["Zoom link"]}>
+                      Zoom
+                    </a>{" "}
+                    password: <span className="font-sans">devfest24</span>
                   </h6>
                 )}
               </EventDiv>
