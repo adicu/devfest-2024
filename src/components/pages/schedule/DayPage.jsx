@@ -168,7 +168,9 @@ const DayPage = (props) => {
                   <></>
                 ) : (
                   <h6>
-                    <a href={event["Zoom link"]}>URL</a>
+                    <a onClick={stopPropagation} href={event["Zoom link"]}>
+                      Zoom
+                    </a>
                   </h6>
                 )}
               </EventDiv>
