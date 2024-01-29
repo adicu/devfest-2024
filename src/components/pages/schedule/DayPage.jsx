@@ -43,6 +43,18 @@ const EventDiv = styled.div`
   padding-bottom: 0.3rem;
 `;
 
+const EventDescription = styled.div`
+  margin-bottom: 1rem;
+
+  /* background-color: white; */
+  /* border: black solid 1px; */
+  font-weight: bold;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  padding-bottom: 0.3rem;
+`;
+
 const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -246,12 +258,6 @@ const DayPage = (props) => {
                     </SpeakerButton>
                   )}
 
-                  {/* {event["Event description"] == "" ? (
-                  <></>
-                ) : (
-                  <h6>{event["Event description"]}</h6>
-                )} */}
-
                   {event["Speaker name"] == "Akbar Noman" ? (
                     <></>
                   ) : (
@@ -280,6 +286,15 @@ const DayPage = (props) => {
                     </>
                   )}
                 </EventDiv>
+              )}
+
+              {event["Event description"] == "" ||
+              event["Event description"] == "NA" ? (
+                <></>
+              ) : (
+                <EventDescription>
+                  <p>{event["Event description"]}</p>
+                </EventDescription>
               )}
 
               {event["Speaker name"] == "" ||
