@@ -43,15 +43,15 @@ export default function Pages(
     pages = pages.concat(getSchedulePages(data));
   }
 
+  if (data !== undefined) {
+    pages = pages.concat(getSpeakerPages(data));
+  }
+
   pages = pages.concat([
     <SponsorsPage mobile={mobile} />,
     // <ComingSoonPage mobile={mobile} />,
     // <div className="page-no-mobile"></div>,
   ]);
-
-  if (data !== undefined) {
-    pages = pages.concat(getSpeakerPages(data));
-  }
 
   // pages = pages.concat([<div className="page-no-mobile"></div>]);
 
@@ -74,10 +74,10 @@ export function getPageDictionary(
     8: "Friday",
     9: "Saturday",
     10: "Sunday",
-    11: "Sponsors",
-    12: "Judges",
-    13: "Speakers",
-    14: "Speakers",
+    12: "Sponsors",
+    11: "Judges",
+    // 13: "Speakers",
+    // 14: "Speakers",
   };
 
   if (!invert) {

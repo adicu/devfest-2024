@@ -125,11 +125,11 @@ export function getSpeakerPages(data) {
     );
   }
 
-  for (let i = 0; i < splitArrays.length; i++) {
-    result.push(
-      <SpeakerPage judges={false} key={i} speakers={splitArrays[i]} />
-    );
-  }
+  // for (let i = 0; i < splitArrays.length; i++) {
+  //   result.push(
+  //     <SpeakerPage judges={false} key={i} speakers={splitArrays[i]} />
+  //   );
+  // }
 
   return result;
 }
