@@ -1,5 +1,16 @@
 import styled from "@emotion/styled";
 
+function isURL(str) {
+  if (str === undefined) {
+    return false;
+  }
+  if (str.includes("https://")) {
+    return true;
+  }
+
+  return false;
+}
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -109,6 +120,69 @@ const DayPage = (props) => {
     text-align: left;
   `;
 
+  const SpeakerBox = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 1rem;
+  `;
+
+  const ImageBox = styled.div`
+    flex: 4;
+
+    ${(props) => props.left && "padding-right: 1rem;"}
+    ${(props) => !props.left && "padding-left: 1rem;"}
+  `;
+
+  const Headshot = styled.img`
+    width: 100%;
+
+    border: solid black 2px;
+  `;
+
+  const InfoBox = styled.div`
+    flex: 6;
+  `;
+
+  const NameBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    h4 {
+      background-color: white;
+      border: black solid 1px;
+      font-weight: bold;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-right: 1rem;
+    }
+
+    img {
+      margin: 0;
+      padding: 0;
+    }
+
+    margin-bottom: 1rem;
+  `;
+
+  const TextBox = styled.div`
+    background-color: white;
+
+    margin-bottom: 0.3rem;
+    border: black solid 1px;
+
+    box-shadow: 10px 5px 5px black;
+
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
+
+    p {
+      padding: 0.3rem;
+    }
+  `;
+
   const handleClick = (e, speakerName) => {
     // console.log(`Button clicked with argument: ${speakerName}`);
 
@@ -131,58 +205,102 @@ const DayPage = (props) => {
             </H1>
           </TitleDiv>
 
-          {events.map((event, eventIndex) =>
-            event["Time"] == "" ? (
-              <span className="display-none" key={eventIndex}></span>
-            ) : (
-              <EventDiv key={eventIndex}>
-                <Time>{event.Time}</Time>
-                <h5>{event["Event name/title"]}</h5>
+          {events.map((event, eventIndex) => (
+            <div key={eventIndex}>
+              {event["Time"] == "" ? (
+                <span className="display-none" key={eventIndex}></span>
+              ) : (
+                <EventDiv>
+                  <Time>{event.Time}</Time>
+                  <h5>{event["Event name/title"]}</h5>
 
-                {event["Speaker name"] == "" ||
-                event["Speaker name"] == "NA" ||
-                event["Event name/title"] ==
-                  "Judging & Submission Presentations" ||
-                event["Event name/title"] == "Alumni Panel" ? (
-                  <></>
-                ) : (
-                  <SpeakerButton
-                    onClick={(e) => handleClick(e, event["Speaker name"])}
-                  >
-                    <h5>
-                      {event["Speaker name"]}
-                      {/* {event["Company/Affiliation"] == ""
+                  {event["Speaker name"] == "" ||
+                  event["Speaker name"] == "NA" ||
+                  event["Event name/title"] ==
+                    "Judging & Submission Presentations" ||
+                  event["Event name/title"] == "Alumni Panel" ? (
+                    <></>
+                  ) : (
+                    <SpeakerButton
+                      onClick={(e) => handleClick(e, event["Speaker name"])}
+                    >
+                      <h5>
+                        {event["Speaker name"]}
+                        {/* {event["Company/Affiliation"] == ""
                         ? ""
                         : ` from ${event["Company/Affiliation"]}`} */}
-                    </h5>
-                  </SpeakerButton>
-                )}
+                      </h5>
+                    </SpeakerButton>
+                  )}
 
-                {/* {event["Event description"] == "" ? (
+                  {/* {event["Event description"] == "" ? (
                   <></>
                 ) : (
                   <h6>{event["Event description"]}</h6>
                 )} */}
 
-                {event["Room (capacity)"] == "" ? (
-                  <></>
-                ) : (
-                  <h6>{event["Room (capacity)"].replace(/\([^)]*\)/g, "")}</h6>
-                )}
+                  {event["Room (capacity)"] == "" ? (
+                    <></>
+                  ) : (
+                    <h6>
+                      {event["Room (capacity)"].replace(/\([^)]*\)/g, "")}
+                    </h6>
+                  )}
 
-                {event["Zoom link"] == "" ? (
-                  <></>
-                ) : (
-                  <h6>
-                    <a onClick={stopPropagation} href={event["Zoom link"]}>
-                      Zoom
-                    </a>{" "}
-                    password: <span className="font-sans">devfest24</span>
-                  </h6>
-                )}
-              </EventDiv>
-            )
-          )}
+                  {event["Zoom link"] == "" ? (
+                    <></>
+                  ) : (
+                    <h6>
+                      <a onClick={stopPropagation} href={event["Zoom link"]}>
+                        Zoom
+                      </a>{" "}
+                      password: <span className="font-sans">devfest24</span>
+                    </h6>
+                  )}
+                </EventDiv>
+              )}
+
+              {event["Speaker name"] == "" ||
+              event["Speaker name"] == "NA" ||
+              event["Event name/title"] == "Alumni Panel" ||
+              event["Event name/title"] ==
+                "Judging & Submission Presentations" ? (
+                <></>
+              ) : (
+                <SpeakerBox>
+                  <ImageBox left={true}>
+                    <Headshot
+                      src={
+                        isURL(event["Headshot"])
+                          ? event["Headshot"]
+                          : `/images/speakers/${event["Headshot"]}`
+                      }
+                    />
+                  </ImageBox>
+
+                  <InfoBox>
+                    <NameBox>
+                      <h4 className="font-italic">{event["Speaker name"]}</h4>
+                      {/* <img src="/images/speaker-assets/df-calendar.png" /> */}
+                      {event["Linkedin/Website"] == "" ? (
+                        <></>
+                      ) : (
+                        <a href={event["Linkedin/Website"]}>
+                          <img
+                            className="h4"
+                            src="/images/speaker-assets/df-globe.png"
+                          />
+                        </a>
+                      )}
+                    </NameBox>
+                    <TextBox className="max-height">
+                      <p>{event["Bio"]}</p>
+                    </TextBox>
+                  </InfoBox>
+                </SpeakerBox>
+              )}
+            </div>
+          ))}
         </MainContent>
 
         <GCalSection>
