@@ -114,7 +114,8 @@ export function getSpeakerPages(data) {
     speakers = speakers.concat(testingData);
   }
 
-  const splitJudges = splitArray(judges, 3);
+  // const splitJudges = splitArray(judges, 3);
+  const splitJudges = [judges];
   const splitArrays = splitArray(speakers, 3);
 
   let result = [];
