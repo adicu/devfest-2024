@@ -155,7 +155,7 @@ const HomePage = (props) => {
           and build amazing projects.
         </p>
         <br />
-        {process.env.registrationClosed ? (
+        {/* {process.env.registrationClosed ? (
           <h5 className="font-bold">Registration has Closed</h5>
         ) : (
           <>
@@ -165,7 +165,14 @@ const HomePage = (props) => {
               Register
             </RegisterButton>
           </>
-        )}
+        )} */}
+        <>
+          {/* <h5 className="font-bold">Registration Ends January 24th</h5> */}
+          <br />
+          <RegisterButton href="https://devfest-24.devpost.com/">
+            DevPost
+          </RegisterButton>
+        </>
       </AboutDiv>
       <br />
       <FAQImage

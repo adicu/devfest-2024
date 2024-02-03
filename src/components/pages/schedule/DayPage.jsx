@@ -241,9 +241,9 @@ const DayPage = (props) => {
 
                   {event["Speaker name"] == "" ||
                   event["Speaker name"] == "NA" ||
+                  event["Event name/title"] == "Alumni Panel" ||
                   event["Event name/title"] ==
-                    "Judging & Submission Presentations" ||
-                  event["Event name/title"] == "Alumni Panel" ? (
+                    "Judging & Submission Presentations" ? (
                     <></>
                   ) : (
                     <SpeakerButton
@@ -299,8 +299,9 @@ const DayPage = (props) => {
 
               {event["Speaker name"] == "" ||
               event["Speaker name"] == "NA" ||
-              event["Event name/title"] == "Alumni Panel" ||
+              // event["Event name/title"] == "Alumni Panel" ||
               // event["Speaker name"] == "Akbar Noman" ||
+              event["Headshot"] == "" ||
               event["Event name/title"] ==
                 "Judging & Submission Presentations" ? (
                 <></>

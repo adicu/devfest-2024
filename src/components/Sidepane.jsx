@@ -112,6 +112,14 @@ const Sidepane = (props) => {
               </p>
             </>
           )}
+
+          <>
+            <TextBox>DevPost</TextBox>
+            <p>
+              Checkout the <a href="https://devfest-24.devpost.com/">DevPost</a>{" "}
+              for prizes and submissions.
+            </p>
+          </>
           <TextBox>Schedule </TextBox>
           <p>
             <a href={gcal_url}>Google Calendar</a>
