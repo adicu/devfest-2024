@@ -71,7 +71,7 @@
     {
       "Date": "Wednesday 1/31",
       "Time": "7:00 - 8:00 PM",
-      "Event name/title": "Coding on deadline - responsibility and process when building projects in a newsroom",
+      "Event name/title": "Coding on deadline \u2014 responsibility and process when building projects in a newsroom",
       "Hosts": "",
       "Reminder + confirmation sent?": "FALSE",
       "Who's in charge of collecting info": "Emily Cheng Yin",
@@ -182,7 +182,7 @@
       "Speaker name": "Chris Wiggins",
       "Company/Affiliation": "Columbia University",
       "Bio": "Chris Wiggins is an associate professor of applied mathematics at Columbia University and the Chief Data Scientist at The New York Times. At Columbia he is a founding member of the executive committee of the Data Science Institute, and of the Department of Systems Biology, and is affiliated faculty in Statistics. He is a co-founder and co-organizer of hackNY (http://hackNY.org), a nonprofit which since 2010 has organized once a semester student hackathons and the hackNY Fellows Program, a structured summer internship at NYC startups. Prior to joining the faculty at Columbia he was a Courant Instructor at NYU (1998-2001) and earned his PhD at Princeton University (1993-1998) in theoretical physics. He is a Fellow of the American Physical Society and is a recipient of Columbia\u2019s Avanessians Diversity Award.",
-      "Headshot": "https://datascience.columbia.edu/wp-content/uploads/2020/08/chris-wiggins-300x400.jpg",
+      "Headshot": "wiggins.jpg",
       "Linkedin/Website": "",
       "Room (capacity)": "CSB 451",
       "Zoom link": "https://columbiauniversity.zoom.us/j/97483975262?pwd=cUxUekp3SzZXQy8xTnV4eDlCK2EyUT09"
@@ -258,7 +258,7 @@
     {
       "Date": "Saturday 2/3",
       "Time": "4:00 - 5:00 PM",
-      "Event name/title": "Diversity Mixer",
+      "Event name/title": "Diversity Panel",
       "Hosts": "",
       "Reminder + confirmation sent?": "",
       "Who's in charge of collecting info": "Marissa Crevecoeur",
@@ -318,7 +318,7 @@
       "Speaker name": "William Essilfie",
       "Company/Affiliation": "Lead Product Manager, Teachers Pay Teachers",
       "Bio": "Will Essilfie is a technologist and product leader passionate about building community-powered products. He is a Lead Product Manager at TPT, the world's largest marketplace for PreK-12 resources, where he leads teams focused on user acquisition, seller tooling, and search relevance systems to help teachers connect with one another and share their collective wisdom. Prior to TPT, Will worked as a Product Manager at RangeMe, where he helped drive Marketplace Health, and as a Data Scientist at Facebook, where he supported women in emerging markets by helping them find safe communities.\nWill holds a BA in Computer Science with a concentration in Business Management from Columbia University.",
-      "Headshot": "",
+      "Headshot": "william.jpeg",
       "Linkedin/Website": "LinkedIn.com/in/wessilfie",
       "Room (capacity)": "",
       "Zoom link": ""
@@ -386,7 +386,7 @@
       "Speaker name": "Henry Wei",
       "Company/Affiliation": "Head of Development Innovation, Regeneron; Lecturer in Population Health Sciences, Weill Cornell Medicine",
       "Bio": "Henry Wei, MD heads Global Development Innovation at Regeneron, aimed at accelerating clinical trials & research. Dr. Wei previously worked at Google, the White House, Aetna, and McKinsey. Dr Wei has co-authored patents on AI in healthcare and on real-world data and drug safety. He earned his MD at Cornell, his graduate and undergraduate degrees at Harvard University with published research on sleep & circadian rhythms neuroelectrophysiology. In 2012, Henry Wei and Nayan Jain won a long-form global hackathon, the Health 2.0 World Developers' Cup, with MedTuner, an NLP-driven clinical decision support AI and personal social media companion.",
-      "Headshot": "https://obamawhitehouse.archives.gov/sites/default/files/microsites/ostp/pif_wei.jpg",
+      "Headshot": "pif_wei.jpg",
       "Linkedin/Website": "http://linkedin.com/in/henrywei",
       "Room (capacity)": "CSB 451 & Mudd 627",
       "Zoom link": ""
@@ -417,11 +417,11 @@
       "Who's in charge of collecting info": "",
       "Done?": "TRUE",
       "Event description": "",
-      "Speaker name": "Sofia Guzowski",
-      "Company/Affiliation": "Microsoft AI & Emerging Technologies Business Development Analyst ",
-      "Bio": "As an AI & Emerging Technologies Business Development Analyst at Microsoft, I work with global partners to accelerate the adoption of AI and cloud solutions. I have over three years of experience in entrepreneurship, business development, and venture analysis, working with startups (including my own), VC firms, and corporations across different sectors and regions. I am passionate about leveraging technology and innovation to create positive social impact and solve global challenges, particularly within the realm of education. I recently graduated from Columbia University with double majors in Economics and Psychology.",
-      "Headshot": "sofia.jpg",
-      "Linkedin/Website": "https://www.linkedin.com/in/sofia-guzowski-b916931a2/",
+      "Speaker name": "Lucie le Blanc",
+      "Company/Affiliation": "Software Engineer @ Warp",
+      "Bio": "Lucie (BC'21) is a software engineer at Warp, where she works on building a better terminal. Prior to working at Warp, she interned at Tilt.dev, Reddit, Google and Meta. During her time at Columbia, Lucie was Head TA for Advanced Programming, TA for Operating Systems and Fundies, a WiCS Board member, and a cellist in several orchestras on campus. In her free time, she enjoys playing music, reading, and biking in NYC.",
+      "Headshot": "lucie.jpeg",
+      "Linkedin/Website": "https://www.linkedin.com/in/lucie-leblanc/ ",
       "Room (capacity)": "",
       "Zoom link": ""
     },

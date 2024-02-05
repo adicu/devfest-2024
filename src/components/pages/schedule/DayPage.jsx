@@ -270,7 +270,7 @@ const DayPage = (props) => {
                         </h6>
                       )}
 
-                      {event["Zoom link"] == "" ? (
+                      {/* {event["Zoom link"] == "" ? (
                         <></>
                       ) : (
                         <h6>
@@ -282,7 +282,7 @@ const DayPage = (props) => {
                           </a>{" "}
                           password: <span className="font-sans">devfest24</span>
                         </h6>
-                      )}
+                      )} */}
                     </>
                   )}
                 </EventDiv>
